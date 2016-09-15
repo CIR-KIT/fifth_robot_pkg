@@ -12,6 +12,5 @@ CIRKIT所有ロボット5号機のリポジトリ
 
 ##　メモ
 - 使うときは各人セットアップ済みの catkin_ws に clone して使ってください
-- セットアップについて,yp-spurのセットアップを忘れずに行ってください.
-- [公式](http://www.roboken.iit.tsukuba.ac.jp/platform/wiki/yp-spur/how-to-install)
+- セットアップについて,yp-spurのセットアップを忘れずに行ってください.[公式](http://www.roboken.iit.tsukuba.ac.jp/platform/wiki/yp-spur/how-to-install)
 - contributerを募集しています
