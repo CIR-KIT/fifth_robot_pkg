@@ -47,4 +47,9 @@ qtcreator-*
 CATKIN_IGNORE
 
 #Catkin workspace
-/CMakeLists.txt
+/.catkin_workspace
+/build
+/install
+/devel
+/src/CMakeLists.txt
+

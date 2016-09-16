@@ -1,6 +1,6 @@
 [submodule "joy_twist"]
-	path = joy_twist
+	path = src/joy_twist
 	url = git@github.com:RyodoTanaka/joy_twist.git
 [submodule "nishidalab_ypspur_driver"]
-	path = nishidalab_ypspur_driver
+	path = src/nishidalab_ypspur_driver
 	url = git@github.com:RyodoTanaka/nishidalab_ypspur_driver.git
