@@ -17,13 +17,14 @@ CIRKIT-5 (forrow as i-cart mini)
     |         L---------------------------------------|
     |                                                 |
 |===================|                                 |
-|Motor driver       |                                 |
-|===================|                                 |
+|Motor driver       |<- Work as Controller,connected  |
+|===================|   to the computer-with-ROS      |
     |         |                                       |
     |         L-----------------|                     |
-    |                           |                     |
-|==================| |===========================|  |=====|
-|DC motor clockwise| | DC motor counter clockwise|  |LRF  |
-|==================| |===========================|  |=====|
+    |                           |                     |*2
+|==================| |===========================|  |========================|
+|DC motor clockwise| | DC motor counter clockwise|  |LRF-HOKUYO-UTM-30LX-EW  |
+|==================| |===========================|  |========================|
 
-*1: 24V is Unfused Output!
+*1: 24V is Unfused Output! 
+*2: 4 line cuppler, which has no store in our factory.
