@@ -1,6 +1,6 @@
 CIRKIT-5 (forrow as i-cart mini)
 2016 0916
-2016 0929
+2016 0920
 
 |===================|
 |Source 24V (PbBatt)|
