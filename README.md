@@ -32,7 +32,7 @@ mkdir -p catkin_ws/src
 -  catkin build ypspur  
 - wstool init  
 -  rosdep install --from-paths . --ignore-src --rosdistro indigo -y  
--  ここで恐らくypspurが重複していると言われるはずなので,src内の方(もう片方は,rosdep で落ちてきたパッケージ群のどこか)を削除します
+-  ここで恐らくypspurが重複していると言われるはずなので,src内の方(もう片方は,catkin buildの生成物のどこか)を削除します
 -  rm -rf src/ypspur/  
 -  rosdep install --from-paths . --ignore-src --rosdistro indigo -y   
 -  catkin build
