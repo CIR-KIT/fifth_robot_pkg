@@ -13,7 +13,7 @@ CIRKIT-5 (forrow as i-cart mini)
 |===================|
 |Power supply board |
 |===================|
-    |5V       |12V
+    |5V&24V*1 |12V
     |         L---------------------------------------|
     |                                                 |
 |===================|                                 |
@@ -25,3 +25,5 @@ CIRKIT-5 (forrow as i-cart mini)
 |==================| |===========================|  |=====|
 |DC motor clockwise| | DC motor counter clockwise|  |LRF  |
 |==================| |===========================|  |=====|
+
+*1: 24V is Unfused Output!
