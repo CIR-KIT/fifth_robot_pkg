@@ -26,5 +26,5 @@ CIRKIT-5 (forrow as i-cart mini)
 |DC motor clockwise| | DC motor counter clockwise|  |LRF-HOKUYO-UTM-30LX-EW  |
 |==================| |===========================|  |========================|
 
-*1: 24V is Unfused Output! 
-*2: 4 line cuppler, which has no store in our factory.
+*1: 24V is Unfused Output!
+*2: 4 line coupler, which has no store in our factory.
