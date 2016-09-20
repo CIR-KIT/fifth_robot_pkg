@@ -1,0 +1,30 @@
+CIRKIT-5 (forrow as i-cart mini)
+2016 0916
+2016 0920
+
+|===================|
+|Source 24V (PbBatt)|
+|===================|
+          |
+|===================|
+|Emergency switch   |<- Post_Added
+|===================|
+          |
+|===================|
+|Power supply board |
+|===================|
+    |5V&24V*1 |12V
+    |         L---------------------------------------|
+    |                                                 |
+|===================|                                 |
+|Motor driver       |<- Work as Controller,connected  |
+|===================|   to the computer-with-ROS      |
+    |         |                                       |
+    |         L-----------------|                     |
+    |                           |                     |*2
+|==================| |===========================|  |========================|
+|DC motor clockwise| | DC motor counter clockwise|  |LRF-HOKUYO-UTM-30LX-EW  |
+|==================| |===========================|  |========================|
+
+*1: 24V is Unfused Output!
+*2: 4 line coupler, which has no store in our factory.
