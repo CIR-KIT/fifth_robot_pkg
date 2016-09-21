@@ -4,3 +4,6 @@
 [submodule "nishidalab_ypspur_driver"]
 	path = src/nishidalab_ypspur_driver
 	url = git@github.com:RyodoTanaka/nishidalab_ypspur_driver.git
+[submodule "src/icart"]
+	path = src/icart
+	url = git@github.com:forno/icart.git
