@@ -18,26 +18,10 @@ CIRKIT所有ロボット5号機のリポジトリ
 ##　インストレーション注意書き
 - ソフトウェア的には 誰かの作った i-cart mini 操作用のソフトを使うことになってます [wiki](http://wiki.ros.org/icart_mini)が, これのインストールについて特記するべきことがあるので記します
 - __wikiどうりにはやりません__
-- ypspur(≠yp-spur=公式の方)なるレポが見つからないと言ってcmakeできないからです
-- これはindigo環境下で試験的に実行した成功例の一つです, アンチパターンなどの一般化はかけていますので, 適宜実行してください.
-- 多分Kineticでもうまく往くと思いますが, 問題の切り分けがうまく行ってないので, 近日実行ということにしておきます.
 
-## インストレーション・マニュアル
-- __いまからビルド作業を行うディレクトリが__,いままで `catkin_make` など__行っていない__ことを確認しつつ,　必要であれば `mkdir -p catkin_ws/src`
+### Installation
+`git clone` する際に `--recursive` を付ければsubmoduleごと引っ張ってこれます。
 
-- →さもなくば後で `catkin build` と `catkin_make` で競合エラーを吐きます
-- wikiで紹介されているやつ __ではなく__ (恐らくは) 開発用のほう, [こちら](https://github.com/DaikiMaekawa/ypspur.git) をcloneします  `git clone https://github.com/DaikiMaekawa/ypspur.git`
-- 恐らく今のROS環境では標準でインストールされておらず, 不足を生じるであろうツールがあるのでインストール
-```bash
-sudo apt-get install python-catkin-tools  sudo apt-get install catkin
-cd ../
-catkin build ypspur
-wstool init
-rosdep install --from-paths . --ignore-src --rosdistro indigo -y
-```
-- ここで恐らくypspurが重複していると言われるはずなので,src内の方(もう片方は,catkin buildの生成物のどこか)を削除します
-```bash
-rm -rf src/ypspur/
-rosdep install --from-paths . --ignore-src --rosdistro indigo -y
-catkin build
-```
+catkin workspace のソース内にクローンした場合はそのまま。
+それ以外のところにクローンした場合は`src`ディレクトリ上で`catkin_init_workspace`を行えばリポジトリをcatkin workspaceにできます。
+
