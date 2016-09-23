@@ -19,7 +19,7 @@ CIRKIT所有ロボット5号機のリポジトリ
 - ソフトウェア的には 誰かの作った i-cart mini 操作用のソフトを使うことになってます [wiki](http://wiki.ros.org/icart_mini)が, これのインストールについて特記するべきことがあるので記します
 - __wikiどうりにはやりません__
 
-### Installation
+## Installation
 `git clone` する際に `--recursive` を付ければsubmoduleごと引っ張ってこれます。
 
 catkin workspace のソース内にクローンした場合はそのまま。
