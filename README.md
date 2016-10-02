@@ -22,7 +22,30 @@ CIRKIT所有ロボット5号機のリポジトリ
  - hokuyo-node(北陽のLRFドライバ)
 を使用. 
 
-各ノードの提携図は 10/2 中にUpload 
+##各ノードの提携図
+Uploaded 10/2 
+走行モード 
+![runnning](https://github.com/CIR-KIT/fifth_robot_pkg/blob/develop/new_pkgs_drafting20161002.jpg)
+ 
+地図モード 
+![mapmaking](https://github.com/CIR-KIT/fifth_robot_pkg/blob/develop/new_pkgs_drafting20161002-mapmaker.jpg)
+
+##詳細
+- Hokuyo_node
+   - subscribing : none
+   - publishing  : /Laserscan Sensor_msgs/Laserscan
+- map-saver
+   - subscribing : none(reading map bags)
+   - publishing  : /map nav_smgs/Getmap
+- yp-spur
+   - subscribing : /cmd_vel geometry_msgs/twist
+   - publishing  : /odom nav-msgs/Odometory
+
+- move_base
+   - subscribing : /Laserscan Sensor_msgs/Laserscan
+   - subscribing : /map nav_smgs/Getmap
+   - subscribing : /odom nav-msgs/Odometory
+   - publishing  : //cmd_vel geometry_msgs/twist
 
 ## メモ
 - セットアップについて,__yp-spur,ssmのインストール__を忘れずに行ってください: [公式](http://www.roboken.iit.tsukuba.ac.jp/platform/wiki/yp-spur/how-to-install)
