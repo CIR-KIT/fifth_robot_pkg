@@ -23,8 +23,8 @@ CIRKIT所有ロボット5号機のリポジトリ
 を使用. 
 
 ##各ノードの提携図
-Uploaded 10/2 <br>
-以下は最小構成の完成図です 
+Uploaded 10/2<br>
+以下は最小構成の完成図です<br>
 走行モード 
 ![runnning](https://github.com/CIR-KIT/fifth_robot_pkg/blob/develop/new_pkgs_drafting20161002.jpg)
  
