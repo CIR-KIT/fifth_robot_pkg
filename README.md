@@ -15,10 +15,10 @@ CIRKIT所有ロボット5号機のリポジトリ
 猛スピードで作りなおそうと思います. 
 
 ## 新ソフト使用物
- - navigation
- - gmappping
- - yp-spur(公式)
- - hokuyo-node(北陽のLRFドライバ)
+- navigation
+- gmappping
+- yp-spur(公式)
+- hokuyo-node(北陽のLRFドライバ)
 
 ## 各ノードの提携図:Uploaded 10/2
 以下は最小構成の完成図です
