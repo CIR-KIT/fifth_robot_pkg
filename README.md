@@ -19,7 +19,7 @@ CIRKIT所有ロボット5号機のリポジトリ
  - navigation
  - gmappping
  - yp-spur(公式)
- - hokuyo-node(北陽のLRFドライバ)
+ - urg_node(LRFドライバ)
 を使用. 
 
 ##各ノードの提携図
