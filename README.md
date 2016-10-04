@@ -31,7 +31,7 @@ Uploaded 10/2
 ![mapmaking](https://github.com/CIR-KIT/fifth_robot_pkg/blob/develop/new_pkgs_drafting20161002-mapmaker.jpg)
 
 ##詳細
-- Hokuyo_node
+- urg_node
    - subscribing : none
    - publishing  : /Laserscan Sensor_msgs/Laserscan
 - map-saver
