@@ -27,10 +27,10 @@ Note. hokuyo_node は古くて非推奨なのですが, laserprocなどの必要
 ##各ノードの提携図
 Uploaded 10/2 
 走行モード 
-![runnning](https://github.com/CIR-KIT/fifth_robot_pkg/blob/develop/new_pkgs_drafting20161005.jpg)
+![runnning](https://github.com/CIR-KIT/fifth_robot_pkg/blob/new_pkg/new_pkgs_drafting20161005.jpg)
  
 地図モード 
-![mapmaking](https://github.com/CIR-KIT/fifth_robot_pkg/blob/develop/new_pkgs_drafting20161005-mapmaker.jpg)
+![mapmaking](https://github.com/CIR-KIT/fifth_robot_pkg/blob/new_pkg/new_pkgs_drafting20161005-mapmaker.jpg)
 
 ##詳細
 - hokuyo_node
