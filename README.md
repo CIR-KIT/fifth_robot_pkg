@@ -29,10 +29,10 @@ Uploaded 10/2
 Updated  10/5  
 
 走行モード 
-![runnning](https://github.com/CIR-KIT/fifth_robot_pkg/blob/new_pkg/images/new_pkgs_drafting20161005.jpg)
+![runnning](https://github.com/CIR-KIT/fifth_robot_pkg/blob/images/images/new_pkgs_drafting20161005.jpg)
  
 地図モード 
-![mapmaking](https://github.com/CIR-KIT/fifth_robot_pkg/blob/new_pkg/images/new_pkgs_drafting20161005-mapmaker.jpg)
+![mapmaking](https://github.com/CIR-KIT/fifth_robot_pkg/blob/images/images/new_pkgs_drafting20161005-mapmaker.jpg)
 
 ##詳細
 - hokuyo_node
