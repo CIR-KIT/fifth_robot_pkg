@@ -1,15 +1,3 @@
-[submodule "src/joy_twist"]
-	path = src/joy_twist
-	url = git@github.com:RyodoTanaka/joy_twist.git
-	branch = master
-[submodule "src/nishidalab_ypspur_driver"]
-	path = src/nishidalab_ypspur_driver
-	url = git@github.com:yasu80/nishidalab_ypspur_driver.git
-	branch = dependency-fix
-[submodule "src/icart"]
-	path = src/icart
-	url = git@github.com:forno/icart.git
-	branch = for-cirkit
 [submodule "src/hokuyo_node"]
 	path = src/hokuyo_node
 	url = git@github.com:ros-drivers/hokuyo_node.git
