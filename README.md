@@ -21,7 +21,7 @@ CIRKIT所有ロボット5号機のリポジトリ
  - yp-spur(公式)
  - urg_node(LRFドライバ)
 を使用. 
-Note. hokuyo_node は古くて非推奨な 
+Note. hokuyo_node は古くて非推奨なのですが, laserprocなどの必要な部品がkineticにおいて揃っておらず,現行使えないということでhokuyo_nodeを使うことにしました.
 
 ##各ノードの提携図
 Uploaded 10/2 
