@@ -25,7 +25,9 @@ Note. hokuyo_node は古くて非推奨なのですが, laserprocなどの必要
 必要なdriverを追加で導入することにしましたので, ひょっとしたらurg_nodeでも稼働しそうですが, 使ったことのある方を使うようにします.
 
 ##各ノードの提携図
-Uploaded 10/2 
+Uploaded 10/2  
+Updated  10/5  
+
 走行モード 
 ![runnning](https://github.com/CIR-KIT/fifth_robot_pkg/blob/new_pkg/new_pkgs_drafting20161005.jpg)
  
