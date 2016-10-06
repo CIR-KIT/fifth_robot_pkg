@@ -4,3 +4,6 @@
 [submodule "src/driver_common"]
 	path = src/driver_common
 	url = https://github.com/ros-drivers/driver_common.git
+[submodule "src/navigation"]
+	path = src/navigation
+	url = git@github.com:ros-planning/navigation.git
