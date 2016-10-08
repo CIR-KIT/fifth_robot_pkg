@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>static_tf</name>
+  <version>0.1.0</version>
+  <description>The static_tf package</description>
+
+  <maintainer email="p111026h@mail.kyutech.jp">yasu16</maintainer>
+
+  <license>BSD_2_cruice</license>
+
+  <author email="p111026h@mail.kyutech.jp">yasu16</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>roscpp</depend>
+  <depend>tf</depend>
+
+  <export>
+  </export>
+</package>
