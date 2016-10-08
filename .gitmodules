@@ -4,3 +4,6 @@
 [submodule "src/third_party/driver_common"]
 	path = src/third_party/driver_common
 	url = https://github.com/ros-drivers/driver_common.git
+[submodule "src/third_party/ypspur_ros_bridge"]
+	path = src/third_party/ypspur_ros_bridge
+	url = http://www.roboken.iit.tsukuba.ac.jp/platform/repos/ypspur_ros_bridge.git
