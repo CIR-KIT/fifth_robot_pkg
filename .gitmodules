@@ -1,9 +1,3 @@
-[submodule "src/hokuyo_node"]
-	path = src/hokuyo_node
-	url = git@github.com:ros-drivers/hokuyo_node.git
-[submodule "src/driver_common"]
-	path = src/driver_common
-	url = https://github.com/ros-drivers/driver_common.git
-[submodule "src/navigation"]
-	path = src/navigation
-	url = git@github.com:ros-planning/navigation.git
+[submodule "src/third_party/hokuyo_node"]
+	path = src/third_party/hokuyo_node
+	url = https://github.com/ros-drivers/hokuyo_node.git
