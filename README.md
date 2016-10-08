@@ -13,11 +13,6 @@ CIRKIT所有ロボット5号機のリポジトリ
 ## 新パッケージテスト記録
  - レーザレンジファインダ稼働確認, urg_node は採用見送り, hokuyo_node で開発続行. 
 
-## Updated20161002-放棄
-諸事情あってちょっともう現行の作業内容はぶっ飛ばすことにしました 
-運用開始のめどが立たないので 
-猛スピードで作りなおそうと思います. 
-
 ## ソフト構成
 - navigation
 - gmappping
@@ -26,9 +21,8 @@ CIRKIT所有ロボット5号機のリポジトリ
 Note. hokuyo_node は古くて非推奨なのですが, laserprocなどの必要な部品がkineticにおいて揃っておらず,現行使えないということでhokuyo_nodeを使うことにしました.
 必要なdriverを追加で導入することにしましたので, ひょっとしたらurg_nodeでも稼働しそうですが, 使ったことのある方を使うようにします.
 
-## 各ノードの提携図
-Uploaded 10/2  
-Updated  10/5  
+## 各ノードの提携図  
+Updated  10/8
 
 走行モード 
 ![runnning](https://github.com/CIR-KIT/fifth_robot_pkg/blob/images/images/new_pkgs_drafting20161005.jpg)
@@ -51,6 +45,8 @@ Updated  10/5
  + subscribing : /map nav_smgs/Getmap
  + subscribing : /odom nav-msgs/Odometory
  + publishing  : /cmd_vel geometry_msgs/twist
+
+goal/waypoint提供者を実装する必要があります.
 
 ## メモ
 - セットアップについて,__yp-spur,ssmのインストール__を忘れずに行ってください: [公式](http://www.roboken.iit.tsukuba.ac.jp/platform/wiki/yp-spur/how-to-install)  
