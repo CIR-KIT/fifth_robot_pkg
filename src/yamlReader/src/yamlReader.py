@@ -2,7 +2,7 @@
 
 import yaml
 import rospy
-from collections import OrderedDict
+
 
 from std_msgs.msg import _Float32
 
@@ -15,7 +15,7 @@ f.close()
 
 def checkstuck():
 
-def findnum(num):z
+def findnum(num):
 def findwaypoint():
 def findimportance():
 def findradius():
