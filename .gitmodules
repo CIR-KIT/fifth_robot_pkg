@@ -1,6 +1,9 @@
-[submodule "joy_twist"]
-	path = src/joy_twist
-	url = git@github.com:RyodoTanaka/joy_twist.git
-[submodule "nishidalab_ypspur_driver"]
-	path = src/nishidalab_ypspur_driver
-	url = git@github.com:RyodoTanaka/nishidalab_ypspur_driver.git
+[submodule "src/third_party/hokuyo_node"]
+	path = src/third_party/hokuyo_node
+	url = https://github.com/ros-drivers/hokuyo_node.git
+[submodule "src/third_party/driver_common"]
+	path = src/third_party/driver_common
+	url = https://github.com/ros-drivers/driver_common.git
+[submodule "src/third_party/ypspur_ros_bridge"]
+	path = src/third_party/ypspur_ros_bridge
+	url = http://www.roboken.iit.tsukuba.ac.jp/platform/repos/ypspur_ros_bridge.git
