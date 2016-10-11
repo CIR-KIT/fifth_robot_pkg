@@ -13,16 +13,17 @@ f = open(FILEIN_DICT, 'r')
 waypoints = yaml.load(f)
 f.close()
 
-#def checkstuck():
-#def findnum(num):
-#def findwaypoint():
-#def findimportance():
-#def findradius():
-#def finddrug():
-#def calc_angle():
-#def mod_angle():
-#def change_waypoint():
-#def goal():
+def checkstuck():
+
+def findnum(num):
+def findwaypoint():
+def findimportance():
+def findradius():
+def finddrug():
+def calc_angle():
+def mod_angle():
+def change_waypoint():
+def goal():
 
 def pubGoal():
     pub = rospy.Publisher('goal', float)#quie size?
