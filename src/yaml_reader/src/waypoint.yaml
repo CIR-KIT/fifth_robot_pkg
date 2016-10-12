@@ -1,4 +1,4 @@
-wps: 
+waypoints: 
   - number: 0
     name: start
     x: 10
