@@ -1,30 +1,25 @@
-waypoints: 
-  - number: 0
-    name: start
-    x: 10
-    y: 10
-    inportance: 1
-    radius: 1.5
-    drag: 5
+start:
+  x: 10
+  y: 10
+  inportance: 1
+  radius: 1.5
+  drag: 5
 
-  - number: 1
-    name: gate
-    x: 10
-    y: 20
-    inportance: 2
-    radius: 2.5
-    drag: 3
+gate:
+  x: 10
+  y: 20
+  inportance: 2
+  radius: 2.5
+  drag: 3
 
-  - number: 2
-    name: slope
-    x: 20
-    y: 20
-    inportance: 3
-    radius: 0.5
+slope:
+  x: 20
+  y: 20
+  inportance: 3
+  radius: 0.5
 
-  - number: 3
-    name: goal
-    x: 20
-    y: 20
-    inportance: 4
-    radius: 0.5
+goal:
+  x: 20
+  y: 20
+  inportance: 4
+  radius: 0.5

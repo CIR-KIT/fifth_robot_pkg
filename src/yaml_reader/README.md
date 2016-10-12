@@ -3,6 +3,17 @@
 [参考url](http://wiki.ros.org/ja/turtlebot_navigation/Tutorials/Setup%20the%20Navigation%20Stack%20for%20TurtleBot)
 がどの程度走行特性に影響するかによっては, 以下に記す事柄は不要となる可能性がある.
 
+## Guidance
+PyYAML-3.05 をインストールしています.
+実行環境は Ubuntu 16.04 標準の Python 2.7.12 ですが. 可搬性を考えてこのまま.
+環境設定は
+wget http://pyyaml.org/download/pyyaml/PyYAML-3.05.tar.gz
+tar xzf PyYAML-3.05.tar.gz
+cd PyYAML-3.05/
+sudo python setup.py install
+
+でよいでしょう.
+
 ## 位置づけ
 今から作ろうとするものは,
 - ファイルに記録した waypoint より参照した点を認識
