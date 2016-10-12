@@ -14,14 +14,14 @@ f.close()
 
 
 def checkImportance():
-    if waypoints["waypoints"][0]["inportance"] == 1:
-       print '%s is Passing point.' % (waypoints["waypoints"][0]["name"])
-    if waypoints["waypoints"][1]["inportance"] == 2:
-       print '%s is Important Passing point.' % (waypoints["waypoints"][1]["name"])
-    if waypoints["waypoints"][2]["inportance"] == 3:
-       print '%s is Dangerous point.' % (waypoints["waypoints"][2]["name"])
-    if waypoints["waypoints"][3]["inportance"] == 4:
-       print '%s is destination.' % (waypoints["waypoints"][3]["name"])
+    if waypoints["start"]["inportance"] == 1:
+       print '%s is Passing point.' % 'start'
+    if waypoints["gate"]["inportance"] == 2:
+       print '%s is Important Passing point.' % 'gate'
+    if waypoints["slope"]["inportance"] == 3:
+       print '%s is Dangerous point.' % 'slope'
+    if waypoints["goal"]["inportance"] == 4:
+       print '%s is destination.' % 'goal'
 
 def pubData():
     pub = rospy.Publisher('data', String, queue_size=10)
