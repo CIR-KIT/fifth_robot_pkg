@@ -1,0 +1,5 @@
+<launch>
+   <include file="$(find fifth_robot_launcher)/launch/ypspur.launch" />
+   <include file="$(find teleop_twist_joy)/launch/teleop.launch" />
+   <!-- <include file="$(find gmapping)/launch/ypspur.launch" /> -->
+</launch>
