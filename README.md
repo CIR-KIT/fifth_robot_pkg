@@ -9,17 +9,25 @@ CIRKIT所有ロボット5号機のリポジトリ
 ## テスト記録
 - 旧ハードについてはROS Indigo にて動作確認済み
 - 新ハード(本番用)については後日調査(以降は, Kinetic Kameによって開発を行う)
+## 続報20161018
+ipアドレスをスタティックに振り分ける必要があるために
+ - sudo ifconfig enp7s0 192.168.0.15
+ - sudo route add default gw 192.168.0.1
+ - rosrun urg\_node urg\_node \_ip\_address:=192.168.0.10
+
+これは kinetic 版についてなので, 14.04で走らせたいときは eth0 / wlan0 と言った名前の振り分けにしてください.
 
 ## 新パッケージテスト記録
- - レーザレンジファインダ稼働確認, urg_node は採用見送り, hokuyo_node で開発続行. 
+ - レーザレンジファインダ稼働確認, urg\_node は採用見送り, hokuyo\_node で開発続行. 
+
 
 ## ソフト構成
 - navigation
 - gmappping
 - yp-spur(公式)
-- urg_node(LRFドライバ)
-Note. hokuyo_node は古くて非推奨なのですが, laserprocなどの必要な部品がkineticにおいて揃っておらず,現行使えないということでhokuyo_nodeを使うことにしました.
-必要なdriverを追加で導入することにしましたので, ひょっとしたらurg_nodeでも稼働しそうですが, 使ったことのある方を使うようにします.
+- urg\_node(LRFドライバ)
+Note. hokuyo\_node は古くて非推奨なのですが, laserprocなどの必要な部品がkineticにおいて揃っておらず,現行使えないということでhokuyo\_nodeを使うことにしました.
+必要なdriverを追加で導入することにしましたので, ひょっとしたらurg\_nodeでも稼働しそうですが, 使ったことのある方を使うようにします.
 
 ## 各ノードの提携図  
 Updated  10/8
