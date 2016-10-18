@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>teleop_master</name>
+  <version>0.1.0</version>
+  <description>The teleop_master package</description>
+
+  <maintainer email="p111026h@mail.kyutech.jp">yasu16</maintainer>
+
+  <license>BSD</license>
+  <author email="cirkit.infomation@gmail.com">CIR-kIT</author>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>geometry_msgs</depend>
+  <depend>roscpp</depend>
+
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>
