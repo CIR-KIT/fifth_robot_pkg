@@ -68,3 +68,8 @@ Note : もう必要ないかもしれませんがインストール環境で開�
 catkin workspace のソース内(`src`)にクローンした場合はそのまま。
 それ以外のところにクローンした場合は`src`ディレクトリ上で`catkin_init_workspace`を行えばリポジトリをcatkin workspaceにできます。
 
+## 起動
+各部接続して,(PC-spur, PC-PS3コン)
+roslaunch mapping.launch
+これで, path が適切に通っていればドライバ起動・通信開始・入力受付をやってくれます.
+困ったことがあるときは 2 回生とかに質問くれてもいいですし, isssue 飛ばしてくれることを期待します.
