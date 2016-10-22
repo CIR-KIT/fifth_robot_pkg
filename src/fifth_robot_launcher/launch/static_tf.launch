@@ -1,0 +1,4 @@
+<launch>
+<node name="lrf_sensor" pkg="tf" type="static_transform_publisher" args="0.1 0 0 0 0 0 base_link base_scan 100" />
+</launch>
+
