@@ -18,8 +18,6 @@ ipアドレスをスタティックに振り分ける必要があるために
 
 これは kinetic 版についてなので, 14.04で走らせたいときは eth0 / wlan0 と言った名前の振り分けにしてください.
 
-## 新パッケージテスト記録
- - レーザレンジファインダ稼働確認, urg\_node は採用見送り, hokuyo\_node で開発続行. 
 
 
 ## ソフト構成
@@ -29,6 +27,8 @@ ipアドレスをスタティックに振り分ける必要があるために
 - urg\_node(LRFドライバ)
 Note. hokuyo\_node は古くて非推奨なのですが, laserprocなどの必要な部品がkineticにおいて揃っておらず,現行使えないということでhokuyo\_nodeを使うことにしました.
 必要なdriverを追加で導入することにしましたので, ひょっとしたらurg\_nodeでも稼働しそうですが, 使ったことのある方を使うようにします.
+
+laserProcが先日のアプデで入りましたので urg\_node を使います. eth がほしいのでこれも.
 
 ## 各ノードの提携図  
 Updated  10/8
@@ -40,20 +40,20 @@ Updated  10/8
 ![mapmaking](https://github.com/CIR-KIT/fifth_robot_pkg/blob/images/images/new_pkgs_drafting20161005-mapmaker.jpg)
 
 ## 詳細
-- hokuyo_node
+- urg\_node
  + subscribing : none
- + publishing  : /Laserscan Sensor_msgs/Laserscan
+ + publishing  : /Laserscan Sensor\_msgs/Laserscan
 - map-saver
  + subscribing : none(reading map bags)
- + publishing  : /map nav_smgs/Getmap
+ + publishing  : /map nav\_smgs/Getmap
 - yp-spur
- + subscribing : /cmd_vel geometry_msgs/twist
+ + subscribing : /cmd\_vel geometry\_msgs/twist
  + publishing  : /odom nav-msgs/Odometory
-- move_base
- + subscribing : /Laserscan Sensor_msgs/Laserscan
- + subscribing : /map nav_smgs/Getmap
+- move\_base
+ + subscribing : /Laserscan Sensor\_msgs/Laserscan
+ + subscribing : /map nav\_smgs/Getmap
  + subscribing : /odom nav-msgs/Odometory
- + publishing  : /cmd_vel geometry_msgs/twist
+ + publishing  : /cmd\_vel geometry\_msgs/twist
 
 goal/waypoint提供者を実装する必要があります.
 
@@ -61,6 +61,8 @@ goal/waypoint提供者を実装する必要があります.
 - セットアップについて,__yp-spur,ssmのインストール__を忘れずに行ってください: [公式](http://www.roboken.iit.tsukuba.ac.jp/platform/wiki/yp-spur/how-to-install)  
 Note : もう必要ないかもしれませんがインストール環境で開発が進んでいます. 使ってない状況での挙動報告は歓迎.  
 - contributer を募集しています
+
+Note : モータがなんか変だこれ...極性逆っぽいけれどソフト的に対応してるから注意.(可搬性はないのだ)
 
 ## Installation
 `git clone` する際に `--recursive` を付ければsubmoduleごと引っ張ってこれます。
