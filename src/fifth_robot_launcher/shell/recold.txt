@@ -1,8 +1,8 @@
-rosbag record -O mapdata.bag /last /tf
+rosbag record -O mapdata.bag /scan /tf
 
 roscore
 rosparam set use_sim_time true
-rosrun gmapping slam_gmapping scan:=most_intense
+rosrun gmapping slam_gmapping scan:=scan
 rosbag play --clock  mapdata.bag
 rosrun map_server map_saver -f map_factory
 

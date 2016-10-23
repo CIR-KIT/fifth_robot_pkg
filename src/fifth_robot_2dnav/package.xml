@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>fifth_robot_2dnav</name>
+  <version>0.0.0</version>
+  <description>The fifth_2dnav package</description>
+
+  <maintainer email="p111026h@mail.kyutech.jp">yasu16</maintainer>
+
+
+  <!-- One license tag required, multiple allowed, one license per tag -->
+  <!-- Commonly used license strings: -->
+  <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
+  <license>TODO</license>
+
+
+  <!-- <author email="jane.doe@example.com">Jane Doe</author> -->
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>move_base</depend>
+  <depend>static_transform_publisher</depend>
+  <depend>urg_node</depend>
+  <depend>ypspur_ros_bridge</depend>
+
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>

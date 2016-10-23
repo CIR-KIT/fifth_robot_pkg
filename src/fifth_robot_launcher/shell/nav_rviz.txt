@@ -1,0 +1,5 @@
+rosrun map_server map_server mymap.yaml
+
+rviz
+> 2dpose estimate
+> 2dnav_goals

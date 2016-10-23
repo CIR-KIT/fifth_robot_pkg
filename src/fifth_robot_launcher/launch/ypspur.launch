@@ -7,8 +7,9 @@
 
    <node pkg="urg_node" type="urg_node" name="urg">
       <param name="ip_address" value="192.168.0.10" />
-      <param name="angle_min" value="-1.0" />
-      <param name="angle_max" value="1.0" />
+      <param name="angle_min" value="-1.5" />
+      <param name="angle_max" value="1.5" />
+      <!-- <param name="publish_multiecho" value="false" /> -->
    </node>
 
   <!-- You can adjust the pose of laser-rangefinder here. Order of values: x y z yaw pitch roll. -->
