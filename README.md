@@ -66,10 +66,30 @@ Note : モータがなんか変だこれ...極性逆っぽいけれどソフト�
 
 ## Installation
 `git clone` する際に `--recursive` を付ければsubmoduleごと引っ張ってこれます。
-そうすれば `catkin_make` が通るはずです。
 
 catkin workspace のソース内(`src`)にクローンした場合はそのまま。
 それ以外のところにクローンした場合は`src`ディレクトリ上で`catkin_init_workspace`を行えばリポジトリをcatkin workspaceにできます。
+
+必要な packeage を確保してください.
+筑波大学の公式から
+ssm
+yp-spur
+を,
+
+third\_party内のインストールシェルより
+joy
+joy\_teleop
+navigation
+
+をaptからバイナリで（でかいので)
+
+必要に応じ
+
+urg\_node
+
+apt より バイナリで
+
+そうすれば `catkin_make` が通るはずです。
 
 ## 起動
 各部接続して,(PC-spur, PC-PS3コン)
