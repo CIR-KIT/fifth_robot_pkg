@@ -3,7 +3,7 @@ project(fifth_robot_2dnav)
 
 find_package(catkin REQUIRED COMPONENTS
   move_base
-  static_transform_publisher
+  tf
   urg_node
   ypspur_ros_bridge
 )
