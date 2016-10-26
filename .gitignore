@@ -53,3 +53,6 @@ CATKIN_IGNORE
 /devel
 /src/CMakeLists.txt
 
+#maps
+src/fifth_robot_2dnav/map/*
+
