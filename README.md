@@ -76,16 +76,18 @@ catkin workspace のソース内(`src`)にクローンした場合はそのま�
 そうすれば `catkin_make` が通るはずです.
 
 ## 起動
-1. 接続を確認します.(PC-spur, PC-PS3コン, Hokuyo)
+1. 接続を確認します.(PC <-> spur, PC <-> PS3コン, PC <-> Hokuyo)
 2. ロボットの電源を入れます.
-3. ネットの接続を全てキャンセルします.
+3. ネットの接続を全て切断します.右上のアイコンを開いて切断を押してください.
 4. `rosrun fifth_robot_launch openEth.sh enp0s25` を実行します.ただし `enp0s25` は環境によって変えます
 
 ここまでが全過程共通の工程です。
 
 ### マップ作成(ラジコン操作)
+
 ```bash
-roslaunch mapping.launch
+roslaunch fifth_robot_launch mapping.launch
 ```
+
 これで, path が適切に通っていればドライバ起動・通信開始・入力受付をやってくれます.
 困ったことがあるときは 2 回生とかに質問くれてもいいですし, issue 飛ばしてくれることを期待します.
