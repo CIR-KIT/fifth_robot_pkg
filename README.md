@@ -13,7 +13,7 @@ CIRKIT所有ロボット5号機のリポジトリ
 ipアドレスをスタティックに振り分ける必要があるために次を実行します. `enp7s0` は環境によって変えてください.
 
 ```bash
-rosrun rosrun fifth_robot_launcher openEth.sh enp7s0
+rosrun fifth_robot_launcher openEth.sh enp7s0
 # You should change enp7s0 to fit your machine. you can see it on `ifconfig`
 ```
 
