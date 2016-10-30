@@ -1,10 +1,4 @@
 <launch>
-  <master auto="start"/>
-
-  <!-- Run the map server  !!maybe old facioned!!--> 
-  <!-- <arg name="map_file" default="$(find fifth_robot_2dnav)/map/factory/map_factory.yaml" /> -->
-  <!-- <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" /> -->
- 
   <!--- Run AMCL -->
   <include file="$(find fifth_robot_2dnav)/launch/amcl_diff.launch" />
  
