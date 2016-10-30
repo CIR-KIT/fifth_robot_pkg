@@ -1,15 +1,6 @@
 <launch>
-<node pkg="ypspur_ros_bridge" type="ypspur-coordinator.sh" name="ypspur_coordinator" args="-p $(find fifth_robot_launcher)/ypspur/icart-mini.param -d $(optenv robodev /dev/serial/by-id/usb-T-frog_project_T-frog_Driver-if00)" output="screen" />
-<node pkg="ypspur_ros_bridge" type="wait_and_ypspur_ros_bridge.sh" name="ypspur_ros_bridge" output="screen"/>
-
-<node pkg="urg_node" type="urg_node" name="urg">
-<param name="ip_address" value="192.168.0.10" />
-<param name="angle_min" value="-1.5" />
-<param name="angle_max" value="1.5" />
-<!-- <param name="publish_multiecho" value="false" /> -->
-</node>
+<include file="$(find fifth_robot_launcher)/launch/ypspur.launch" />
 
 <!-- You can adjust the pose of laser-rangefinder here. Order of values: x y z yaw pitch roll. -->
-<node pkg="tf" type="static_transform_publisher" name="laser_transform" args="$(optenv laserpos 0.1 0 0 0 0 0) base_link laser 100" />
 <node pkg="tf" type="static_transform_publisher" name="map_trasform" args="0 0 0 0 0 0 map odom 100" />
 </launch>

@@ -2,8 +2,8 @@
   <master auto="start"/>
 
   <!-- Run the map server  !!maybe old facioned!!--> 
-  <arg name="map_file" default="$(find fifth_robot_2dnav)/map/factory/map_factory.yaml" />
-  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+  <!-- <arg name="map_file" default="$(find fifth_robot_2dnav)/map/factory/map_factory.yaml" /> -->
+  <!-- <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" /> -->
  
   <!--- Run AMCL -->    
   <include file="$(find amcl)/examples/amcl_omni.launch" />
