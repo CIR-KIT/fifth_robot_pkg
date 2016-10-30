@@ -6,29 +6,24 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
 )
 
-
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES yamlReader
   CATKIN_DEPENDS rospy std_msgs
-  DEPENDS system_lib
+#  DEPENDS system_lib
 )
 
 ###########
 ## Build ##
 ###########
-
-# include_directories(include)
 include_directories(
   ${catkin_INCLUDE_DIRS}
 )
-
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
 # add_dependencies(yamlReader ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
@@ -38,4 +33,3 @@ include_directories(
 # target_link_libraries(yamlReader_node
 #   ${catkin_LIBRARIES}
 # )
-

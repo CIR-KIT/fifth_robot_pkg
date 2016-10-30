@@ -7,7 +7,7 @@
   <maintainer email="o111027y@mail.kyutech.jp">Doi Yusuke</maintainer>
   <license>BSD</license>
   <url type="website">http://cir-kit.github.io/</url>
-  <!-- <author email="jane.doe@example.com">Jane Doe</author> -->
+  <author email="cirkit.infomation@gmail.com">CIR-kIT</author>
 
   <buildtool_depend>catkin</buildtool_depend>
 
