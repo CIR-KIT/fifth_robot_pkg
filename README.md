@@ -86,7 +86,7 @@ catkin workspace のソース内(`src`)にクローンした場合はそのま�
 ### マップ作成(ラジコン操作)
 
 ```bash
-roslaunch fifth_robot_launch mapping.launch
+roslaunch fifth_robot_launch teleop.launch
 ```
 
 これで, path が適切に通っていればドライバ起動・通信開始・入力受付をやってくれます.
