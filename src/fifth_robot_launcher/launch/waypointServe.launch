@@ -1,0 +1,7 @@
+<launch>
+  <node pkg="" type="ypspur-coordinator.sh" name="ypspur_coordinator" args="-p $(find fifth_robot_launcher)/ypspur_params/fifth_robot.param -d $(optenv robodev /dev/serial/by-id/usb-T-frog_project_T-frog_Driver-if00)" output="screen" />
+
+  <node pkg="ypspur_ros_bridge" type="wait_and_ypspur_ros_bridge.sh" name="ypspur_ros_bridge" output="screen"/>
+
+
+</launch>

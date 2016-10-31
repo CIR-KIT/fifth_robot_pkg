@@ -2,4 +2,5 @@
    <!-- <node pkg="fifth_robot_launchar" type="shell/openEth.sh" name="openEth" /> -->
    <include file="$(find fifth_robot_launcher)/launch/setup_robot.launch" />
    <include file="$(find fifth_robot_2dnav)/launch/move_base.launch" />
+   <include file="$(find fifth_robot_launcher)/launch/waypointServe.launch" />
 </launch>
