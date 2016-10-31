@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>goal_sender</name>
+  <version>0.0.1</version>
+  <description>The goal_sender package</description>
+
+  <maintainer email="p111026h@mail.kyutech.jp">yasu16</maintainer>
+
+  <license>BSD</license>
+
+  <!-- <author email="jane.doe@example.com">Jane Doe</author> -->
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>geometry_msgs</depend>
+  <depend>laser_geometry</depend>
+  <depend>move_base_msgs</depend>
+  <depend>roscpp</depend>
+  <depend>sensor_msgs</depend>
+  <depend>tf</depend>
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>
