@@ -4,6 +4,7 @@
   <version>0.0.1</version>
   <description>The goal_sender package</description>
 
+  <maintainer email="o111027y@mail.kyutech.jp">Doi Yusuke</maintainer>
   <maintainer email="p111026h@mail.kyutech.jp">yasu16</maintainer>
 
   <license>BSD</license>
