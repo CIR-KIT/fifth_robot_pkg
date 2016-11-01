@@ -1,38 +1,41 @@
 #include"ros/ros.h"
 #include"move_base_msgs/MoveBaseGoal.h"
 #include"geometry_msgs/Pose.h"
+#include"tf/transform_listener.h"
 
 #include<vector>
+#include<stdexcept>
 
 geometry_msgs::Pose getFramePose(const std::string&, const std::string&);
-double calc_distance(const geometry_msgs::Pose&, const geometry_msgs::Pose&);
+double calcDistance(const geometry_msgs::Pose&, const geometry_msgs::Pose&);
 
 struct Waypoint {
   static std::vector<Waypoint> readCsv(const std::string&);
-  Waypoints(move_base_msgs::MoveBaseGoal, double);
+  Waypoint(move_base_msgs::MoveBaseGoal, double);
 
   move_base_msgs::MoveBaseGoal goal;
   double valid_range;
 };
 
 class GoalSender {
+public:
   GoalSender();
   void run();
-  private:
+private:
   bool checkToNext();
   void sendGoalPoint();
 
   ros::NodeHandle n;
   ros::NodeHandle pn;
-  tf::TranseformListener tf_listener;
-  vector<Waypoint> waypoints;
-  vector<Waypoint>::iterator now_waypoint;
+  tf::TransformListener tf_listener;
+  std::vector<Waypoint> waypoints;
+  std::vector<Waypoint>::iterator now_waypoint;
 };
 
 int main(int argc, char* argv[]){
   ros::init(argc, argv, "goal_sender_node");
   GoalSender goal_sender;
-  ros::Rate rate(10);
+  ros::Rate rate {10};
   while (ros::ok()) {
     goal_sender.run();
     ros::spinOnce();
@@ -44,9 +47,10 @@ int main(int argc, char* argv[]){
 geometry_msgs::Pose getFramePose(tf::TransformListener& tf, const std::string& parent, const std::string& child) {
   tf::StampedTransform transform;
   try {
-    tf.lookupTranseform(parent, child, ros::Time(0), transform);
-  } catch (const tf::TranseformException& e) {
-    ROS_ERROR("%s",ex.what());
+    tf.lookupTransform(parent, child, ros::Time(0), transform);
+  } catch (const tf::TransformException& e) {
+    ROS_ERROR("%s", e.what());
+    throw std::runtime_error {"tf cannot resolve"};
   }
   geometry_msgs::Pose pose;
   pose.position.x = transform.getOrigin().x();
@@ -54,12 +58,16 @@ geometry_msgs::Pose getFramePose(tf::TransformListener& tf, const std::string& p
   return pose;
 }
 
-double calc_distance(const geometry_msgs::Pose a&, const geometry_msgs::Pose b&) {
+double calcDistance(const geometry_msgs::Pose& a, const geometry_msgs::Pose& b) {
   return sqrt(pow((a.position.x - b.position.x), 2.0) +
-      pow((a.position.y - b.position.y), 2.0));
+              pow((a.position.y - b.position.y), 2.0));
 }
 
-vector<Waypoint> Waypoint::readCsv(const std::string& path) {
+std::vector<Waypoint> Waypoint::readCsv(const std::string& path) {
+  if (path.empty()) {
+    ROS_ERROR("I need path of waypoint");
+    throw std::invalid_argument {"exsist file"};
+  }
   std::vector<Waypoint> waypoints;
   // TODO: read csv
   // TODO: if error, throw std::runtime_error
@@ -67,28 +75,20 @@ vector<Waypoint> Waypoint::readCsv(const std::string& path) {
 }
 
 inline Waypoint::Waypoint(move_base_msgs::MoveBaseGoal goal, double valid_range)
-  : goal(goal),
-    valid_range(valid_range)
+  : goal {goal},
+    valid_range {valid_range}
 {}
 
 GoalSender::GoalSender()
-  : n(),
-    pn("~"),
-    tf_listener(),
-    waypoints()
+  : n {},
+    pn {"~"},
+    tf_listener {},
+    waypoints {},
+    now_waypoint {waypoints.begin()}
 {
   std::string path;
   pn.getParam("path", path);
-  if (path.empty()) {
-    ROSINFO("I need path of waypoint");
-    return -1;
-  }
-  try {
-    waypoints = Waypoint::readCsv(path);
-  } catch (const std::runtime_error& e) {
-    ROSINFO("cannot read the file [%s]", e.what());
-    return -1;
-  }
+  waypoints = Waypoint::readCsv(path); // throw std::invalid_argument, std::runtime_error
   sendGoalPoint();
 }
 
@@ -108,6 +108,6 @@ bool GoalSender::checkToNext() {
 }
 
 void GoalSender::sendGoalPoint() {
-  now_waypoint->goal.target_pose.stamp = ros::Time::now(); // others writed by Waypoint class
+  now_waypoint->goal.target_pose.header.stamp = ros::Time::now(); // others writed by Waypoint class
   // TODO: write sendGoal method
 }
