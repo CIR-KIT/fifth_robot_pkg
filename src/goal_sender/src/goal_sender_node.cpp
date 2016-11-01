@@ -103,7 +103,7 @@ Waypoints Waypoint::readCsv(const std::string& path) {
     goal.target_pose.pose.orientation.y = input_data[4];
     goal.target_pose.pose.orientation.z = input_data[5];
     goal.target_pose.pose.orientation.w = input_data[6];
-    goal.target_pose.header.frame_id = "/map"
+    goal.target_pose.header.frame_id = "/map";
     waypoints.push_back(Waypoint {std::move(goal), input_data[7]});
   }
   return waypoints;
