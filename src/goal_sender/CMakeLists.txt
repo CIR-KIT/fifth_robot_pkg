@@ -3,7 +3,6 @@ project(goal_sender)
 
 find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
-  laser_geometry
   move_base_msgs
   roscpp
   sensor_msgs
@@ -16,7 +15,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES goal_sender
-  CATKIN_DEPENDS geometry_msgs laser_geometry move_base_msgs roscpp sensor_msgs tf
+  CATKIN_DEPENDS geometry_msgs move_base_msgs roscpp sensor_msgs tf
 #  DEPENDS system_lib
 )
 
