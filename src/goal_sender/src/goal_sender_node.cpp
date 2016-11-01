@@ -30,7 +30,7 @@ struct Waypoint {
 class GoalSender {
 public:
   GoalSender(const std::string&);
-  void run();
+  void once();
 private:
   bool checkToNext();
   void sendGoalPoint();
@@ -50,7 +50,7 @@ int main(int argc, char* argv[]){
   ros::Rate rate {10};
   while (ros::ok()) {
     ros::spinOnce();
-    goal_sender.run();
+    goal_sender.once();
     rate.sleep();
   }
   return 0;
@@ -125,7 +125,7 @@ GoalSender::GoalSender(const std::string& path)
   sendGoalPoint(); // set first waypoint
 }
 
-inline void GoalSender::run() {
+inline void GoalSender::once() {
   if (checkToNext()) sendGoalPoint(); // send only when cange waypoint
 }
 
