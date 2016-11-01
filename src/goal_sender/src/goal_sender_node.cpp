@@ -70,8 +70,7 @@ geometry_msgs::Pose getFramePose(tf::TransformListener& tf, const std::string& p
 }
 
 inline double calcDistance(const geometry_msgs::Pose& a, const geometry_msgs::Pose& b) {
-  return sqrt(pow((a.position.x - b.position.x), 2.0) +
-              pow((a.position.y - b.position.y), 2.0));
+  return sqrt(pow((a.position.x - b.position.x), 2.0) + pow((a.position.y - b.position.y), 2.0));
 }
 
 Waypoints Waypoint::readCsv(const std::string& path) {
