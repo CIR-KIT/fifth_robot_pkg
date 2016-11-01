@@ -21,7 +21,7 @@ double calcDistance(const geometry_msgs::Pose&, const geometry_msgs::Pose&);
 
 struct Waypoint {
   static WaypointContainer readCsv(const std::string&);
-  Waypoint(move_base_msgs::MoveBaseGoal, double);
+  Waypoint(const move_base_msgs::MoveBaseGoal&, double);
 
   move_base_msgs::MoveBaseGoal goal;
   double valid_range;
@@ -110,7 +110,7 @@ WaypointContainer Waypoint::readCsv(const std::string& path) {
   return waypoints;
 }
 
-inline Waypoint::Waypoint(move_base_msgs::MoveBaseGoal goal, double valid_range)
+inline Waypoint::Waypoint(const move_base_msgs::MoveBaseGoal& goal, double valid_range)
   : goal {goal},
     valid_range {valid_range}
 {}
