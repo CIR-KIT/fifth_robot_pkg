@@ -45,11 +45,11 @@ private:
 
 int main(int argc, char* argv[]){
   ros::init(argc, argv, "goal_sender_node");
-  GoalSender goal_sender;
+  GoalSender goal_sender {};
   ros::Rate rate {10};
   while (ros::ok()) {
-    goal_sender.run();
     ros::spinOnce();
+    goal_sender.run();
     rate.sleep();
   }
   return 0;
