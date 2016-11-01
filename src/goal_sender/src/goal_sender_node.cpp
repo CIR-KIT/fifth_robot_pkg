@@ -76,7 +76,7 @@ inline double calcDistance(const geometry_msgs::Pose& a, const geometry_msgs::Po
 Waypoints Waypoint::readCsv(const std::string& path) {
   if (path.empty()) {
     ROS_ERROR("I need path of waypoint");
-    throw std::invalid_argument {"exsist file"};
+    throw std::invalid_argument {"no exist file"};
   }
   std::ifstream fs {path}; // input file stream
   if (!fs) throw std::runtime_error {"Cannot open file"};
