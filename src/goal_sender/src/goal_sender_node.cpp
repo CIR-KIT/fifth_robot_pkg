@@ -97,18 +97,18 @@ GoalSender::GoalSender()
   std::string path;
   pn.getParam("path", path);
   waypoints = Waypoint::readCsv(path); // throw std::invalid_argument, std::runtime_error
-  sendGoalPoint(); // set first waypoint
   move_base_client.waitForServer();
+  sendGoalPoint(); // set first waypoint
 }
 
 void GoalSender::run() {
-  if (checkToNext()) sendGoalPoint();
+  if (checkToNext()) sendGoalPoint(); // send only when cange waypoint
 }
 
 bool GoalSender::checkToNext() {
   auto robot_pos = getFramePose(tf_listener, "/map", "/base_link");
   auto waypoint_pos = now_waypoint->goal.target_pose.pose;
-  auto distance = calcDistance(robot_pos, waypoint_pos);
+  auto distance = calcDistance(robot_pos, waypoint_pos); // distance of between robot and target
   if (distance < now_waypoint->valid_range) { // into range
     ++now_waypoint; // next waypoint
     return true;
@@ -117,6 +117,10 @@ bool GoalSender::checkToNext() {
 }
 
 void GoalSender::sendGoalPoint() {
+  if (now_way_point == waypoints.end()) { // finish waypoint
+    move_base_client.cancelGoal(); // cancel moveing
+    return;
+  }
   now_waypoint->goal.target_pose.header.stamp = ros::Time::now(); // others writed by Waypoint class
-  // TODO: write sendGoal method
+  move_baes_client.sendGoal(now_waypoint->goal); // send waypoint
 }
