@@ -5,8 +5,12 @@
 #include"move_base_msgs/MoveBaseAction.h"
 #include"actionlib/client/simple_action_client.h"
 
+#include<utility>
 #include<vector>
 #include<stdexcept>
+#include<string>
+#include<fstream> // for csv
+#include<sstream> // ditto
 
 struct Waypoint;
 using Waypoints = std::vector<Waypoint>;
@@ -75,9 +79,33 @@ Waypoints Waypoint::readCsv(const std::string& path) {
     ROS_ERROR("I need path of waypoint");
     throw std::invalid_argument {"exsist file"};
   }
+  std::ifstream fs {path}; // input file stream
+  if (!fs) throw std::runtime_error {"Cannot open file"};
+  std::string line;
   Waypoints waypoints;
-  // TODO: read csv
-  // TODO: if error, throw std::runtime_error
+  while (std::getline(fs, line)) {
+    if (line.empty()) break; // skip the empty line
+    std::istringstream line_stream {std::move(line)}; // convert to stream
+    std::vector<double> input_data;
+    auto input_it = back_inserter(input_data);
+    std::string oneData;
+    while (std::getline(line_stream, oneData, ',')) {
+      std::istringstream data_st {std::move(oneData)}; // convert to stream
+      double data;
+      data_st >> data;
+      *input_it = data;
+      ++input_it;
+    }
+    move_base_msgs::MoveBaseGoal goal;
+    goal.target_pose.pose.position.x    = input_data[0];
+    goal.target_pose.pose.position.y    = input_data[1];
+    goal.target_pose.pose.position.z    = input_data[2];
+    goal.target_pose.pose.orientation.x = input_data[3];
+    goal.target_pose.pose.orientation.y = input_data[4];
+    goal.target_pose.pose.orientation.z = input_data[5];
+    goal.target_pose.pose.orientation.w = input_data[6];
+    waypoints.push_back(Waypoint {std::move(goal), input_data[7]});
+  }
   return waypoints;
 }
 
@@ -96,7 +124,12 @@ GoalSender::GoalSender()
 {
   std::string path;
   pn.getParam("path", path);
-  waypoints = Waypoint::readCsv(path); // throw std::invalid_argument, std::runtime_error
+  try {
+    waypoints = Waypoint::readCsv(path); // throw std::invalid_argument, std::runtime_error
+  } catch (const std::runtime_error& e) {
+    ROS_ERROR("%s [%s]", e.what(), path.c_str());
+    throw;
+  }
   move_base_client.waitForServer();
   sendGoalPoint(); // set first waypoint
 }
@@ -117,10 +150,10 @@ bool GoalSender::checkToNext() {
 }
 
 void GoalSender::sendGoalPoint() {
-  if (now_way_point == waypoints.end()) { // finish waypoint
+  if (now_waypoint  == waypoints.end()) { // finish waypoint
     move_base_client.cancelGoal(); // cancel moveing
     return;
   }
   now_waypoint->goal.target_pose.header.stamp = ros::Time::now(); // others writed by Waypoint class
-  move_baes_client.sendGoal(now_waypoint->goal); // send waypoint
+  move_base_client.sendGoal(now_waypoint->goal); // send waypoint
 }
