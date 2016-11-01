@@ -152,8 +152,10 @@ bool GoalSender::checkToNext() {
 void GoalSender::sendGoalPoint() {
   if (now_waypoint  == waypoints.end()) { // finish waypoint
     move_base_client.cancelGoal(); // cancel moveing
+    ROS_INFO("Finish waypoints");
     return;
   }
   now_waypoint->goal.target_pose.header.stamp = ros::Time::now(); // others writed by Waypoint class
   move_base_client.sendGoal(now_waypoint->goal); // send waypoint
+  ROS_INFO("Use waypoint [%ld]", now_waypoint - waypoints.begin());
 }
