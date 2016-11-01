@@ -45,11 +45,11 @@ private:
 
 int main(int argc, char* argv[]){
   ros::init(argc, argv, "goal_sender_node");
-  GoalSender goal_sender;
+  GoalSender goal_sender {};
   ros::Rate rate {10};
   while (ros::ok()) {
-    goal_sender.run();
     ros::spinOnce();
+    goal_sender.run();
     rate.sleep();
   }
   return 0;
@@ -70,8 +70,7 @@ geometry_msgs::Pose getFramePose(tf::TransformListener& tf, const std::string& p
 }
 
 inline double calcDistance(const geometry_msgs::Pose& a, const geometry_msgs::Pose& b) {
-  return sqrt(pow((a.position.x - b.position.x), 2.0) +
-              pow((a.position.y - b.position.y), 2.0));
+  return sqrt(pow((a.position.x - b.position.x), 2.0) + pow((a.position.y - b.position.y), 2.0));
 }
 
 Waypoints Waypoint::readCsv(const std::string& path) {
