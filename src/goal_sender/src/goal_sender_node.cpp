@@ -1,10 +1,16 @@
 #include"ros/ros.h"
-#include"move_base_msgs/MoveBaseGoal.h"
 #include"geometry_msgs/Pose.h"
 #include"tf/transform_listener.h"
+#include"move_base_msgs/MoveBaseGoal.h"
+#include"move_base_msgs/MoveBaseAction.h"
+#include"actionlib/client/simple_action_client.h"
 
 #include<vector>
 #include<stdexcept>
+
+struct Waypoint;
+using Waypoints = std::vector<Waypoint>;
+using MoveBaseActionClient = actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction>;
 
 geometry_msgs::Pose getFramePose(const std::string&, const std::string&);
 double calcDistance(const geometry_msgs::Pose&, const geometry_msgs::Pose&);
@@ -28,8 +34,9 @@ private:
   ros::NodeHandle n;
   ros::NodeHandle pn;
   tf::TransformListener tf_listener;
-  std::vector<Waypoint> waypoints;
-  std::vector<Waypoint>::iterator now_waypoint;
+  Waypoints waypoints;
+  Waypoints::iterator now_waypoint;
+  MoveBaseActionClient move_base_client;
 };
 
 int main(int argc, char* argv[]){
@@ -84,12 +91,14 @@ GoalSender::GoalSender()
     pn {"~"},
     tf_listener {},
     waypoints {},
-    now_waypoint {waypoints.begin()}
+    now_waypoint {waypoints.begin()},
+    move_base_client {"move_base", true}
 {
   std::string path;
   pn.getParam("path", path);
   waypoints = Waypoint::readCsv(path); // throw std::invalid_argument, std::runtime_error
-  sendGoalPoint();
+  sendGoalPoint(); // set first waypoint
+  move_base_client.waitForServer();
 }
 
 void GoalSender::run() {
