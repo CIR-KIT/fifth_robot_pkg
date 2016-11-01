@@ -29,23 +29,24 @@ struct Waypoint {
 
 class GoalSender {
 public:
-  GoalSender();
+  GoalSender(const std::string&);
   void run();
 private:
   bool checkToNext();
   void sendGoalPoint();
 
-  ros::NodeHandle n;
-  ros::NodeHandle pn;
-  tf::TransformListener tf_listener;
   WaypointContainer waypoints;
   WaypointContainer::iterator now_waypoint;
+  tf::TransformListener tf_listener;
   MoveBaseActionClient move_base_client;
 };
 
 int main(int argc, char* argv[]){
   ros::init(argc, argv, "goal_sender_node");
-  GoalSender goal_sender {};
+  ros::NodeHandle pn {"~"};
+  std::string path;
+  pn.getParam("path", path);
+  GoalSender goal_sender {std::move(path)};
   ros::Rate rate {10};
   while (ros::ok()) {
     ros::spinOnce();
@@ -114,22 +115,12 @@ inline Waypoint::Waypoint(move_base_msgs::MoveBaseGoal goal, double valid_range)
     valid_range {valid_range}
 {}
 
-GoalSender::GoalSender()
-  : n {},
-    pn {"~"},
-    tf_listener {},
-    waypoints {},
+GoalSender::GoalSender(const std::string& path)
+  : waypoints {Waypoint::readCsv(path)},
     now_waypoint {waypoints.begin()},
+    tf_listener {},
     move_base_client {"move_base", true}
 {
-  std::string path;
-  pn.getParam("path", path);
-  try {
-    waypoints = Waypoint::readCsv(path); // throw std::invalid_argument, std::runtime_error
-  } catch (const std::runtime_error& e) {
-    ROS_ERROR("%s [%s]", e.what(), path.c_str());
-    throw;
-  }
   move_base_client.waitForServer();
   sendGoalPoint(); // set first waypoint
 }
