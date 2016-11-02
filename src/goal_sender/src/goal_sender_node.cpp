@@ -81,15 +81,13 @@ WaypointContainer Waypoint::readCsv(const std::string& path) {
   }
   std::ifstream fs {path}; // input file stream
   if (!fs) throw std::runtime_error {"Cannot open file"};
-  std::string line;
   WaypointContainer waypoints;
-  while (std::getline(fs, line)) {
+  for (std::string line; std::getline(fs, line);) {
     if (line.empty()) break; // skip the empty line
     std::istringstream line_stream {line}; // convert to stream
     std::vector<double> input_data;
     auto input_it = back_inserter(input_data);
-    std::string oneData;
-    while (std::getline(line_stream, oneData, ',')) {
+    for (std::string oneData; std::getline(line_stream, oneData, ',');) {
       std::istringstream data_st {oneData}; // convert to stream
       double data;
       data_st >> data;
