@@ -85,12 +85,12 @@ WaypointContainer Waypoint::readCsv(const std::string& path) {
   WaypointContainer waypoints;
   while (std::getline(fs, line)) {
     if (line.empty()) break; // skip the empty line
-    std::istringstream line_stream {std::move(line)}; // convert to stream
+    std::istringstream line_stream {line}; // convert to stream
     std::vector<double> input_data;
     auto input_it = back_inserter(input_data);
     std::string oneData;
     while (std::getline(line_stream, oneData, ',')) {
-      std::istringstream data_st {std::move(oneData)}; // convert to stream
+      std::istringstream data_st {oneData}; // convert to stream
       double data;
       data_st >> data;
       *input_it = data;
