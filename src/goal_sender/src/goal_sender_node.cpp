@@ -13,15 +13,15 @@
 #include<sstream> // ditto
 
 struct Waypoint;
-using Waypoints = std::vector<Waypoint>;
+using WaypointContainer = std::vector<Waypoint>;
 using MoveBaseActionClient = actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction>;
 
 geometry_msgs::Pose getFramePose(const std::string&, const std::string&);
 double calcDistance(const geometry_msgs::Pose&, const geometry_msgs::Pose&);
 
 struct Waypoint {
-  static Waypoints readCsv(const std::string&);
-  Waypoint(move_base_msgs::MoveBaseGoal, double);
+  static WaypointContainer readCsv(const std::string&);
+  Waypoint(const move_base_msgs::MoveBaseGoal&, double);
 
   move_base_msgs::MoveBaseGoal goal;
   double valid_range;
@@ -29,27 +29,28 @@ struct Waypoint {
 
 class GoalSender {
 public:
-  GoalSender();
-  void run();
+  GoalSender(const std::string&);
+  void once();
 private:
   bool checkToNext();
   void sendGoalPoint();
 
-  ros::NodeHandle n;
-  ros::NodeHandle pn;
+  WaypointContainer waypoints;
+  WaypointContainer::iterator now_waypoint;
   tf::TransformListener tf_listener;
-  Waypoints waypoints;
-  Waypoints::iterator now_waypoint;
   MoveBaseActionClient move_base_client;
 };
 
 int main(int argc, char* argv[]){
   ros::init(argc, argv, "goal_sender_node");
-  GoalSender goal_sender {};
+  ros::NodeHandle pn {"~"};
+  std::string path;
+  pn.getParam("path", path);
+  GoalSender goal_sender {std::move(path)};
   ros::Rate rate {10};
   while (ros::ok()) {
     ros::spinOnce();
-    goal_sender.run();
+    goal_sender.once();
     rate.sleep();
   }
   return 0;
@@ -73,23 +74,23 @@ inline double calcDistance(const geometry_msgs::Pose& a, const geometry_msgs::Po
   return sqrt(pow((a.position.x - b.position.x), 2.0) + pow((a.position.y - b.position.y), 2.0));
 }
 
-Waypoints Waypoint::readCsv(const std::string& path) {
+WaypointContainer Waypoint::readCsv(const std::string& path) {
   if (path.empty()) {
     ROS_ERROR("I need path of waypoint");
-    throw std::invalid_argument {"exsist file"};
+    throw std::invalid_argument {"no exist file"};
   }
   std::ifstream fs {path}; // input file stream
   if (!fs) throw std::runtime_error {"Cannot open file"};
   std::string line;
-  Waypoints waypoints;
+  WaypointContainer waypoints;
   while (std::getline(fs, line)) {
     if (line.empty()) break; // skip the empty line
-    std::istringstream line_stream {std::move(line)}; // convert to stream
+    std::istringstream line_stream {line}; // convert to stream
     std::vector<double> input_data;
     auto input_it = back_inserter(input_data);
     std::string oneData;
     while (std::getline(line_stream, oneData, ',')) {
-      std::istringstream data_st {std::move(oneData)}; // convert to stream
+      std::istringstream data_st {oneData}; // convert to stream
       double data;
       data_st >> data;
       *input_it = data;
@@ -103,37 +104,28 @@ Waypoints Waypoint::readCsv(const std::string& path) {
     goal.target_pose.pose.orientation.y = input_data[4];
     goal.target_pose.pose.orientation.z = input_data[5];
     goal.target_pose.pose.orientation.w = input_data[6];
-    waypoints.push_back(Waypoint {std::move(goal), input_data[7]});
+    goal.target_pose.header.frame_id = "/map";
+    waypoints.emplace_back(std::move(goal), input_data[7]);
   }
   return waypoints;
 }
 
-inline Waypoint::Waypoint(move_base_msgs::MoveBaseGoal goal, double valid_range)
+inline Waypoint::Waypoint(const move_base_msgs::MoveBaseGoal& goal, double valid_range)
   : goal {goal},
     valid_range {valid_range}
 {}
 
-GoalSender::GoalSender()
-  : n {},
-    pn {"~"},
-    tf_listener {},
-    waypoints {},
+GoalSender::GoalSender(const std::string& path)
+  : waypoints {Waypoint::readCsv(path)},
     now_waypoint {waypoints.begin()},
+    tf_listener {},
     move_base_client {"move_base", true}
 {
-  std::string path;
-  pn.getParam("path", path);
-  try {
-    waypoints = Waypoint::readCsv(path); // throw std::invalid_argument, std::runtime_error
-  } catch (const std::runtime_error& e) {
-    ROS_ERROR("%s [%s]", e.what(), path.c_str());
-    throw;
-  }
   move_base_client.waitForServer();
   sendGoalPoint(); // set first waypoint
 }
 
-inline void GoalSender::run() {
+inline void GoalSender::once() {
   if (checkToNext()) sendGoalPoint(); // send only when cange waypoint
 }
 
