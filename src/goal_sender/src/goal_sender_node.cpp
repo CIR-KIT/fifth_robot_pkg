@@ -81,6 +81,7 @@ WaypointContainer Waypoint::readCsv(const std::string& path) {
   }
   std::ifstream fs {path}; // input file stream
   if (!fs) throw std::runtime_error {"Cannot open file"};
+  ROS_INFO("Reading waypoints by [%s]...", path.c_str());
   WaypointContainer waypoints;
   for (std::string line; std::getline(fs, line);) {
     if (line.empty()) break; // skip the empty line
@@ -105,6 +106,7 @@ WaypointContainer Waypoint::readCsv(const std::string& path) {
     goal.target_pose.header.frame_id = "/map";
     waypoints.emplace_back(std::move(goal), input_data[7]);
   }
+  ROS_INFO("Finish read Waypoint [%lu]", waypoints.size());
   return waypoints;
 }
 
