@@ -5,12 +5,13 @@
   <description>The teleop_master package</description>
 
   <maintainer email="p111026h@mail.kyutech.jp">yasu16</maintainer>
+  <maintainer email="o111027y@mail.kyutech.jp">Doi Yusuke</maintainer>
 
   <license>BSD</license>
-  <author email="cirkit.infomation@gmail.com">CIR-kIT</author>
+  <author email="cirkit.infomation@gmail.com">CIR-KIT</author>
   <buildtool_depend>catkin</buildtool_depend>
-  <depend>geometry_msgs</depend>
   <depend>roscpp</depend>
+  <depend>geometry_msgs</depend>
 
   <export>
   </export>
