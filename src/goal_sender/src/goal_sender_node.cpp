@@ -32,7 +32,7 @@ public:
 private:
   bool checkToNext();
   void sendGoalPoint();
-  WaypointContainer::size_type nowPointNumber();
+  Waypoint::Container::size_type nowPointNumber();
 
   Waypoint::Container waypoints;
   Waypoint::Container::iterator now_waypoint;
@@ -162,6 +162,6 @@ void GoalSender::sendGoalPoint() {
   ROS_INFO("Use waypoint [%ld]", now_waypoint - waypoints.begin());
 }
 
-WaypointContainer::size_type GoalSender::nowPointNumber() {
+Waypoint::Container::size_type GoalSender::nowPointNumber() {
   return now_waypoint - waypoints.begin();
 }
