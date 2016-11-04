@@ -26,7 +26,7 @@ struct Waypoint {
 
 class GoalSender {
 public:
-  GoalSender(const std::string&);
+  GoalSender(std::string&&);
   void once();
   bool isFinishWaypoint();
 private:
@@ -116,7 +116,7 @@ inline Waypoint::Waypoint(move_base_msgs::MoveBaseGoal&& goal, double valid_rang
     valid_range {valid_range}
 {}
 
-GoalSender::GoalSender(const std::string& path)
+GoalSender::GoalSender(std::string&& path)
   : waypoints {Waypoint::readCsv(path)},
     now_waypoint {waypoints.begin()},
     tf_listener {},
