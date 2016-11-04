@@ -28,6 +28,7 @@ class GoalSender {
 public:
   GoalSender(const std::string&);
   void once();
+  bool isFinishWaypoint();
 private:
   bool checkToNext();
   void sendGoalPoint();
@@ -50,6 +51,7 @@ int main(int argc, char* argv[]){
   while (ros::ok()) {
     ros::spinOnce();
     goal_sender.once();
+    if (goal_sender.isFinishWaypoint()) break; // go to end program
     rate.sleep();
   }
   return 0;
@@ -134,6 +136,10 @@ inline void GoalSender::once() {
   }
 }
 
+inline bool GoalSender::isFinishWaypoint() {
+  return now_waypoint == waypoints.end();
+}
+
 bool GoalSender::checkToNext() {
   const auto& robot_pos = getFramePose(tf_listener, "/map", "/base_link");
   const auto& waypoint_pos = now_waypoint->goal.target_pose.pose;
@@ -146,7 +152,7 @@ bool GoalSender::checkToNext() {
 }
 
 void GoalSender::sendGoalPoint() {
-  if (now_waypoint  == waypoints.end()) { // finish waypoint
+  if (isFinishWaypoint()) { // finish waypoint
     move_base_client.cancelGoal(); // cancel moveing
     ROS_INFO("Finish waypoints");
     return;
