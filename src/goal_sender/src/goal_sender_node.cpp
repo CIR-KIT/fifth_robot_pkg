@@ -17,7 +17,7 @@ double calcDistance(const geometry_msgs::Pose&, const geometry_msgs::Pose&);
 
 struct Waypoint {
   using Container = std::vector<Waypoint>;
-  static Container readCsv(const std::string&);
+  static Container readCsv(std::string&&);
   Waypoint(move_base_msgs::MoveBaseGoal&&, double);
 
   move_base_msgs::MoveBaseGoal goal;
@@ -75,7 +75,7 @@ inline double calcDistance(const geometry_msgs::Pose& a, const geometry_msgs::Po
   return sqrt(pow((a.position.x - b.position.x), 2.0) + pow((a.position.y - b.position.y), 2.0));
 }
 
-Waypoint::Container Waypoint::readCsv(const std::string& path) {
+Waypoint::Container Waypoint::readCsv(std::string&& path) {
   if (path.empty()) {
     ROS_ERROR("I need path of waypoint");
     throw std::invalid_argument {"no exist file"};
