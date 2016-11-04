@@ -1,4 +1,4 @@
-image: map.pgm
+image: oshimizu-park1.pgm
 resolution: 0.050000
 origin: [-100.000000, -111.200000, 0.000000]
 negate: 0
