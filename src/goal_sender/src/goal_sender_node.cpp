@@ -75,7 +75,7 @@ inline double calcDistance(const geometry_msgs::Pose& a, const geometry_msgs::Po
   return sqrt(pow((a.position.x - b.position.x), 2.0) + pow((a.position.y - b.position.y), 2.0));
 }
 
-Waypoint::Container Waypoint::readCsv(std::string&& path) {
+Waypoint::Container Waypoint::readCsv(std::string&& path) { // but not move now
   if (path.empty()) {
     ROS_ERROR("I need path of waypoint");
     throw std::invalid_argument {"no exist file"};
