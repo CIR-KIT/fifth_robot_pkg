@@ -117,7 +117,7 @@ inline Waypoint::Waypoint(move_base_msgs::MoveBaseGoal&& goal, double valid_rang
 {}
 
 GoalSender::GoalSender(std::string&& path)
-  : waypoints {Waypoint::readCsv(path)},
+  : waypoints {Waypoint::readCsv(std::move(path))},
     now_waypoint {waypoints.begin()},
     tf_listener {},
     move_base_client {"move_base", true}
