@@ -12,15 +12,12 @@
 #include<fstream> // for csv
 #include<sstream> // ditto
 
-struct Waypoint;
-using WaypointContainer = std::vector<Waypoint>;
-using MoveBaseActionClient = actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction>;
-
 geometry_msgs::Pose getFramePose(const std::string&, const std::string&);
 double calcDistance(const geometry_msgs::Pose&, const geometry_msgs::Pose&);
 
 struct Waypoint {
-  static WaypointContainer readCsv(const std::string&);
+  using Container = std::vector<Waypoint>;
+  static Container readCsv(const std::string&);
   Waypoint(const move_base_msgs::MoveBaseGoal&, double);
 
   move_base_msgs::MoveBaseGoal goal;
@@ -35,9 +32,10 @@ private:
   bool checkToNext();
   void sendGoalPoint();
 
-  WaypointContainer waypoints;
-  WaypointContainer::iterator now_waypoint;
+  Waypoint::Container waypoints;
+  Waypoint::Container::iterator now_waypoint;
   tf::TransformListener tf_listener;
+  using MoveBaseActionClient = actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction>;
   MoveBaseActionClient move_base_client;
 };
 
@@ -74,7 +72,7 @@ inline double calcDistance(const geometry_msgs::Pose& a, const geometry_msgs::Po
   return sqrt(pow((a.position.x - b.position.x), 2.0) + pow((a.position.y - b.position.y), 2.0));
 }
 
-WaypointContainer Waypoint::readCsv(const std::string& path) {
+Waypoint::Container Waypoint::readCsv(const std::string& path) {
   if (path.empty()) {
     ROS_ERROR("I need path of waypoint");
     throw std::invalid_argument {"no exist file"};
@@ -82,7 +80,7 @@ WaypointContainer Waypoint::readCsv(const std::string& path) {
   std::ifstream fs {path}; // input file stream
   if (!fs) throw std::runtime_error {"Cannot open file"};
   ROS_INFO("Reading waypoints by [%s]...", path.c_str());
-  WaypointContainer waypoints;
+  Container waypoints;
   for (std::string line; std::getline(fs, line);) {
     if (line.empty()) break; // skip the empty line
     std::istringstream line_stream {line}; // convert to stream
