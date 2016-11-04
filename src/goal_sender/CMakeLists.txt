@@ -2,11 +2,11 @@ cmake_minimum_required(VERSION 2.8.3)
 project(goal_sender)
 
 find_package(catkin REQUIRED COMPONENTS
+  roscpp
+  actionlib
   geometry_msgs
   move_base_msgs
-  roscpp
   tf
-  actionlib
 )
 
 ###################################
@@ -15,7 +15,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES goal_sender
-  CATKIN_DEPENDS geometry_msgs move_base_msgs roscpp tf actionlib
+  CATKIN_DEPENDS roscpp actionlib geometry_msgs move_base_msgs tf
 #  DEPENDS system_lib
 )
 

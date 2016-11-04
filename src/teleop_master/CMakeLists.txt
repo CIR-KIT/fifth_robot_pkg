@@ -18,7 +18,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES teleop_master
-  CATKIN_DEPENDS geometry_msgs roscpp
+  CATKIN_DEPENDS roscpp geometry_msgs
 #  DEPENDS system_lib
 )
 
