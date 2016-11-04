@@ -31,6 +31,7 @@ public:
 private:
   bool checkToNext();
   void sendGoalPoint();
+  WaypointContainer::size_type nowPointNumber();
 
   Waypoint::Container waypoints;
   Waypoint::Container::iterator now_waypoint;
@@ -119,12 +120,18 @@ GoalSender::GoalSender(const std::string& path)
     tf_listener {},
     move_base_client {"move_base", true}
 {
+  const auto& now_pos = now_waypoint->goal.target_pose.pose;
+  ROS_INFO("Set first waypoint: x:[%f], y:[%f]", now_pos.position.x, now_pos.position.y);
   move_base_client.waitForServer();
   sendGoalPoint(); // set first waypoint
 }
 
 inline void GoalSender::once() {
-  if (checkToNext()) sendGoalPoint(); // send only when cange waypoint
+  if (checkToNext()) {
+    sendGoalPoint(); // send only when cange waypoint
+    const auto& now_pos = now_waypoint->goal.target_pose.pose;
+    ROS_INFO("Update waypoint number [%lu]: x:[%f], y:[%f]", nowPointNumber(), now_pos.position.x, now_pos.position.y);
+  }
 }
 
 bool GoalSender::checkToNext() {
@@ -147,4 +154,8 @@ void GoalSender::sendGoalPoint() {
   now_waypoint->goal.target_pose.header.stamp = ros::Time::now(); // others writed by Waypoint class
   move_base_client.sendGoal(now_waypoint->goal); // send waypoint
   ROS_INFO("Use waypoint [%ld]", now_waypoint - waypoints.begin());
+}
+
+WaypointContainer::size_type GoalSender::nowPointNumber() {
+  return now_waypoint - waypoints.begin();
 }
