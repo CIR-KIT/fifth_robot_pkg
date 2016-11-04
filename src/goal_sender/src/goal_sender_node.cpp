@@ -52,6 +52,7 @@ int main(int argc, char* argv[]){
   while (ros::ok()) {
     ros::spinOnce();
     goal_sender.once();
+    if (goal_sender.isFinishWaypoint()) break; // go to end program
     rate.sleep();
   }
   return 0;
