@@ -56,6 +56,3 @@ CATKIN_IGNORE
 #maps
 src/fifth_robot_2dnav/map/*
 *.bag
-
-#inherit parameter on your computers
-src/fifth_robot_launcher/shell/openEth.sh
