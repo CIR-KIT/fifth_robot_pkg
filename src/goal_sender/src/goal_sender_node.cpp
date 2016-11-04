@@ -86,7 +86,7 @@ Waypoint::Container Waypoint::readCsv(const std::string& path) {
     if (line.empty()) break; // skip the empty line
     std::istringstream line_stream {line}; // convert to stream
     std::vector<double> input_data;
-    auto input_it = back_inserter(input_data);
+    auto&& input_it = back_inserter(input_data);
     for (std::string oneData; std::getline(line_stream, oneData, ',');) {
       std::istringstream data_st {oneData}; // convert to stream
       double data;
@@ -135,9 +135,9 @@ inline void GoalSender::once() {
 }
 
 bool GoalSender::checkToNext() {
-  auto robot_pos = getFramePose(tf_listener, "/map", "/base_link");
-  auto waypoint_pos = now_waypoint->goal.target_pose.pose;
-  auto distance = calcDistance(robot_pos, waypoint_pos); // distance of between robot and target
+  const auto& robot_pos = getFramePose(tf_listener, "/map", "/base_link");
+  const auto& waypoint_pos = now_waypoint->goal.target_pose.pose;
+  const auto& distance = calcDistance(robot_pos, waypoint_pos); // distance of between robot and target
   if (distance < now_waypoint->valid_range) { // into range
     ++now_waypoint; // next waypoint
     return true;
