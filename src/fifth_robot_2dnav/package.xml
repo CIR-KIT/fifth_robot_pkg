@@ -6,9 +6,11 @@
 
   <maintainer email="p111026h@mail.kyutech.jp">yasu16</maintainer>
   <maintainer email="o111027y@mail.kyutech.jp">Doi Yusuke</maintainer>
-  <license>BSD</license>
 
-  <!-- <author email="jane.doe@example.com">Jane Doe</author> -->
+  <license>BSD</license>
+  <url type="website">http://cir-kit.github.io/</url>
+  <author email="cirkit.infomation@gmail.com">CIR-KIT</author>
+
   <buildtool_depend>catkin</buildtool_depend>
   <depend>move_base</depend>
   <depend>amcl</depend>
