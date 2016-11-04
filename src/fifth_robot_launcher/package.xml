@@ -10,6 +10,13 @@
   <author email="cirkit.infomation@gmail.com">CIR-kIT</author>
 
   <buildtool_depend>catkin</buildtool_depend>
+  <depend>fifth_robot_2dnav</depend>
+  <depend>goal_sender</depend>
+  <depend>map_server</depend>
+  <depend>teleop_master</depend>
+  <depend>tf</depend>
+  <depend>urg_node</depend>
+  <depend>ypspur_ros_bridge</depend>
 
   <export>
   </export>
