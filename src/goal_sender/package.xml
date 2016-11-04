@@ -11,16 +11,12 @@
 
   <!-- <author email="jane.doe@example.com">Jane Doe</author> -->
   <buildtool_depend>catkin</buildtool_depend>
+  <depend>roscpp</depend>
+  <depend>actionlib</depend>
   <depend>geometry_msgs</depend>
   <depend>move_base_msgs</depend>
-  <depend>roscpp</depend>
-  <depend>sensor_msgs</depend>
   <depend>tf</depend>
-  <depend>actionlib</depend>
 
-  <!-- The export tag contains other, unspecified, tags -->
   <export>
-    <!-- Other tools can request additional information be placed here -->
-
   </export>
 </package>
