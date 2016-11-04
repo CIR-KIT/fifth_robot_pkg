@@ -11,9 +11,7 @@
   <!-- <author email="jane.doe@example.com">Jane Doe</author> -->
   <buildtool_depend>catkin</buildtool_depend>
   <depend>move_base</depend>
-  <depend>static_transform_publisher</depend>
-  <depend>urg_node</depend>
-  <depend>ypspur_ros_bridge</depend>
+  <depend>amcl</depend>
 
   <export>
   </export>
