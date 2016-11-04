@@ -57,7 +57,7 @@ int main(int argc, char* argv[]){
   return 0;
 }
 
-geometry_msgs::Pose getFramePose(tf::TransformListener& tf, const std::string& parent, const std::string& child) {
+geometry_msgs::Pose getFramePose(const tf::TransformListener& tf, const std::string& parent, const std::string& child) {
   tf::StampedTransform transform;
   try {
     tf.lookupTransform(parent, child, ros::Time(0), transform);
