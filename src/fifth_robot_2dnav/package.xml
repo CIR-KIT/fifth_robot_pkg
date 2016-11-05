@@ -12,8 +12,8 @@
   <author email="cirkit.infomation@gmail.com">CIR-KIT</author>
 
   <buildtool_depend>catkin</buildtool_depend>
-  <depend>amcl</depend>
-  <depend>move_base</depend>
+  <exec_depend>amcl</exec_depend>
+  <exec_depend>move_base</exec_depend>
 
   <export>
   </export>
