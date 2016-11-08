@@ -17,8 +17,8 @@ double calcDistance(const geometry_msgs::Pose&, const geometry_msgs::Pose&);
 
 struct Waypoint {
   using Container = std::vector<Waypoint>;
-  static Container readCsv(const std::string&);
-  Waypoint(const move_base_msgs::MoveBaseGoal&, double);
+  static Container readCsv(std::string&&);
+  Waypoint(move_base_msgs::MoveBaseGoal&&, double);
 
   move_base_msgs::MoveBaseGoal goal;
   double valid_range;
@@ -26,7 +26,7 @@ struct Waypoint {
 
 class GoalSender {
 public:
-  GoalSender(const std::string&);
+  GoalSender(std::string&&);
   void once();
   bool isFinishWaypoint();
 private:
@@ -57,7 +57,7 @@ int main(int argc, char* argv[]){
   return 0;
 }
 
-geometry_msgs::Pose getFramePose(tf::TransformListener& tf, const std::string& parent, const std::string& child) {
+geometry_msgs::Pose getFramePose(const tf::TransformListener& tf, const std::string& parent, const std::string& child) {
   tf::StampedTransform transform;
   try {
     tf.lookupTransform(parent, child, ros::Time(0), transform);
@@ -75,7 +75,7 @@ inline double calcDistance(const geometry_msgs::Pose& a, const geometry_msgs::Po
   return sqrt(pow((a.position.x - b.position.x), 2.0) + pow((a.position.y - b.position.y), 2.0));
 }
 
-Waypoint::Container Waypoint::readCsv(const std::string& path) {
+Waypoint::Container Waypoint::readCsv(std::string&& path) { // but not move now
   if (path.empty()) {
     ROS_ERROR("I need path of waypoint");
     throw std::invalid_argument {"no exist file"};
@@ -111,13 +111,13 @@ Waypoint::Container Waypoint::readCsv(const std::string& path) {
   return waypoints;
 }
 
-inline Waypoint::Waypoint(const move_base_msgs::MoveBaseGoal& goal, double valid_range)
-  : goal {goal},
+inline Waypoint::Waypoint(move_base_msgs::MoveBaseGoal&& goal, double valid_range)
+  : goal {std::move(goal)},
     valid_range {valid_range}
 {}
 
-GoalSender::GoalSender(const std::string& path)
-  : waypoints {Waypoint::readCsv(path)},
+GoalSender::GoalSender(std::string&& path)
+  : waypoints {Waypoint::readCsv(std::move(path))},
     now_waypoint {waypoints.begin()},
     tf_listener {},
     move_base_client {"move_base", true}
