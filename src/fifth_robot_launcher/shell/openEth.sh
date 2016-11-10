@@ -1,10 +1,12 @@
 #!/bin/sh
 
 if [ $# -lt 1 ]; then
-  echo "I need eth name"
-  echo "$0 <eth name>"
-  return 1
+  echo "AutoDetect-"
+  target=` ifconfig | grep enp | cut -d' ' -f1 `
+  echo $target
+else 
+  target=$1
 fi
 
-sudo ifconfig $1 192.168.0.15
+sudo ifconfig $target 192.168.0.15
 sudo route add default gw 192.168.0.1
