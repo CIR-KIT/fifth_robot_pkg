@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>yaml_reader</name>
+  <version>0.1.0</version>
+  <description>The yamlReader package</description>
+
+  <maintainer email="p111026h@mail.kyutech.jp">yasu16</maintainer>
+  <license>BSD</license>
+  <url type="website">http://cir-kit.github.io/</url>
+  <author email="cirkit.infomation@gmail.com">CIR-KIT</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
+
+  <export>
+  </export>
+</package>

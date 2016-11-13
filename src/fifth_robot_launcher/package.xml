@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>fifth_robot_launcher</name>
+  <version>0.1.0</version>
+  <description>The fifth_robot_launcher package</description>
+
+  <maintainer email="o111027y@mail.kyutech.jp">Doi Yusuke</maintainer>
+  <license>BSD</license>
+  <url type="website">http://cir-kit.github.io/</url>
+  <author email="cirkit.infomation@gmail.com">CIR-KIT</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>fifth_robot_2dnav</exec_depend>
+  <exec_depend>goal_sender</exec_depend>
+  <exec_depend>map_server</exec_depend>
+  <exec_depend>teleop_master</exec_depend>
+  <exec_depend>tf</exec_depend>
+  <exec_depend>urg_node</exec_depend>
+  <exec_depend>ypspur_ros_bridge</exec_depend>
+
+  <export>
+  </export>
+</package>

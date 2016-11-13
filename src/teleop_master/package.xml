@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>teleop_master</name>
+  <version>0.1.0</version>
+  <description>The teleop_master package</description>
+
+  <maintainer email="p111026h@mail.kyutech.jp">yasu16</maintainer>
+  <maintainer email="o111027y@mail.kyutech.jp">Doi Yusuke</maintainer>
+
+  <license>BSD</license>
+  <url type="website">http://cir-kit.github.io/</url>
+  <author email="cirkit.infomation@gmail.com">CIR-KIT</author>
+  <buildtool_depend>catkin</buildtool_depend>
+  <depend>roscpp</depend>
+  <depend>geometry_msgs</depend>
+
+  <export>
+  </export>
+</package>

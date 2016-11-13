@@ -7,3 +7,6 @@
 [submodule "src/third_party/ypspur_ros_bridge"]
 	path = src/third_party/ypspur_ros_bridge
 	url = http://www.roboken.iit.tsukuba.ac.jp/platform/repos/ypspur_ros_bridge.git
+[submodule "src/third_party/ros_waypoint_generator"]
+	path = src/third_party/ros_waypoint_generator
+	url = git@github.com:AriYu/ros_waypoint_generator.git

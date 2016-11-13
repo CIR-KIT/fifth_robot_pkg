@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>fifth_robot_2dnav</name>
+  <version>0.1.0</version>
+  <description>The fifth_2dnav package</description>
+
+  <maintainer email="p111026h@mail.kyutech.jp">yasu16</maintainer>
+  <maintainer email="o111027y@mail.kyutech.jp">Doi Yusuke</maintainer>
+
+  <license>BSD</license>
+  <url type="website">http://cir-kit.github.io/</url>
+  <author email="cirkit.infomation@gmail.com">CIR-KIT</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend>amcl</exec_depend>
+  <exec_depend>move_base</exec_depend>
+
+  <export>
+  </export>
+</package>

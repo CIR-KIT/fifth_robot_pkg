@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package>
+  <name>fifth_robot_map</name>
+  <version>0.1.0</version>
+  <description>The fifth_robot_map package</description>
+
+  <maintainer email="o111027y@mail.kyutech.jp">Doi Yusuke</maintainer>
+  <license>BSD</license>
+  <url type="website">http://cir-kit.github.io/</url>
+  <author email="cirkit.infomation@gmail.com">CIR-KIT</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+  </export>
+</package>
