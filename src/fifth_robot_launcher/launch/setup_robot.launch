@@ -5,7 +5,7 @@
   <node pkg="ypspur_ros_bridge" type="wait_and_ypspur_ros_bridge.sh" name="ypspur_ros_bridge"/>
 
   <node pkg="urg_node" type="urg_node" name="urg">
-    <param name="ip_address" value="192.168.0.10" />
+    <param name="serial_port" value="/dev/ttyACM0" />
     <param name="angle_min" value="-1.5" />
     <param name="angle_max" value="1.5" />
     <param name="publish_multiecho" value="true" />
