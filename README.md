@@ -1,6 +1,10 @@
 # CIRKIT-5
 CIRKIT所有ロボット5号機のリポジトリ
 
+## 特記事項
+- LRFを通信規格がUSBケーブル式のものに変更したため, ブランチを分けた.
+- バスの電流不足による障害が発生している. バスパワーハブを使うか, 配線を工夫.
+
 ## 仕様
 - 開発環境は ROS Kinetic Kameを推奨
 - ハードウェア要件は i-cart mini に準ずるものとする: [公式](http://t-frog.com/products/icart_mini/)
@@ -23,7 +27,7 @@ rosrun fifth_robot_launcher openEth.sh enp7s0
 - navigation
 - gmappping
 - yp-spur(公式)
-- urg_node(LRFドライバ)
+- urg\_node(LRFドライバ)
 
 ## 各ノードの提携図
 Updated  10/8
@@ -35,20 +39,20 @@ Updated  10/8
 ![mapmaking](https://github.com/CIR-KIT/fifth_robot_pkg/blob/images/images/new_pkgs_drafting20161005-mapmaker.jpg)
 
 ## 詳細
-- urg_node
+- urg\_node
  + subscribing : none
- + publishing  : /Laserscan Sensor_msgs/Laserscan
+ + publishing  : /Laserscan Sensor\_msgs/Laserscan
 - map-saver
  + subscribing : none(reading map bags)
- + publishing  : /map nav_smgs/Getmap
+ + publishing  : /map nav\_smgs/Getmap
 - yp-spur
- + subscribing : /cmd_vel geometry_msgs/Twist
+ + subscribing : /cmd\_vel geometry\_msgs/Twist
  + publishing  : /odom nav-msgs/Odometory
-- move_base
- + subscribing : /Laserscan Sensor_msgs/Laserscan
- + subscribing : /map nav_smgs/Getmap
+- move\_base
+ + subscribing : /Laserscan Sensor\_msgs/Laserscan
+ + subscribing : /map nav\_smgs/Getmap
  + subscribing : /odom nav-msgs/Odometory
- + publishing  : /cmd_vel geometry_msgs/twist
+ + publishing  : /cmd\_vel geometry\_msgs/twist
 
 我々は,goal/waypoint提供者を実装する必要があります.
 
@@ -69,7 +73,7 @@ catkin workspace のソース内(`src`)にクローンした場合はそのま�
 
 初めに,筑波大学の公式から `ssm`, `yp-spur` を各自で自分のシステムにインストールしてください.
 
-次に,third_party内のインストールシェルより `joy`, `joy_teleop`, `navigation` がaptでインストールできます.
+次に,third\_party内のインストールシェルより `joy`, `joy_teleop`, `navigation` がaptでインストールできます.
 
 必要に応じて `tf` `urg_node` などを更にapt(手作業)でインストールします.
 
