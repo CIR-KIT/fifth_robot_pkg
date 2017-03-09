@@ -1,3 +1,3 @@
 <launch>
-  <node pkg="map_server" type="map_server" name="map_server" args="$(find fifth_robot_map)/map/fifth_honban_osimizu20161106.bag.yaml" />
+  <node pkg="map_server" type="map_server" name="map_server" args="/home/yasu16/Documents/workspace/robots/cirkit5/fifth_robot_pkg/maps/kit/kobo_to_nishidalab/kobo_to_nishidalab.yaml" />
 </launch>
