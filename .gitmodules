@@ -10,3 +10,6 @@
 [submodule "src/third_party/ros_waypoint_generator"]
 	path = src/third_party/ros_waypoint_generator
 	url = git@github.com:AriYu/ros_waypoint_generator.git
+[submodule "src/third_party/cirkit_waypoint_manager"]
+	path = src/third_party/cirkit_waypoint_manager
+	url = https://github.com/CIR-KIT/cirkit_waypoint_manager.git
