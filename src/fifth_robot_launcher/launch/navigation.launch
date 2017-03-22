@@ -1,5 +1,5 @@
 <launch>
-   <!-- <node pkg="fifth_robot_launchar" type="shell/openEth.sh" name="openEth" /> -->
+   <node pkg="fifth_robot_launchar" type="shell/openUSB.sh" name="openUSB" />
    <include file="$(find fifth_robot_launcher)/launch/setup_robot.launch" />
    <include file="$(find fifth_robot_launcher)/launch/mapServe.launch" />
    <include file="$(find fifth_robot_2dnav)/launch/move_base.launch" />
