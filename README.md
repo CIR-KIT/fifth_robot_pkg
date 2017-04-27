@@ -117,15 +117,28 @@ rosbag record /target_topics
 で, 記録. 満足したら Ctrl + C で中止.
 
 一旦 terminal を落として, 別のところで core を立ち上げて, 
-terminal 1 にて rosparam set use\_sim\_time true
-terminal 1 にて rosrun gmapping slam\_gmapping scan:=<読み替え先のtopic名,同一でも可能>
+terminal 1 にて
+```bash 
+rosparam set use\_sim\_time true
+```
+terminal 1 にて
+```bash 
+rosrun gmapping slam\_gmapping scan:=<読み替え先のtopic名,同一でも可能>
+```
 
 現在, マルチエコー機能が使えてないので, ここで読むtopic については scan でよろしい.
 
-terminal 2 にて rosbag play --clock <さっきのbag>
+terminal 2 にて
 
-終了したところで, 
-terminal 1 を __決して閉じず__
-terminal 2 にて rosrun map\_server map\_saver -f <map_name>
+```bash 
+rosbag play --clock <さっきのbag>
+```
+
+終了したところで,\n 
+terminal 1 を __決して閉じず__\n
+terminal 2 にて 
+```bash 
+ rosrun map\_server map\_saver -f <map_name>
+```
 
 これでmapあがり.
