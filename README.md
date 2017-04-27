@@ -106,3 +106,24 @@ roslaunch fifth_robot_launch teleop.launch
 
 これで, path が適切に通っていればドライバ起動・通信開始・入力受付をやってくれます.
 困ったことがあるときは ~~2~~ 今は3 回生とかに質問くれてもいいですし, issue 飛ばしてくれることを期待します.
+
+### bagfileの取り扱い
+
+rosが走ってる時に, 
+```bash
+rosbag record /target_topics
+```
+
+で, 記録. 満足したら Ctrl + C で中止.
+
+一旦 terminal を落として, 別のところで core を立ち上げて, 
+terminal 1 にて rosparam set use\_sim\_time true
+terminal 1 にて rosrun gmapping slam\_gmapping scan:=<読み替え先のtopic名,同一でも可能>
+
+terminal 2 にて rosbag play --clock <さっきのbag>
+
+終了したところで, 
+terminal 1 を __決して閉じず__
+terminal 2 にて rosrun map\_server map\_saver -f <map_name>
+
+これでmapあがり.
