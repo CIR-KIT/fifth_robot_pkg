@@ -120,6 +120,8 @@ rosbag record /target_topics
 terminal 1 にて rosparam set use\_sim\_time true
 terminal 1 にて rosrun gmapping slam\_gmapping scan:=<読み替え先のtopic名,同一でも可能>
 
+現在, マルチエコー機能が使えてないので, ここで読むtopic については scan でよろしい.
+
 terminal 2 にて rosbag play --clock <さっきのbag>
 
 終了したところで, 
