@@ -73,9 +73,13 @@ catkin workspace のソース内(`src`)にクローンした場合はそのま�
 
 初めに,筑波大学の公式から `ssm`, `yp-spur` を各自で自分のシステムにインストールしてください.
 
+_注意_ yp\_spur\_ros\_bridge はいりません. インストール先がwikiに乗ってないので自動で落とせるようにシェルってます
+
 次に,third\_party内のインストールシェルより `joy`, `joy_teleop`, `navigation` がaptでインストールできます.
 
-必要に応じて `tf` `urg_node` などを更にapt(手作業)でインストールします.
+~~必要に応じて `tf` `urg_node` などを更にapt(手作業)でインストールします.~~
+
+ROS フル版なら入っています. Third\_Party内のいらない奴がが喚くようなら殺してかましません.
 
 そうすれば `catkin_make` が通るはずです.
 
@@ -87,6 +91,13 @@ catkin workspace のソース内(`src`)にクローンした場合はそのま�
 
 ここまでが全過程共通の工程です。
 
+## パラメタファイル
+
+マシンによってちょいちょいモータの回転が悪いことはありますので, 適当に調整.
+fifth\_robot\_launcher内部のfifth\_paramにある.
+公式のガイダンスもあるが, RADIUSは右が0で左が1
+標準のパラメータファイルは足が遅くなる, おそらく相当に安全側に寄せてある.
+
 ### マップ作成(ラジコン操作)
 
 ```bash
@@ -94,4 +105,40 @@ roslaunch fifth_robot_launch teleop.launch
 ```
 
 これで, path が適切に通っていればドライバ起動・通信開始・入力受付をやってくれます.
-困ったことがあるときは 2 回生とかに質問くれてもいいですし, issue 飛ばしてくれることを期待します.
+困ったことがあるときは ~~2~~ 今は3 回生とかに質問くれてもいいですし, issue 飛ばしてくれることを期待します.
+
+### bagfileの取り扱い
+
+rosが走ってる時に, 
+```bash
+rosbag record /target_topics
+```
+
+で, 記録. 満足したら Ctrl + C で中止.
+
+一旦 terminal を落として, 別のところで core を立ち上げて, 
+terminal 1 にて
+```bash 
+rosparam set use\_sim\_time true
+```
+terminal 1 にて
+```bash 
+rosrun gmapping slam\_gmapping scan:=<読み替え先のtopic名,同一でも可能>
+```
+
+現在, マルチエコー機能が使えてないので, ここで読むtopic については scan でよろしい.
+
+terminal 2 にて
+
+```bash 
+rosbag play --clock <さっきのbag>
+```
+
+終了したところで,\n 
+terminal 1 を __決して閉じず__\n
+terminal 2 にて 
+```bash 
+ rosrun map\_server map\_saver -f <map_name>
+```
+
+これでmapあがり.
