@@ -8,6 +8,11 @@ CIRKIT所有ロボット5号機のリポジトリ
 ## 仕様
 - 開発環境は ROS Kinetic Kameを推奨
 - ハードウェア要件は i-cart mini に準ずるものとする: [公式](http://t-frog.com/products/icart_mini/)
+  - 車輪φ140mm
+  - フレーム地上高 140mm
+  - フレーム構成 x, y, z : 300, 250, 180mm
+  - 車軸位置 フレーム前縁 30mm
+  - 車軸長 400mm
 
 ## テスト記録
 - 旧ハードについてはROS Indigo にて動作確認済み
