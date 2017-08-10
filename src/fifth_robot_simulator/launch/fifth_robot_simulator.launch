@@ -1,5 +1,13 @@
 <launch>
   <!-- start gazebo with an empty plane -->
   <param name="/use_sim_time" value="true" />
-  <node name="gazebo" pkg="gazebo" type="fifth_gazebo" args="$(find gazebo_worlds)/worlds/empty.world" respawn="false" output="screen"/>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/> <!-- Inert - see gazebo_ros_pkgs issue #491 -->
+    <arg name="recording" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
 </launch>

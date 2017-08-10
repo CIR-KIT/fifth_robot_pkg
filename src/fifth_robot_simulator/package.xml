@@ -9,7 +9,7 @@
   <license>free</license>
 
   <buildtool_depend>catkin</buildtool_depend>
-<!--  <depend>gazebo</depend> -->
+  <depend>gazebo_ros</depend>
   <depend>roscpp</depend>
   <depend>rospy</depend>
   <depend>std_msgs</depend>
