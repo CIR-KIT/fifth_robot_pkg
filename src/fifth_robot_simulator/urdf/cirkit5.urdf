@@ -1,0 +1,10 @@
+<robot name="cirkit5">
+  <link name="base_link" />
+  <link name="lrf" />
+
+  <joint name="joint1" type="continuous">
+    <parent link="base_link"/>
+    <child link="lrf"/>
+  </joint>
+
+</robot>

@@ -1,0 +1,4 @@
+<launch>
+   <node pkg="fifth_robot_launchar" type="shell/openUSB.sh" name="openUSB"/>
+   <include file="$(find fifth_robot_launcher)/launch/setup_robot.launch"/>
+</launch>
