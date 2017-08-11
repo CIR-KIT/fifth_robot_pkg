@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>fifth_robot_control</name>
+  <version>0.0.0</version>
+  <description>The fifth_robot_control package</description>
+
+  <maintainer email="p111026h@mail.kyutech,jo">yasu17</maintainer>
+
+
+  <license>BSD-3</license>
+
+  <author email="cirkit.information@gmail.com">Jane Doe</author>
+
+  <depend>control_msgs</depend>
+  <depend>controller_manager</depend>
+  <depend>joint_state_controller</depend>
+  <depend>robot_state_publisher</depend>
+  <depend>sensor_msgs</depend>
+
+</package>

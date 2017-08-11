@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package version="2">
+  <name>fifth_robot_description</name>
+  <version>0.0.0</version>
+  <description>The fifth_robot_description package</description>
+
+  <maintainer email="p111026h@mail.kyutech.jp">yasu17</maintainer>
+
+  <author email="cirkit.infomation@gmail.com">CIR-KIT</author>↲
+
+
+  <license>BSD</license>
+
+  <depend>joint_state_publisher</depend>
+  <depend>robot_state_publisher</depend>
+  <depend>rviz</depend>
+  <depend>xacro</depend>
+
+  </export>
+</package>
