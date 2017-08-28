@@ -1,6 +1,6 @@
 <launch>
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find fifth_robot_gazebo)/worlds/fifth_robot.world"/>  </include>
-    <node name="spawn" pkg="gazebo_ros" type="spawn_model" args="-file $(find fifth_robot_description)/urdf/fifth_robot.urdf -urdf -x 0 -y 0 -z 1 -model fifth_robot" />
-    <!-- ros_control -->
+    <arg name="world_name" value="$(find fifth_robot_gazebo)/worlds/fifth_robot.world" />
+  </include>
+  <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find fifth_robot_description)/urdf/fifth_robot.urdf -urdf -z 1 -model fifth_robot" />
 </launch>
