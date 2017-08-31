@@ -2,5 +2,8 @@
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
     <arg name="world_name" value="$(find fifth_robot_gazebo)/worlds/fifth_robot.world" />
   </include>
+  <param name="robot_description" command="cat $(find fifth_robot_description)/urdf/fifth_robot.urdf" />
+  <include file="$(find fifth_robot_control)/launch/fifth_robot_control.launch" />
+  <!--robot_state_publisher in conrtrol -->
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-file $(find fifth_robot_description)/urdf/fifth_robot.urdf -urdf -z 1 -model fifth_robot" />
 </launch>
