@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <gazebo>
   <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotNamespace>/fifth_robot</robotNamespace>
-   </plugin>
+    <robotNamespace>fifth_robot</robotNamespace>
+  </plugin>
 </gazebo>
 <robot name="fifth_robot" xmins:xacro="http://www.ros.org/wiki/xacro">
   <material name="blue">
@@ -85,3 +85,40 @@
     </inertial>
   </link>
 </robot>
+
+ <transmission name="left_wheel_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="to_wheel_left">
+  <hardwareInterface>VelocityJointInterface</hardwareInterface>
+      </joint>
+   <actuator name="left_wheel_motor">
+  <hardwareInterface>VelocityJointInterface</hardwareInterface>
+  <mechanicalReduction>30</mechanicalReduction>
+      </actuator>
+ </transmission>
+ <transmission name="right_wheel_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="to_wheel_right">
+  <hardwareInterface>VelocityJointInterface</hardwareInterface>
+      </joint>
+   <actuator name="right_wheel_motor">
+  <hardwareInterface>VelocityJointInterface</hardwareInterface>
+  <mechanicalReduction>30</mechanicalReduction>
+      </actuator>
+ </transmission>
+
+<gazebo>
+  <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+    <alwaysOn>true</alwaysOn>
+    <updateRate>30</updateRate>
+    <leftJoint>to_wheel_left</leftJoint>
+    <rightJoint>to_wheel_right</rightJoint>
+    <wheelSeparation>0.5380</wheelSeparation>
+    <wheelDiameter>0.1410</wheelDiameter>
+    <torque>20</torque>
+    <commandTopic>cmd_vel</commandTopic>
+    <odometryTopic>odom</odometryTopic>
+    <odometryFrame>odom</odometryFrame>
+    <robotBaseFrame>base_link</robotBaseFrame>
+  </plugin>
+</gazebo>
