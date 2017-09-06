@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>fifth_robot_pkgs</name>
+  <version>1.0.0</version>
+  <description>The fifth_robot_pkgs package</description>
+  <maintainer email="o111027y@mail.kyutech.jp">Doi Yusuke</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">https://github.com/CIR-KIT/fifth_robot_pkg</url>
+  <author email="o111027y@mail.kyutech.jp">Doi Yusuke</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <exec_depend> fifth_robot_2dnav </exec_depend>
+  <exec_depend> fifth_robot_control </exec_depend>
+  <exec_depend> fifth_robot_description </exec_depend>
+  <exec_depend> fifth_robot_gazebo </exec_depend>
+  <exec_depend> fifth_robot_launcher </exec_depend>
+  <exec_depend> fifth_robot_map </exec_depend>
+
+  <export>
+    <metapackage />
+    <architecture_independent />
+  </export>
+</package>
