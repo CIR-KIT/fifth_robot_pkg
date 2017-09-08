@@ -148,3 +148,9 @@ terminal 2 にて
 ```
 
 これでmapあがり.
+
+### Simulation
+
+`Gazebo` について言うなら
+`fifth_robot_description/launch` にあるgazebo.launch でたち上がります.
+`ros_control`越しにnavigationとかと提携するのはまだです
