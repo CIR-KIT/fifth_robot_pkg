@@ -8,7 +8,7 @@ CIRKIT所有ロボット5号機のリポジトリ
 ## 仕様
 - 開発環境は ROS Kinetic Kameを推奨
 - ハードウェア要件は i-cart mini に準ずるものとする: [公式](http://t-frog.com/products/icart_mini/)
-  - 空虚重量 8kg
+  - 乾燥重量 8kg
   - 車輪φ 140mm
   - フレーム地上高 140mm
   - フレーム構成 x, y, z : 300, 250, 180mm
@@ -154,3 +154,8 @@ terminal 2 にて
 `Gazebo` について言うなら
 `fifth_robot_description/launch` にあるgazebo.launch でたち上がります.
 `ros_control`越しにnavigationとかと提携するのはまだです
+
+![sample](https://github.com/CIR-KIT/fifth_robot_pkg/blob/images/images/gazebo_sample1.png)
+
+この通りコントローラが出てくるはずです.
+desktop-fullなら問題ないと思いますが, controll系のパッケージが不足することがあるそうなので, その場合はaptで追加してください.

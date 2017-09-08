@@ -172,6 +172,5 @@
     <mu1 value="0.0" />
     <mu2 value="0.0" />
   </gazebo>
-
+ </robot>
  
-</robot>
