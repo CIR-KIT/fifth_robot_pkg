@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>fifth_robot_description</name>
-  <version>0.0.0</version>
+  <version>0.0.1</version>
   <description>The fifth_robot_description package</description>
 
   <maintainer email="p111026h@mail.kyutech.jp">yasu17</maintainer>
