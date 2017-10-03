@@ -159,3 +159,11 @@ terminal 2 にて
 
 この通りコントローラが出てくるはずです.
 desktop-fullなら問題ないと思いますが, controll系のパッケージが不足することがあるそうなので, その場合はaptで追加してください.
+
+`ros-controller-manager` が不足していますので逐次インストールしてください.
+`gazebo-ros-control` が不足していますので逐次インストールしてください.
+`diff-drive-controller` が不足していますので逐次インストールしてください.
+`joint-state-controller` が不足していますので逐次インストールしてください.
+コントローラの受付トピックは`fifth_robot/diff_drive_controller/cmd_vel`
+
+
