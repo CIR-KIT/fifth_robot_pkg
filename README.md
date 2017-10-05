@@ -125,11 +125,11 @@ rosbag record /target_topics
 一旦 terminal を落として, 別のところで core を立ち上げて, 
 terminal 1 にて
 ```bash 
-rosparam set use\_sim\_time true
+rosparam set use_sim_time true
 ```
 terminal 1 にて
 ```bash 
-rosrun gmapping slam\_gmapping scan:=<読み替え先のtopic名,同一でも可能>
+rosrun gmapping slam_gmapping scan:=<読み替え先のtopic名,同一でも可能>
 ```
 
 現在, マルチエコー機能が使えてないので, ここで読むtopic については scan でよろしい.
@@ -144,7 +144,7 @@ rosbag play --clock <さっきのbag>
 terminal 1 を __決して閉じず__\n
 terminal 2 にて 
 ```bash 
- rosrun map\_server map\_saver -f <map_name>
+ rosrun map_server map_saver -f <map_name>
 ```
 
 これでmapあがり.
@@ -160,10 +160,12 @@ terminal 2 にて
 この通りコントローラが出てくるはずです.
 desktop-fullなら問題ないと思いますが, controll系のパッケージが不足することがあるそうなので, その場合はaptで追加してください.
 
-`ros-controller-manager` が不足していますので逐次インストールしてください.
-`gazebo-ros-control` が不足していますので逐次インストールしてください.
-`diff-drive-controller` が不足していますので逐次インストールしてください.
-`joint-state-controller` が不足していますので逐次インストールしてください.
-コントローラの受付トピックは`fifth_robot/diff_drive_controller/cmd_vel`
+- Gazebo上でのロボットモデル評価 マップの作成テスト
+
+基本的に上で紹介した方法と同一で実行できるようになりました. ただ, map を作る前に gazebo を落としてコアを立ち上げ直してください.
+mapを作ったらnavigationできます. 
+Willowで作った地図をここにおいておきます. 結構綺麗なものが出来上がります.
+![map](https://github.com/CIR-KIT/fifth_robot_pkg/blob/images/images/willow_map.jpg)
 
 
+<b> 重くなるのでマップデータやbagファイルをmasterやらに置かないでください. 現場で_絶対に_後悔します</b>
