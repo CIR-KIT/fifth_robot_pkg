@@ -60,7 +60,9 @@ Updated  10/8
  + subscribing : /odom nav-msgs/Odometory
  + publishing  : /cmd\_vel geometry\_msgs/twist
 
-我々は,goal/waypoint提供者を実装する必要があります.
+goal/waypoint提供者は外部にあり, third_partyにある
+`ros_waypoint_generator`と`goal_sender`がそれに当たります.
+構成に合わせてlaunchに登録してください.
 
 ## メモ
 - セットアップについて,**yp-spur,ssmのインストール**を忘れずに行ってください: [公式](http://www.roboken.iit.tsukuba.ac.jp/platform/wiki/yp-spur/how-to-install)
@@ -77,7 +79,7 @@ catkin workspace のソース内(`src`)にクローンした場合はそのま�
 
 まずは必要な packeage を確保してください.
 
-初めに,筑波大学の公式から `ssm`, `yp-spur` を各自で自分のシステムにインストールしてください.
+初めに,筑波大学の[公式](http://www.roboken.iit.tsukuba.ac.jp/platform/wiki/ssm/index)から `ssm`, `yp-spur` を各自で自分のシステムにインストールしてください.
 
 _注意_ yp\_spur\_ros\_bridge はいりません. インストール先がwikiに乗ってないので自動で落とせるようにシェルってます
 
@@ -117,10 +119,11 @@ roslaunch fifth_robot_launch teleop.launch
 
 rosが走ってる時に, 
 ```bash
-rosbag record /target_topics
+rosbag record --all
 ```
-
 で, 記録. 満足したら Ctrl + C で中止.
+トピックは各個別に指定することもできますが, 面倒なので--allにしてます. ただ, ファイルサイズとトレードオフなので
+レーザ系のトピック + odom のみでいいと思います.
 
 一旦 terminal を落として, 別のところで core を立ち上げて, 
 terminal 1 にて
@@ -129,10 +132,15 @@ rosparam set use_sim_time true
 ```
 terminal 1 にて
 ```bash 
-rosrun gmapping slam_gmapping scan:=<読み替え先のtopic名,同一でも可能>
+rosrun gmapping slam_gmapping 
 ```
 
 現在, マルチエコー機能が使えてないので, ここで読むtopic については scan でよろしい.
+ただ, マルチエコーを有効とするUTM-30-LX-EWなどを用いるときは scanを読み替えて
+
+`scan:=<読み替え先のtopic名,同一でも可能>`
+
+とする.
 
 terminal 2 にて
 
@@ -151,21 +159,51 @@ terminal 2 にて
 
 ### Simulation
 
-`Gazebo` について言うなら
-`fifth_robot_description/launch` にあるgazebo.launch でたち上がります.
-`ros_control`越しにnavigationとかと提携するのはまだです
+`Gazebo` について言うなら `fifth_robot_description/launch` にある `fifth_robot_gazebo.launch` が roslaunch でたち上がります.
+
+`ros_control`越しにnavigationとかと提携するのは ~~まだです~~ できます.
+
+`fifth_robot_2dnav`などをアップデートして使ってください
+
+### Simulated Map 作成
+
+上に記したマップ作成との差異は, teleopのかわりにgazeboを立ち上げることのみです.
 
 ![sample](https://github.com/CIR-KIT/fifth_robot_pkg/blob/images/images/gazebo_sample1.png)
 
 この通りコントローラが出てくるはずです.
-desktop-fullなら問題ないと思いますが, controll系のパッケージが不足することがあるそうなので, その場合はaptで追加してください.
+controll系のパッケージが不足します.
+`fifth_robot_description`内部の`install_simulator.sh`で必要な奴らをインストール
 
 - Gazebo上でのロボットモデル評価 マップの作成テスト
 
 基本的に上で紹介した方法と同一で実行できるようになりました. ただ, map を作る前に gazebo を落としてコアを立ち上げ直してください.
-mapを作ったらnavigationできます. 
+
+タイムスタンプがおかしくなって, ` Detected jump back in time. Clearing TF buffer.`とか言い出す例がありますが, 
+ズレは微小で原因が不明(処理落ち?)ですしmap作成に問題がありませんでした. これは無視してください.
+
+mapを作ったらnavigationできます.
 Willowで作った地図をここにおいておきます. 結構綺麗なものが出来上がります.
 ![map](https://github.com/CIR-KIT/fifth_robot_pkg/blob/images/images/willow_map.jpg)
 
 
 <b> 重くなるのでマップデータやbagファイルをmasterやらに置かないでください. 現場で_絶対に_後悔します</b>
+
+### よくある障害
+
+ - gazeboが立ち上がらない
+   - gazeboは非常に重たいので少し待ってください.
+   - クラッシュしたgazebo-guiやgzclientがゾンビになってることがあります, `ps -A` でPIDを見つけて `ps kill -KILL {PID}`で終了.
+
+ - yp-spur制御基板(二軸モータドライバ TF-2MD3-R6) と通信できない
+   - 電源ボードとの接触不良
+   - マイコンボードがUSB給電を必要とします. バスパワーを使うか, 配線をラップトップの一箇所に集中させないようにしてボードの負荷を分散
+   - dev内の認識されたデバイスの権限がrootのみになっている.dialoutに登録するか,  `chmod 777 /dev/serial/by-id/*`
+   - 
+ - LRFと通信できない
+   - 上と同じくUSB給電
+   - 上と同じく権限
+   - UTM-30−LX-EW はIPが割り振られています. `fifth_robot_launcher` に同梱したテストシェルの中にもありますが, デフォルトのip `192.168.0.10`にピンを打ってください.
+      - ネットワーク設定を変更しないとつながりません！ イーサネットデバイスをifconfigで開いてゲートウェイ設定を変更してください(上記hokuyoのつかいかたにもあるが, `openEth.sh`にあり. 動作確認済み)
+      - また, dialoutにユーザを登録してください
+      - それでもダメならipが変更になっている恐れがありますので, arpで検出してください.
