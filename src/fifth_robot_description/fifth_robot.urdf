@@ -123,7 +123,7 @@
       </joint>
    <actuator name="right_wheel_motor">
   <hardwareInterface>VelocityJointInterface</hardwareInterface>
-  <mechanicalReduction>30</mechanicalReduction>
+  <mechanicalReduction>15</mechanicalReduction>
       </actuator>
  </transmission>
  <transmission name="left_wheel_trans">
@@ -133,7 +133,7 @@
       </joint>
    <actuator name="left_wheel_motor">
   <hardwareInterface>VelocityJointInterface</hardwareInterface>
-  <mechanicalReduction>30</mechanicalReduction>
+  <mechanicalReduction>15</mechanicalReduction>
       </actuator>
  </transmission>
  <!-- =============== Sensor =============== -->

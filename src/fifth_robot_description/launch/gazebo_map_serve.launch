@@ -1,0 +1,6 @@
+<launch>
+  <node pkg="map_server" type="map_server" name="map_server" >
+   <arg name="map" />
+   <param name="map" value="$(arg map)" />
+  </node>
+</launch>
