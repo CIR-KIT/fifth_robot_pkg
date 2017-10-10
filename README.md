@@ -207,3 +207,41 @@ Willowで作った地図をここにおいておきます. 結構綺麗なもの
       - ネットワーク設定を変更しないとつながりません！ イーサネットデバイスをifconfigで開いてゲートウェイ設定を変更してください(上記hokuyoのつかいかたにもあるが, `openEth.sh`にあり. 動作確認済み)
       - また, dialoutにユーザを登録してください
       - それでもダメならipが変更になっている恐れがありますので, arpで検出してください.
+
+### 補遺
+
+ - リモコンPS3コントローラ(JoyStick)の設定
+    - sixad sixpair コマンドを使う.
+      - インストール(バイナリをおとして使う)
+
+      `sudo add-apt-repository "deb http://ppa.launchpad.net/falk-t-j/qtsixa/ubuntu vivid main"`
+
+      `sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 736E4F0B`
+
+      `sudo apt update`
+
+      `sudo apt install sixad`
+
+      - インストール(ソースを落として自分でコンパイルする)
+
+      `cd`
+
+      `sudo apt-get install pyqt4-dev-tools git `
+
+      `sudo apt-get install libusb-dev libjack-dev libbluetooth-dev pyqt4-dev-tools`
+
+      `cd Downloads`
+
+      `git clone https://github.com/falkTX/qtsixa.git`
+
+      `cd qtsixa`
+
+      `make`
+
+      `sudo make install`
+
+- リモコンの開始
+    `sudo sixpair`
+    `sudo sixad -s`
+- リモコンの終了
+    `sudo sixad --stop`
