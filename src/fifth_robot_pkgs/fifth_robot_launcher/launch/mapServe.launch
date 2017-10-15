@@ -1,3 +1,0 @@
-<launch>
-  <node pkg="map_server" type="map_server" name="map_server" args="/home/yasu17/rosdata/data/success2/map.yaml" />
-</launch>
