@@ -13,9 +13,9 @@ CIRKIT所有ロボット5号機のリポジトリ
  8.  [ パラメタファイル ](https://github.com/CIR-KIT/fifth_robot_pkg#パラメタファイル)
  9.  [ マップ作成とラジコン操作](https://github.com/CIR-KIT/fifth_robot_pkg#マップ作成とラジコン操作)
  10. [ bagfileの取り扱い ](https://github.com/CIR-KIT/fifth_robot_pkg#bagfileの取り扱い)
- 11. [ GazeboSimulation ](https://github.com/CIR-KIT/fifth_robot_pkg#GazeboSimulation)
- 12. [ GazeboSimulatedMap ](https://github.com/CIR-KIT/fifth_robot_pkg#GazeboSimulatedMap)
- 13. [ GazeboSimulatedNavigation ](https://github.com/CIR-KIT/fifth_robot_pkg#GazeboSimulatedNavigation)
+ 11. [ GazeboSimulation ](https://github.com/CIR-KIT/fifth_robot_pkg#gazebosimulation)
+ 12. [ GazeboSimulatedMap ](https://github.com/CIR-KIT/fifth_robot_pkg#gazebosimulatedMap)
+ 13. [ GazeboSimulatedNavigation ](https://github.com/CIR-KIT/fifth_robot_pkg#gazebosimulatedNavigation)
  14. [ よくある障害 ](https://github.com/CIR-KIT/fifth_robot_pkg#よくある障害)
  15. [ 補遺 ](https://github.com/CIR-KIT/fifth_robot_pkg#補遺)
 
@@ -207,7 +207,7 @@ terminal 2 にて
 
 これでmapあがり.
 
-### GazeboSimulation
+### gazebosimulation
 
 `Gazebo` について言うなら `fifth_robot_description/launch` にある `fifth_robot_gazebo.launch` が roslaunch でたち上がります.
 
@@ -215,7 +215,7 @@ terminal 2 にて
 
 `fifth_robot_2dnav`などをアップデートして使ってください
 
-### GazeboSimulatedMap
+### gazebosimulatedMap
 
 上に記したマップ作成との差異は, teleopのかわりにgazeboを立ち上げることのみです.
 
@@ -239,7 +239,7 @@ Willowで作った地図をここにおいておきます. 結構綺麗なもの
 
 <b> 重くなるのでマップデータやbagファイルをmasterやらに置かないでください. 現場で_絶対に_後悔します</b>
 
-### GazeboSimulatedNavigation
+### gazebosimulatedNavigation
 
 実機なしでもできるシミュレーション. navigation の運用練習やパラメータ調整を迅速化できるので是非身につけてください.
 
