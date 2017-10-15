@@ -5,7 +5,7 @@ CIRKIT所有ロボット5号機のリポジトリ
 
  1.  [ 特記事項 ](https://github.com/CIR-KIT/fifth_robot_pkg#特記事項)
  2.  [ 仕様と寸法 ](https://github.com/CIR-KIT/fifth_robot_pkg#仕様と寸法)
- 3.  [ hokuyo-LRF二次元測域センサの使い方 ](https://github.com/CIR-KIT/fifth_robot_pkg#hokuyo-LRF二次元測域センサの使い方)
+ 3.  [ 北陽電気製レーザ式二次元測域センサの使い方 ](https://github.com/CIR-KIT/fifth_robot_pkg#北陽電気製レーザ式二次元測域センサの使い方)
  4.  [ ソフト構成 ](https://github.com/CIR-KIT/fifth_robot_pkg#ソフト構成)
  5.  [ 最小構成の各ノード提携図 ](https://github.com/CIR-KIT/fifth_robot_pkg#最小構成の各ノード提携図)
  6.  [ 詳細 ](https://github.com/CIR-KIT/fifth_robot_pkg#詳細)
@@ -13,9 +13,9 @@ CIRKIT所有ロボット5号機のリポジトリ
  8.  [ パラメタファイル ](https://github.com/CIR-KIT/fifth_robot_pkg#パラメタファイル)
  9.  [ マップ作成とラジコン操作](https://github.com/CIR-KIT/fifth_robot_pkg#マップ作成とラジコン操作)
  10. [ bagfileの取り扱い ](https://github.com/CIR-KIT/fifth_robot_pkg#bagfileの取り扱い)
- 11. [ GazeboでSimulation ](https://github.com/CIR-KIT/fifth_robot_pkg#GazeboでSimulation)
- 12. [ GazeboでSimulatedMap作成 ](https://github.com/CIR-KIT/fifth_robot_pkg#GazeboでSimulatedMap作成)
- 13. [ GazeboでSimulatedNavigation実行 ](https://github.com/CIR-KIT/fifth_robot_pkg#GazeboでSimulatedNavigation実行)
+ 11. [ Gazebo-Simulation ](https://github.com/CIR-KIT/fifth_robot_pkg#Gazebo-Simulation)
+ 12. [ Gazebo-SimulatedMap ](https://github.com/CIR-KIT/fifth_robot_pkg#Gazebo-SimulatedMap)
+ 13. [ Gazebo-SimulatedNavigation ](https://github.com/CIR-KIT/fifth_robot_pkg#Gazebo-SimulatedNavigation)
  14. [ よくある障害 ](https://github.com/CIR-KIT/fifth_robot_pkg#よくある障害)
  15. [ 補遺 ](https://github.com/CIR-KIT/fifth_robot_pkg#補遺)
 
@@ -36,7 +36,7 @@ CIRKIT所有ロボット5号機のリポジトリ
   - 車軸位置 フレーム前縁 30mm
   - 車軸長 400mm
 
-## hokuyo-LRF二次元測域センサの使い方
+## 北陽電気製レーザ式二次元測域センサの使い方
 ipアドレスをスタティックに振り分ける必要があるために次を実行します. `enp7s0` は環境によって変えてください.
 
 ```bash
@@ -207,7 +207,7 @@ terminal 2 にて
 
 これでmapあがり.
 
-### GazeboでSimulation
+### Gazebo-Simulation
 
 `Gazebo` について言うなら `fifth_robot_description/launch` にある `fifth_robot_gazebo.launch` が roslaunch でたち上がります.
 
@@ -215,7 +215,7 @@ terminal 2 にて
 
 `fifth_robot_2dnav`などをアップデートして使ってください
 
-### GazeboでSimulatedMap作成
+### Gazebo-SimulatedMap
 
 上に記したマップ作成との差異は, teleopのかわりにgazeboを立ち上げることのみです.
 
@@ -239,7 +239,7 @@ Willowで作った地図をここにおいておきます. 結構綺麗なもの
 
 <b> 重くなるのでマップデータやbagファイルをmasterやらに置かないでください. 現場で_絶対に_後悔します</b>
 
-### GazeboでSimulatedNavigation実行
+### Gazebo-SimulatedNavigation
 
 実機なしでもできるシミュレーション. navigation の運用練習やパラメータ調整を迅速化できるので是非身につけてください.
 
