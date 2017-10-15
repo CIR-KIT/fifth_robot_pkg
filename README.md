@@ -14,8 +14,8 @@ CIRKIT所有ロボット5号機のリポジトリ
  9.  [ マップ作成とラジコン操作](https://github.com/CIR-KIT/fifth_robot_pkg#マップ作成とラジコン操作)
  10. [ bagfileの取り扱い ](https://github.com/CIR-KIT/fifth_robot_pkg#bagfileの取り扱い)
  11. [ GazeboSimulation ](https://github.com/CIR-KIT/fifth_robot_pkg#gazebosimulation)
- 12. [ GazeboSimulatedMap ](https://github.com/CIR-KIT/fifth_robot_pkg#gazebosimulatedMap)
- 13. [ GazeboSimulatedNavigation ](https://github.com/CIR-KIT/fifth_robot_pkg#gazebosimulatedNavigation)
+ 12. [ GazeboSimulatedMap ](https://github.com/CIR-KIT/fifth_robot_pkg#gazebosimulatedmap)
+ 13. [ GazeboSimulatedNavigation ](https://github.com/CIR-KIT/fifth_robot_pkg#gazebosimulatednavigation)
  14. [ よくある障害 ](https://github.com/CIR-KIT/fifth_robot_pkg#よくある障害)
  15. [ 補遺 ](https://github.com/CIR-KIT/fifth_robot_pkg#補遺)
 
