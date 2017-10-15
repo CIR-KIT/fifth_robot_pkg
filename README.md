@@ -7,11 +7,11 @@ CIRKIT所有ロボット5号機のリポジトリ
  2.  [ 仕様と寸法 ](https://github.com/CIR-KIT/fifth_robot_pkg#仕様と寸法)
  3.  [ hokuyo-LRF二次元測域センサの使い方 ](https://github.com/CIR-KIT/fifth_robot_pkg#hokuyo-LRF二次元測域センサの使い方)
  4.  [ ソフト構成 ](https://github.com/CIR-KIT/fifth_robot_pkg#ソフト構成)
- 5.  [ 最小構成の各ノード提携図 ](https://github.com/CIR-KIT/fifth_robot_pkg#最小構成の各ノード提携)
+ 5.  [ 最小構成の各ノード提携図 ](https://github.com/CIR-KIT/fifth_robot_pkg#最小構成の各ノード提携図)
  6.  [ 詳細 ](https://github.com/CIR-KIT/fifth_robot_pkg#詳細)
- 7.  [ インストール・セットアップ ](https://github.com/CIR-KIT/fifth_robot_pkg#インストール・セットアップ)
+ 7.  [ インストールとセットアップ ](https://github.com/CIR-KIT/fifth_robot_pkg#インストールとセットアップ)
  8.  [ パラメタファイル ](https://github.com/CIR-KIT/fifth_robot_pkg#パラメタファイル)
- 9.  [ マップ作成・ラジコン操作](https://github.com/CIR-KIT/fifth_robot_pkg#マップ作成・ラジコン操作)
+ 9.  [ マップ作成とラジコン操作](https://github.com/CIR-KIT/fifth_robot_pkg#マップ作成とラジコン操作)
  10. [ bagfileの取り扱い ](https://github.com/CIR-KIT/fifth_robot_pkg#bagfileの取り扱い)
  11. [ GazeboでSimulation ](https://github.com/CIR-KIT/fifth_robot_pkg#GazeboでSimulation)
  12. [ GazeboでSimulatedMap作成 ](https://github.com/CIR-KIT/fifth_robot_pkg#GazeboでSimulatedMap作成)
@@ -114,7 +114,7 @@ goal/waypoint提供者は外部にあり, third_partyにある
 
 ※更新の予定があります
 
-## インストール/セットアップ
+## インストールとセットアップ
 - セットアップについて, まずインストールシェルより **yp-spur,ssmのインストール**を忘れずに行ってください:さもなければmakeが通りません [公式](http://www.roboken.iit.tsukuba.ac.jp/platform/wiki/yp-spur/how-to-install)
 - contributer を募集しています
 
@@ -156,7 +156,7 @@ fifth\_robot\_launcher内部のfifth\_paramにある.
 公式のガイダンスもあるが, RADIUSは右が0で左が1
 標準のパラメータファイルは足が遅くなる, おそらく相当に安全側に寄せてある.
 
-### マップ作成(ラジコン操作)
+### マップ作成とラジコン操作
 
 ```bash
 roslaunch fifth_robot_launch teleop.launch
