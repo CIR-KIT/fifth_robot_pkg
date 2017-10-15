@@ -4,6 +4,7 @@ CIRKIT所有ロボット5号機のリポジトリ
 ## 特記事項
 - LRFを通信規格がUSBケーブル式のものに変更したため, ブランチを分けた.
 - バスの電流不足による障害が発生している. バスパワーハブを使うか, 配線を工夫.
+- Github (https://github.com/CIR-KIT/fifth_robot_pkg )上の[wiki](https://github.com/CIR-KIT/fifth_robot_pkg/wiki) も参照してください
 
 ## 仕様
 - 開発環境は ROS Kinetic Kameを推奨
@@ -87,7 +88,8 @@ _注意_ yp\_spur\_ros\_bridge はいりません. インストール先がwiki�
 
 ~~必要に応じて `tf` `urg_node` などを更にapt(手作業)でインストールします.~~
 
-ROS フル版なら入っています. Third\_Party内のいらない奴がが喚くようなら殺してかましません.
+ROS フル版なら入っています. Third\_Party内のいらない奴がが喚くようなら消してください. 
+(現状, driver\_commonが不要ですがまた更新がかかった時のために残してあります)
 
 そうすれば `catkin_make` が通るはずです.
 
@@ -189,6 +191,36 @@ Willowで作った地図をここにおいておきます. 結構綺麗なもの
 
 <b> 重くなるのでマップデータやbagファイルをmasterやらに置かないでください. 現場で_絶対に_後悔します</b>
 
+### Simulated Map 作成
+
+実機なしでもできるシミュレーション. navigation の運用練習やパラメータ調整を迅速化できるので是非身につけてください.
+
+以下wikiと同一
+
+てっとり早いtutorialには, ` /fifth_robot_description/launch ` にある実体から
+
+`roslaunch fifth_robot_descriotion test.launch `  
+
+重いですが willow_garage が立ち上がる.
+
+`roslaunch fifth_robot_description gazebo_nav.launch laser_topic:=scan ` 
+
+ここはgazeboのレーザードライバが/scanに吐き出しているところを実機となるだけ共通で扱うためにそうしています. 実機では ` /most_intense ` をとっています( MultiEcho モード ) 
+
+
+`rviz` 
+
+ちょっとばかり設定が込み入っています 
+
+当該パッケージにおける Navigation の構成は amcl による自己位置推定( 2D_Pose_Estimate )と move_base によるものですから, 初期位置を与える必要があります. 
+
+Fixed_Frame を /map に固定しなければ amcl が作動しません. 上ベインに標準で出ている 2D Pose Estimate をGazebo上の位置と勘案して設定します(rvizのビジュアル上でマウスを使いD&Dでにゅっとやります)
+
+壁のscanとmapが一致するのが目安となります. ※現実でやる時もmap上で勘案して設定します
+
+左側ベインのPoseをAddし, トピック( /move_base_simple/goal または /move_base/current_goal )を指定 <b> Unreliable オプションを指定(チェックボックス)した上で,</b>  上ベインに標準で出ている 2D Nav Goal を設定すると走り出します.
+
+
 ### よくある障害
 
  - gazeboが立ち上がらない
@@ -199,7 +231,7 @@ Willowで作った地図をここにおいておきます. 結構綺麗なもの
    - 電源ボードとの接触不良
    - マイコンボードがUSB給電を必要とします. バスパワーを使うか, 配線をラップトップの一箇所に集中させないようにしてボードの負荷を分散
    - dev内の認識されたデバイスの権限がrootのみになっている.dialoutに登録するか,  `chmod 777 /dev/serial/by-id/*`
-   - 
+   - 機嫌が悪いとしか言いようのない時があります. 一旦すべてディスコネクトして放電してください.
  - LRFと通信できない
    - 上と同じくUSB給電
    - 上と同じく権限
@@ -210,7 +242,7 @@ Willowで作った地図をここにおいておきます. 結構綺麗なもの
 
 ### 補遺
 
- - リモコンPS3コントローラ(JoyStick)の設定
+ - リモコンPS3コントローラ(JoyStick)の設定(片方でいいです)
     - sixad sixpair コマンドを使う.
       - インストール(バイナリをおとして使う)
 
@@ -241,7 +273,9 @@ Willowで作った地図をここにおいておきます. 結構綺麗なもの
       `sudo make install`
 
 - リモコンの開始
+    USB A to Micro を使い, 接続の後
     `sudo sixpair`
+    接続を解いて, 
     `sudo sixad -s`
 - リモコンの終了
     `sudo sixad --stop`
