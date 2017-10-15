@@ -1,12 +1,32 @@
 # CIRKIT-5
 CIRKIT所有ロボット5号機のリポジトリ
 
+## 目次
+
+ 1. ( 特記事項 )[https://github.com/CIR-KIT/fifth_robot_pkg#特記事項]
+ 2. ( 仕様・寸法 )[https://github.com/CIR-KIT/fifth_robot_pkg#仕様・寸法]
+ 3. ( hokuyo-LRF(二次元測域センサ)の使い方 )[https://github.com/CIR-KIT/fifth_robot_pkg#hokuyo-LRF(二次元測域センサ)の使い方]
+ 4. (ソフト構成 )[https://github.com/CIR-KIT/fifth_robot_pkg#ソフト構成]
+ 5. ( 最小構成の各ノード提携図 )[https://github.com/CIR-KIT/fifth_robot_pkg#最小構成の各ノード提携図]
+ 6. ( 詳細 )[https://github.com/CIR-KIT/fifth_robot_pkg#詳細]
+ 7. ( インストール・セットアップ )[https://github.com/CIR-KIT/fifth_robot_pkg#インストール・セットアップ]
+ 8. ( パラメタファイル )[https://github.com/CIR-KIT/fifth_robot_pkg#パラメタファイル]
+ 9. ( マップ作成(ラジコン操作) )[https://github.com/CIR-KIT/fifth_robot_pkg#マップ作成(ラジコン操作)]
+ 10. ( bagfileの取り扱い )[https://github.com/CIR-KIT/fifth_robot_pkg#bagfileの取り扱い]
+ 11. ( Gazebo Simulation )[https://github.com/CIR-KIT/fifth_robot_pkg#Gazebo Simulation]
+ 12. ( Gazebo Simulated Map 作成 )[https://github.com/CIR-KIT/fifth_robot_pkg#Gazebo Simulated Map 作成]
+ 13. ( Gazebo Simulated Navigation 実行 )[https://github.com/CIR-KIT/fifth_robot_pkg#Gazebo Simulated Navigation 実行]
+ 14. ( よくある障害 )[https://github.com/CIR-KIT/fifth_robot_pkg#よくある障害]
+ 15. ( 補遺 )[https://github.com/CIR-KIT/fifth_robot_pkg#補遺]
+
+
+起動(実機)
 ## 特記事項
 - LRFを通信規格がUSBケーブル式のものに変更したため, ブランチを分けた.
 - バスの電流不足による障害が発生している. バスパワーハブを使うか, 配線を工夫.
 - Github (https://github.com/CIR-KIT/fifth_robot_pkg )上の[wiki](https://github.com/CIR-KIT/fifth_robot_pkg/wiki) も参照してください
 
-## 仕様
+## 仕様・寸法
 - 開発環境は ROS Kinetic Kameを推奨
 - ハードウェア要件は i-cart mini に準ずるものとする: [公式](http://t-frog.com/products/icart_mini/)
   - 乾燥重量 8kg
@@ -16,11 +36,7 @@ CIRKIT所有ロボット5号機のリポジトリ
   - 車軸位置 フレーム前縁 30mm
   - 車軸長 400mm
 
-## テスト記録
-- 旧ハードについてはROS Indigo にて動作確認済み
-- 新ハード(本番用)については開発中(以降は, Kinetic Kameによって開発を行う)
-
-## hokuyoの使い方
+## hokuyo-LRF(二次元測域センサ)の使い方
 ipアドレスをスタティックに振り分ける必要があるために次を実行します. `enp7s0` は環境によって変えてください.
 
 ```bash
@@ -31,12 +47,35 @@ rosrun fifth_robot_launcher openEth.sh enp7s0
 これは ubuntu16.04 版についてなので, 14.04で走らせたいときは eth0 / wlan0 と言った名前の振り分けにしてください.
 
 ## ソフト構成
-- navigation
-- gmappping
-- yp-spur(公式)
-- urg\_node(LRFドライバ)
+- 実機
+  - navigation
+    - trajectry_planner
+      -  move_base 
+        - local_planner 
+        - local_costmap 
+        - glabal_costmap 
+        - glabal_planner 
+        - recovery_behavior 
+  - gmappping
+  - yp-spur(公式)
+  - urg\_node(LRFドライバ)
 
-## 各ノードの提携図
+  - nmea_navsat_driver(予定)
+  - GPS-Odometory 結合者 (未実装)
+  - 高機能マップ提供者(未実装)
+  - 高機能マップ記録者(未実装)
+
+- シミュレータ
+  - navigation
+    - 上に同じ
+  - gmapping
+  - Gazebo
+   - diff\_drive\_controller
+   - gazebo_ros
+  - Gazebo_Plugin(LRFドライバ, diffdriveドライバなどのエミュレーションを担当)
+
+## 最小構成の各ノード提携図
+基礎的な部分は RO\S_wikiのmove_base(url)[http://wiki.ros.org/move_base] か Quittaの当該記事(url)[https://qiita.com/MoriKen/items/0b75ab291ab0d95c37c2]を参照してください
 Updated  10/8
 
 走行モード
@@ -46,6 +85,14 @@ Updated  10/8
 ![mapmaking](https://github.com/CIR-KIT/fifth_robot_pkg/blob/images/images/new_pkgs_drafting20161005-mapmaker.jpg)
 
 ## 詳細
+
+最小構成では, 
+ノード `amcl` が トピック `map`  `scan` `odometory` によって事故位置を推定し,
+何らかの形で与えられたGoalに向けて `move_base` が経路決定を行い, ドライバ `yp-spur`がその信号たる`cmd_vel` を解釈し実行, `odom` を報告
+
+move_base 内の costmap はパラメータによって挙動が変わる(要調整)
+yp-spurも挙動が変わる(要調整)
+
 - urg\_node
  + subscribing : none
  + publishing  : /Laserscan Sensor\_msgs/Laserscan
@@ -65,15 +112,15 @@ goal/waypoint提供者は外部にあり, third_partyにある
 `ros_waypoint_generator`と`goal_sender`がそれに当たります.
 構成に合わせてlaunchに登録してください.
 
-## メモ
-- セットアップについて,**yp-spur,ssmのインストール**を忘れずに行ってください: [公式](http://www.roboken.iit.tsukuba.ac.jp/platform/wiki/yp-spur/how-to-install)
+※更新の予定があります
+
+## インストール/セットアップ
+- セットアップについて, まずインストールシェルより **yp-spur,ssmのインストール**を忘れずに行ってください:さもなければmakeが通りません [公式](http://www.roboken.iit.tsukuba.ac.jp/platform/wiki/yp-spur/how-to-install)
 - contributer を募集しています
 
-~~Note : モータがなんか変だこれ...極性逆っぽいけれどソフト的に対応してるから注意.(可搬性はないのだ)~~
 モータはパラメタファイルによって修正済み
 
-## Installation
-`git clone` する際に `--recursive` を付ければsubmoduleごと引っ張ってこれます。
+当該レポジトリを `git clone` する際に `--recursive` を付けてsubmoduleごと引っ張ってこれます。
 
 catkin workspace のソース内(`src`)にクローンした場合はそのまま。
 それ以外のところにクローンした場合は`src`ディレクトリ上で`catkin_init_workspace`を行えばリポジトリをcatkin workspaceにできます。
@@ -94,6 +141,7 @@ ROS フル版なら入っています. Third\_Party内のいらない奴がが�
 そうすれば `catkin_make` が通るはずです.
 
 ## 起動(実機)
+
 1. 接続を確認します.(PC <-> spur, PC <-> PS3コン, PC <-> Hokuyo)
 2. ロボットの電源を入れます.
 3. ネットの接続を全て切断します.右上のアイコンを開いて切断を押してください.
@@ -159,7 +207,7 @@ terminal 2 にて
 
 これでmapあがり.
 
-### Simulation
+### Gazebo Simulation
 
 `Gazebo` について言うなら `fifth_robot_description/launch` にある `fifth_robot_gazebo.launch` が roslaunch でたち上がります.
 
@@ -167,7 +215,7 @@ terminal 2 にて
 
 `fifth_robot_2dnav`などをアップデートして使ってください
 
-### Simulated Map 作成
+### Gazebo Simulated Map 作成
 
 上に記したマップ作成との差異は, teleopのかわりにgazeboを立ち上げることのみです.
 
@@ -191,7 +239,7 @@ Willowで作った地図をここにおいておきます. 結構綺麗なもの
 
 <b> 重くなるのでマップデータやbagファイルをmasterやらに置かないでください. 現場で_絶対に_後悔します</b>
 
-### Simulated Map 作成
+### Gazebo Simulated Navigation 実行
 
 実機なしでもできるシミュレーション. navigation の運用練習やパラメータ調整を迅速化できるので是非身につけてください.
 
