@@ -216,9 +216,21 @@ Willowで作った地図をここにおいておきます. 結構綺麗なもの
 
 Fixed_Frame を /map に固定しなければ amcl が作動しません. 上ベインに標準で出ている 2D Pose Estimate をGazebo上の位置と勘案して設定します(rvizのビジュアル上でマウスを使いD&Dでにゅっとやります)
 
+![gazebo_nav_tuto1](https://github.com/CIR-KIT/fifth_robot_pkg/blob/images/images/gazebo_nav_instruction_1.png)
+
 壁のscanとmapが一致するのが目安となります. ※現実でやる時もmap上で勘案して設定します
 
-左側ベインのPoseをAddし, トピック( /move_base_simple/goal または /move_base/current_goal )を指定 <b> Unreliable オプションを指定(チェックボックス)した上で,</b>  上ベインに標準で出ている 2D Nav Goal を設定すると走り出します.
+![gazebo_nav_tuto2](https://github.com/CIR-KIT/fifth_robot_pkg/blob/images/images/gazebo_nav_instruction_2.png)
+
+左側ベインのPoseをAddし, トピック( /move_base_simple/goal または /move_base/current_goal )を指定 <b> Unreliable オプションを指定(チェックボックス)した上で,</b>  上ベインに標準で出ている 2D Nav Goal を設定すると走り出します. 緑色で表示されているのはpathで, global_planning の結果が表示されています.
+
+現在, local_plannningも表示されはしますがこれでは短すぎ, コストマップを更新する前に障害物に突っ込んでしまいます.
+
+コストマップは標準の状態ではパブリッシュされません. ROS-wikiの記述によると nav\_msgs/Gridcells の local\_costmap/inflated_obstacles トピックに障害物評価が表示されるそうなので, (要検証) 確認調整をおねがいします.
+
+![gazebo_nav_tuto2](https://github.com/CIR-KIT/fifth_robot_pkg/blob/images/images/gazebo_nav_instruction_3.png)
+
+goalについたら矢印の方に向いて止まります. その際, pointcloudが収束(ある程度矢印の向きが揃う)までフラフラしますが, これはデフォルトのパラメータ調整が不適なためです.
 
 
 ### よくある障害
