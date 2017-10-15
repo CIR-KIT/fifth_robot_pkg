@@ -3,11 +3,11 @@ CIRKIT所有ロボット5号機のリポジトリ
 
 ## 目次
 
- 1.  [ 特記事項 ](https://github.com/CIR-KIT/fifth_robot_pkg#特記事項])
- 2.  [ 仕様・寸法 ](https://github.com/CIR-KIT/fifth_robot_pkg#仕様・寸法)
- 3.  [ hokuyo-LRF(二次元測域センサ)の使い方 ](https://github.com/CIR-KIT/fifth_robot_pkg#hokuyo-LRF(二次元測域センサ)の使い方)
- 4.  [ソフト構成 ](https://github.com/CIR-KIT/fifth_robot_pkg#ソフト構成)
- 5.  [ 最小構成の各ノード提携図 ](https://github.com/CIR-KIT/fifth_robot_pkg#最小構成の各ノード提携)]
+ 1.  [ 特記事項 ](https://github.com/CIR-KIT/fifth_robot_pkg#特記事項)
+ 2.  [ 仕様と寸法 ](https://github.com/CIR-KIT/fifth_robot_pkg#仕様と寸法)
+ 3.  [ hokuyo-LRF二次元測域センサの使い方 ](https://github.com/CIR-KIT/fifth_robot_pkg#hokuyo-LRF二次元測域センサの使い方)
+ 4.  [ ソフト構成 ](https://github.com/CIR-KIT/fifth_robot_pkg#ソフト構成)
+ 5.  [ 最小構成の各ノード提携図 ](https://github.com/CIR-KIT/fifth_robot_pkg#最小構成の各ノード提携)
  6.  [ 詳細 ](https://github.com/CIR-KIT/fifth_robot_pkg#詳細)
  7.  [ インストール・セットアップ ](https://github.com/CIR-KIT/fifth_robot_pkg#インストール・セットアップ)
  8.  [ パラメタファイル ](https://github.com/CIR-KIT/fifth_robot_pkg#パラメタファイル)
@@ -26,7 +26,7 @@ CIRKIT所有ロボット5号機のリポジトリ
 - バスの電流不足による障害が発生している. バスパワーハブを使うか, 配線を工夫.
 - Github (https://github.com/CIR-KIT/fifth_robot_pkg )上の[wiki](https://github.com/CIR-KIT/fifth_robot_pkg/wiki) も参照してください
 
-## 仕様・寸法
+## 仕様と寸法
 - 開発環境は ROS Kinetic Kameを推奨
 - ハードウェア要件は i-cart mini に準ずるものとする: [公式](http://t-frog.com/products/icart_mini/)
   - 乾燥重量 8kg
@@ -36,7 +36,7 @@ CIRKIT所有ロボット5号機のリポジトリ
   - 車軸位置 フレーム前縁 30mm
   - 車軸長 400mm
 
-## hokuyo-LRF(二次元測域センサ)の使い方
+## hokuyo-LRF二次元測域センサの使い方
 ipアドレスをスタティックに振り分ける必要があるために次を実行します. `enp7s0` は環境によって変えてください.
 
 ```bash
