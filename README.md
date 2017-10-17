@@ -5,7 +5,7 @@ CIRKIT所有ロボット5号機のリポジトリ
 
  1.  [ 特記事項 ](https://github.com/CIR-KIT/fifth_robot_pkg#特記事項)
  2.  [ 仕様と寸法 ](https://github.com/CIR-KIT/fifth_robot_pkg#仕様と寸法)
- 3.  [ 北陽電気製レーザ式二次元測域センサの使い方 ](https://github.com/CIR-KIT/fifth_robot_pkg#北陽電気製レーザ式二次元測域センサの使い方)
+ 3.  [北陽電機製レーザ式二次元測域センサの使い方 ](https://github.com/CIR-KIT/fifth_robot_pkg#北陽電機製レーザ式二次元測域センサの使い方)
  4.  [ ソフト構成 ](https://github.com/CIR-KIT/fifth_robot_pkg#ソフト構成)
  5.  [ 最小構成の各ノード提携図 ](https://github.com/CIR-KIT/fifth_robot_pkg#最小構成の各ノード提携図)
  6.  [ 詳細 ](https://github.com/CIR-KIT/fifth_robot_pkg#詳細)
@@ -37,7 +37,7 @@ CIRKIT所有ロボット5号機のリポジトリ
   - 車軸位置 フレーム前縁 30mm
   - 車軸長 400mm
 
-## 北陽電気製レーザ式二次元測域センサの使い方
+## 北陽電機製レーザ式二次元測域センサの使い方
 ipアドレスをスタティックに振り分ける必要があるために次を実行します. `enp7s0` は環境によって変えてください.
 
 ```bash
