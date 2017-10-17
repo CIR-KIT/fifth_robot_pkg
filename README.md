@@ -18,6 +18,7 @@ CIRKIT所有ロボット5号機のリポジトリ
  13. [ GazeboSimulatedNavigation ](https://github.com/CIR-KIT/fifth_robot_pkg#gazebosimulatednavigation)
  14. [ よくある障害 ](https://github.com/CIR-KIT/fifth_robot_pkg#よくある障害)
  15. [ 補遺 ](https://github.com/CIR-KIT/fifth_robot_pkg#補遺)
+ 16. [ 参考 ](https://github.com/CIR-KIT/fifth_robot_pkg#参考)
 
 
 起動(実機)
@@ -339,3 +340,21 @@ goalについたら矢印の方に向いて止まります. その際, pointclou
     `sudo sixad -s`
 - リモコンの終了
     `sudo sixad --stop`
+### 参考
+move\_baseの概説. まずはここから<br>
+http://wiki.ros.org/move_base
+
+navigation stack を理解する
+MoriKen様の非常に有益なアルゴリズムから理解できるページ<br>
+https://qiita.com/MoriKen/items/0b75ab291ab0d95c37c2
+
+Using rviz with the Navigation Stack
+navigation周りは可視化する要素が多くややこしいので必要<br>
+http://wiki.ros.org/navigation/Tutorials/Using%20rviz%20with%20the%20Navigation%20Stack
+
+Basic Navigation Tuning Guide
+かなり有益. 挙動の実用的な調整に非常によい. ここからたどるリンクもよい<br>
+http://wiki.ros.org/navigation/Tutorials/Navigation%20Tuning%20Guide
+
+Navigation関連の議論と質問はこちら<br>
+https://github.com/CIR-KIT/fifth_robot_pkg/issues/79
