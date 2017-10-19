@@ -1,4 +1,3 @@
 #!/bin/sh
 
-sudo apt-get install ros-kinetic-joy-teleop
-
+sudo apt-get install -y ros-kinetic-teleop-tools
