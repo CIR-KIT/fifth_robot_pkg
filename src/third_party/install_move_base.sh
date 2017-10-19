@@ -1,2 +1,4 @@
+#!/bin/sh
+
 sudo apt update
-sudo apt install ros-kinetic-move-base*
+sudo apt install -y ros-kinetic-move-base*
