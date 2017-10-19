@@ -1,12 +1,12 @@
 #!/bin/sh
 
-#!/bin/sh
-
-if [ "$1" = "" ] ; then 
-   echo "Input your Etherner device connected to Hokuyo"
-   exit
+if [ $# -lt 1 ]; then
+  echo "AutoDetect-"
+  target=` ifconfig | grep enp | cut -d' ' -f1 `
+  echo $target
+else 
+  target=$1
 fi
 
-sudo ifconfig $1 192.168.0.15
+sudo ifconfig $target 192.168.0.15
 sudo route add default gw 192.168.0.1
-
