@@ -1,5 +1,5 @@
 <launch>
-   <node pkg="fifth_robot_launchar" type="shell/openUSB.sh" name="openUSB"/>
-   <include file="$(find fifth_robot_launcher)/launch/setup_robot.launch"/>
-<!--   <include file="$(find teleop_master)/launch/teleop_master.launch"/> -->
+   <node pkg="fifth_robot_launcher" type="openUSB.sh" name="openUSB"/>
+   <include file="$(find fifth_robot_launcher)/launch/setup_robot_barebone.launch"/>
+   <include file="$(find teleop_master)/launch/teleop_master.launch"/>
 </launch>

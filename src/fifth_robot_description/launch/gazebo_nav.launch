@@ -1,0 +1,16 @@
+<launch>
+
+   <!--GazeboシミュレーションのためDisable-->
+   <!--<node pkg="fifth_robot_launchar" type="shell/openUSB.sh" name="openUSB" />-->
+   <!-- <include file="$(find fifth_robot_launcher)/launch/setup_robot.launch" />-->
+
+   <include file="$(find fifth_robot_description)/launch/gazebo_map_serve.launch" />
+   <include file="$(find fifth_robot_description)/launch/move_base_gazebo.launch" />
+   
+       <remap from="laser_topic" to="/scan"/>
+       <remap from="/cmd_vel" to="/fifth_robot/diff_drive_controller/cmd_vel" />
+       <remap from="scan" to="$(arg laser_topic)" />
+   <!--GazeboシミュレーションのためDisable-->
+   <!--<include file="$(find fifth_robot_launcher)/launch/waypointServe.launch" />-->
+
+</launch>
