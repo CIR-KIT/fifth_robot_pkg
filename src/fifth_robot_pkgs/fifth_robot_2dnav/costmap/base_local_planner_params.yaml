@@ -4,8 +4,18 @@ TrajectoryPlannerROS:
   max_rotational_vel: 1.0
   min_in_place_rotational_vel: 0.4
 
+#  yaw_goal_tolerance: 3.0
+  xy_goal_tolerance: 0.2
+#  latch_goal_tolerance: true
+
   acc_lim_th: 3.2
   acc_lim_x: 2.5
   acc_lim_y: 2.5
-
-  holonomic_robot: true
+  publish_cost_grid_pc: true
+  path_distance_bias: 16.0
+  goal_distance_bias: 12.0
+  occdist_scale: 40.00
+  heading_scoring_timestep: 3
+  stop_time_buffer: 1.0
+  
+  holonomic_robot: false
