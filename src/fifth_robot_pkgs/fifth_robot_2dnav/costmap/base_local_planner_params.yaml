@@ -8,4 +8,18 @@ TrajectoryPlannerROS:
   acc_lim_x: 2.5
   acc_lim_y: 2.5
 
-  holonomic_robot: true
+  # fifth_robot is not a holonomic robot
+  holonomic_robot: false
+
+  yaw_goal_tolerance: 0.52
+  xy_goal_tolerance: 0.50
+
+  sim_time: 5.0
+  # Length of view when rotate
+  heading_lookahead: 20.0
+  # Use method of Dynamic Window Approach
+  dwa: true
+
+  # Show cost map
+  publish_cost_grid_pc: true
+  global_frame_id: odom
