@@ -1,5 +1,5 @@
 global_costmap:
   global_frame: /map
   robot_base_frame: base_link
-  update_frequency: 30
+  update_frequency: 10
   static_map: true
