@@ -1,13 +1,14 @@
 obstacle_range: 12.0
-raytrace_range: 30.0
+raytrace_range: 15.0
 footprint: [[0.15, 0.3], [0.15, -0.3], [-0.35, -0.3], [-0.35, 0.3]]
-inflation_radius: 3.0
+inflation_radius: 1.0
+cost_scaling_factor: 3.0
 
 rigin_z: 0.0
 z_resolution: 0.2
-z_voxels: 2
+z_voxels: 0.2
 publish_voxel_map: false
-max_obstacle_height: 0.6
+max_obstacle_height: 0.3
 min_obstacle_height: 0.0
 
 observation_sources: laser_scan_sensor
