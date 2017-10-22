@@ -3,3 +3,5 @@ global_costmap:
   robot_base_frame: base_link
   update_frequency: 10
   static_map: true
+  rolling_window: false
+  

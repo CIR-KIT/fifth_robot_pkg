@@ -18,8 +18,9 @@ TrajectoryPlannerROS:
   # Length of view when rotate
   heading_lookahead: 20.0
   # Use method of Dynamic Window Approach
-  dwa: true
+  dwa: false
 
   # Show cost map
   publish_cost_grid_pc: true
   global_frame_id: odom
+  
