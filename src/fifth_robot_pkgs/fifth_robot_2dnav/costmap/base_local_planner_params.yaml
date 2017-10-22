@@ -4,7 +4,7 @@ TrajectoryPlannerROS:
   max_rotational_vel: 1.0
   min_in_place_rotational_vel: 0.4
 
-  acc_lim_th: 3.2
+  acc_lim_theta: 3.2
   acc_lim_x: 2.5
   acc_lim_y: 2.5
 
@@ -25,6 +25,6 @@ TrajectoryPlannerROS:
   publish_cost_grid_pc: true
   global_frame_id: odom
 
-  p_dist_scale: 0.6
-  g_dist_scale: 0.8
+  pdist_scale: 0.6
+  gdist_scale: 0.8
   occdist_scale: 0.05
