@@ -4,7 +4,7 @@ TrajectoryPlannerROS:
   max_rotational_vel: 1.0
   min_in_place_rotational_vel: 0.4
 
-  acc_lim_th: 3.2
+  acc_lim_theta: 3.2
   acc_lim_x: 2.5
   acc_lim_y: 2.5
 
@@ -14,13 +14,17 @@ TrajectoryPlannerROS:
   yaw_goal_tolerance: 0.52
   xy_goal_tolerance: 0.50
 
-  sim_time: 5.0
+  sim_time: 2.0
+  controller_frequency: 10.0
   # Length of view when rotate
-  heading_lookahead: 20.0
+  heading_lookahead: 5.0
   # Use method of Dynamic Window Approach
-  dwa: false
+  dwa: true
 
   # Show cost map
   publish_cost_grid_pc: true
   global_frame_id: odom
-  
+
+  pdist_scale: 0.6
+  gdist_scale: 0.8
+  occdist_scale: 0.05
