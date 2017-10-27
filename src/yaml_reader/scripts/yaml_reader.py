@@ -6,15 +6,12 @@ import rospy
 
 from std_msgs.msg import String
 
-FILEIN_DICT = "waypoints.yaml" #Rename!
-
-f = open(FILEIN_DICT, 'r')
-waypoints = yaml.load(f)
-f.close()
-
 def pubData():
     pub = rospy.Publisher('data', String, queue_size=10)
     rospy.init_node('pubData', anonymous=True)
+    f = open(rospy.get_param('path', 'waypoints.yaml'), 'r')
+    waypoints = yaml.load(f)
+    f.close()
     r = rospy.Rate(10)
     while not rospy.is_shutdown():
         pub.publish(waypoints)
