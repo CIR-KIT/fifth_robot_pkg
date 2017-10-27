@@ -4,6 +4,7 @@
   <version>0.1.0</version>
   <description>The yamlReader package</description>
 
+  <maintainer email="o111027y@mail.kyutech.jp">Doi Yusuke</maintainer>
   <maintainer email="p111026h@mail.kyutech.jp">yasu16</maintainer>
   <license>BSD</license>
   <url type="website">http://cir-kit.github.io/</url>
@@ -11,8 +12,5 @@
 
   <buildtool_depend>catkin</buildtool_depend>
   <depend>rospy</depend>
-  <depend>std_msgs</depend>
-
-  <export>
-  </export>
+  <depend>goal_sender_msgs</depend>
 </package>

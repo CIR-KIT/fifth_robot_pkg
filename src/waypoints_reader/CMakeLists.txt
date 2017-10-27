@@ -4,6 +4,7 @@ project(waypoints_reader)
 find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
+  goal_sender_msgs
 )
 
 catkin_package()
