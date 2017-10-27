@@ -1,4 +1,0 @@
-goal_sender_msgs/Waypoint[] waypoints
----
-bool success
-string message
