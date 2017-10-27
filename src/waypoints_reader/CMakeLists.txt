@@ -6,9 +6,4 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
 )
 
-catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES yamlReader
-#  CATKIN_DEPENDS rospy std_msgs
-#  DEPENDS system_lib
-)
+catkin_package()
