@@ -2,8 +2,9 @@
 # coding UTF-8
 
 import yaml
-import rospy
 
+import rospy
+from goal_sender_msgs.srv import ApplyGoals
 from goal_sender_msgs.msg import GoalSequence
 from goal_sender_msgs.msg import Waypoint
 
@@ -13,10 +14,8 @@ def read_yaml(path):
     f.close()
     return waypoints
 
-def pub_data():
-    pub = rospy.Publisher('goal_sequence', GoalSequence, queue_size=10)
-    rospy.init_node('yaml_reader', anonymous=True)
-    msg = GoalSequence()
+def get_waypoints():
+    sequence = GoalSequence()
     for waypoint_data in read_yaml(rospy.get_param('~path', 'waypoints.yaml')):
         waypoint = Waypoint(name = waypoint_data.get('name', ""),
                             x = waypoint_data['x'], # required
@@ -24,11 +23,16 @@ def pub_data():
                             radius = waypoint_data['radius'], # required
                             importance = waypoint_data.get('importance', 0),
                             drag = waypoint_data.get('drag', 0))
-        msg.waypoints.append(waypoint)
-    pub.publish(msg)
+        sequence.waypoints.append(waypoint)
+    return sequence
 
 if __name__ == '__main__':
+    rospy.init_node('yaml_reader', anonymous=True)
+    goal_sequence = get_waypoints()
+    rospy.wait_for_service('apply_goals')
     try:
-        pub_data()
-    except rospy.ROSInterruptException:
-        pass
+        apply_goals = rospy.ServiceProxy('apply_goals', ApplyGoals)
+        resp = apply_goals(goal_sequence)
+        print resp.message
+    except rospy.ServiceException, e:
+        print e
