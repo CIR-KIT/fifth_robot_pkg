@@ -18,12 +18,12 @@ def pub_data():
     rospy.init_node('yaml_reader', anonymous=True)
     msg = GoalSequence()
     for waypoint_data in read_yaml(rospy.get_param('~path', 'waypoints.yaml')):
-        waypoint = Waypoint(name = waypoint_data['name'],
-                            x = waypoint_data['x'],
-                            y = waypoint_data['y'],
-                            importance = waypoint_data['importance'],
-                            radius = waypoint_data['radius'],
-                            drag = waypoint_data['drag'])
+        waypoint = Waypoint(name = waypoint_data.get('name', ""),
+                            x = waypoint_data['x'], # required
+                            y = waypoint_data['y'], # required
+                            radius = waypoint_data['radius'], # required
+                            importance = waypoint_data.get('importance', 0),
+                            drag = waypoint_data.get('drag', 0))
         msg.waypoints.append(waypoint)
     pub.publish(msg)
 
