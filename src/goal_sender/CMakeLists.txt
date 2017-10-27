@@ -42,4 +42,3 @@ add_executable(goal_sender_node src/goal_sender_node.cpp)
 target_link_libraries(goal_sender_node
   ${catkin_LIBRARIES}
 )
-
