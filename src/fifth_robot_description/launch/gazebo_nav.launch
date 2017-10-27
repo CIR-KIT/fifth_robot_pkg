@@ -9,7 +9,7 @@
    
        <remap from="laser_topic" to="/scan"/>
        <remap from="/cmd_vel" to="/fifth_robot/diff_drive_controller/cmd_vel" />
-       <remap from="scan" to="$(arg laser_topic)" />
+       <remap from="scan" to="$(arg laser_topic)"/>
    <!--GazeboシミュレーションのためDisable-->
    <!--<include file="$(find fifth_robot_launcher)/launch/waypointServe.launch" />-->
    <node name="rviz" pkg="rviz" type="rviz" args="~/.rviz/default.rviz"/>
