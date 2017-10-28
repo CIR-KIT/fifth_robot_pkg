@@ -27,6 +27,7 @@ public:
   bool operator()(goal_sender_msgs::ApplyGoals::Request& req,
                   goal_sender_msgs::ApplyGoals::Response& res){
     sequence_ = req.goal_sequence;
+    now_goal_ = sequence_.waypoints.begin();
     res.success = true;
     res.message = "update waypoints";
     return true;
@@ -35,32 +36,32 @@ public:
   const geometry_msgs::Point& point() const
   {
     if (is_end()) throw std::logic_error {"range error: Please check is_end() before point()"};
-    return now_goal->position;
+    return now_goal_->position;
   }
 
   const geometry_msgs::Quaternion& quaternion() const
   {
     if (is_end()) throw std::logic_error {"range error: Please check is_end() before quaternion()"};
-    return now_goal->oriantation;
+    return now_goal_->orientation;
   }
 
   double radius() const
   {
     if (is_end()) throw std::logic_error {"range error: Please check is_end() before radius()"};
-    return now_goal->radius;
+    return now_goal_->radius;
   }
 
   bool next()
   {
     if (is_end()) throw std::logic_error {"range error: Please check is_end() before next()"}; // wrong way.
-    if (++now_goal == sequence_.waypoints.end())
+    if (++now_goal_ == sequence_.waypoints.end())
       return false; // correct way: this is last one.
     return true;
   }
 
   bool is_end() const noexcept
   {
-    return sequence_.waypoints.end() == now_goal;
+    return sequence_.waypoints.end() == now_goal_;
   }
 
   explicit operator bool() noexcept
@@ -72,12 +73,12 @@ public:
   const goal_sender_msgs::Waypoint& get() const
   {
     if (is_end()) throw std::logic_error {"range error: Please check is_end() before get()"};
-    return *now_goal;
+    return *now_goal_;
   }
 
 private:
   goal_sender_msgs::GoalSequence sequence_;
-  decltype(sequence_.waypoints)::iterator now_goal;
+  decltype(sequence_.waypoints)::iterator now_goal_;
 };
 
 /**
