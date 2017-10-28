@@ -36,3 +36,5 @@ if __name__ == '__main__':
         print resp.message
     except rospy.ServiceException, e:
         print e
+    except rospy.ROSInterruptException:
+        pass
