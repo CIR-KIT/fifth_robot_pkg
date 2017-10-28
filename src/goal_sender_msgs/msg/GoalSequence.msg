@@ -1,1 +1,1 @@
-geometry_msgs/Pose[] waypoints
+goal_sender_msgs/Waypoint[] waypoints
