@@ -48,9 +48,14 @@ public:
     return true;
   }
 
-  bool is_end() const
+  bool is_end() const noexcept
   {
     return sequence_.waypoints.end() == now_goal;
+  }
+
+  explicit operator bool() noexcept
+  {
+    return !is_end();
   }
 
   [[deprecated]]
@@ -71,7 +76,7 @@ private:
 class TfPositionManager
 {
 public:
-  TfPositionManager(tf2_ros::Buffer& tfBuffer)
+  explicit TfPositionManager(tf2_ros::Buffer& tfBuffer) // buffer is lvalue
     : buffer_ {tfBuffer}
   {
   }
@@ -86,7 +91,7 @@ public:
   }
 
 private:
-  tf2_ros::Buffer& buffer_;
+  const tf2_ros::Buffer& buffer_;
 };
 
 class GoalSender
@@ -101,7 +106,7 @@ public:
 
   void once()
   {
-    if (point_manager_.is_end())
+    if (!point_manager_)
       return; // no work
     if (is_reach()) {
       point_manager_.next();
