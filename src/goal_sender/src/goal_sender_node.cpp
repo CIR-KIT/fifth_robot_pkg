@@ -4,6 +4,7 @@
 #include <ros/ros.h>
 #include <actionlib/client/simple_action_client.h>
 #include <geometry_msgs/Point.h>
+#include <geometry_msgs/Quaternion.h>
 #include <geometry_msgs/TransformStamped.h>
 #include <goal_sender_msgs/ApplyGoals.h>
 #include <goal_sender_msgs/GoalSequence.h>
