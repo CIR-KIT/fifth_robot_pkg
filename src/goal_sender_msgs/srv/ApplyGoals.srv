@@ -1,4 +1,4 @@
-goal_sender_msgs/GoalSequence[] goal_sequence
+goal_sender_msgs/GoalSequence goal_sequence
 ---
 bool success
 string message
