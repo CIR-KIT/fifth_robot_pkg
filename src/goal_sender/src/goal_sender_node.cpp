@@ -40,7 +40,7 @@ public:
 
   const geometry_msgs::Quaternion& quaternion() const
   {
-    if (is_end()) throw std::logic_error {"range error: Please check is_end() before radius()"};
+    if (is_end()) throw std::logic_error {"range error: Please check is_end() before quaternion()"};
     return now_goal->oriantation;
   }
 
