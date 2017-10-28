@@ -35,10 +35,13 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-## Declare a C++ executable
 add_executable(goal_sender_node src/goal_sender_node.cpp)
-
-## Specify libraries to link a library or executable target against
 target_link_libraries(goal_sender_node
+  ${catkin_LIBRARIES}
+)
+
+## Declare a C++ executable
+add_executable(csv_goal_sender_node src/csv_goal_sender_node.cpp)
+target_link_libraries(csv_goal_sender_node
   ${catkin_LIBRARIES}
 )
