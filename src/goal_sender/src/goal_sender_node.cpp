@@ -2,10 +2,14 @@
 #include <string>
 
 #include <ros/ros.h>
+#include <actionlib/client/simple_action_client.h>
 #include <geometry_msgs/Point.h>
 #include <geometry_msgs/TransformStamped.h>
 #include <goal_sender_msgs/ApplyGoals.h>
 #include <goal_sender_msgs/GoalSequence.h>
+#include <move_base_msgs/MoveBaseAction.h>
+#include <move_base_msgs/MoveBaseGoal.h>
+#include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 #include <tf2_ros/transform_listener.h>
 
 inline double squaring_distance(const geometry_msgs::Point& a, const geometry_msgs::Point& b) {
@@ -32,6 +36,14 @@ public:
   {
     if (is_end()) throw std::logic_error {"range error: Please check is_end() before point()"};
     return now_goal->position;
+  }
+
+  geometry_msgs::Quaternion quaternion() const
+  {
+    if (is_end()) throw std::logic_error {"range error: Please check is_end() before radius()"};
+    geometry_msgs::Quaternion q {};
+    tf2::convert(tf2::Quaternion::getIdentity(), q); // XXX: now waypoint havn't orientation
+    return q;
   }
 
   double radius() const
@@ -97,9 +109,13 @@ private:
 class GoalSender
 {
 public:
-  GoalSender(WaypointManager point_manager,
+  using MoveBaseActionClient = actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction>;
+
+  GoalSender(WaypointManager& point_manager,
+             MoveBaseActionClient& move_base_client,
              TfPositionManager lookupper)
     : point_manager_ {point_manager},
+      move_base_client_ {move_base_client},
       lookupper_ {lookupper}
   {
   }
@@ -110,6 +126,7 @@ public:
       return; // no work
     if (is_reach()) {
       point_manager_.next();
+      send_goal();
     }
   }
 
@@ -128,7 +145,24 @@ private:
     return false;
   }
 
-  WaypointManager point_manager_;
+  void send_goal() const
+  {
+    if (!point_manager_) { // finish waypoint
+      move_base_client_.cancelGoal(); // cancel moveing
+      ROS_INFO("Finish waypoints");
+      return;
+    }
+
+    move_base_msgs::MoveBaseGoal goal;
+    goal.target_pose.pose.position = point_manager_.point();
+    goal.target_pose.pose.orientation = point_manager_.quaternion();
+    goal.target_pose.header.frame_id = "/map";
+    goal.target_pose.header.stamp = ros::Time::now();
+    move_base_client_.sendGoal(goal); // send waypoint
+  }
+
+  WaypointManager& point_manager_;
+  MoveBaseActionClient& move_base_client_;
   TfPositionManager lookupper_;
 };
 
@@ -147,7 +181,10 @@ int main(int argc, char** argv)
   tf2_ros::TransformListener tfListener {tfBuffer};
   TfPositionManager lookupper {tfBuffer};
 
-  GoalSender goal_sender {point_manager, lookupper};
+  GoalSender::MoveBaseActionClient move_base_client {"move_base", true};
+  move_base_client.waitForServer();
+
+  GoalSender goal_sender {point_manager, move_base_client, lookupper};
 
   ros::Rate rate {10};
   while (ros::ok()) {

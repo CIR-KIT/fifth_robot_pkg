@@ -8,6 +8,9 @@ find_package(catkin REQUIRED COMPONENTS
   goal_sender_msgs
   move_base_msgs
   tf
+  tf2
+  tf2_ros
+  tf2_geometry_msgs
 )
 
 ###################################
@@ -15,7 +18,16 @@ find_package(catkin REQUIRED COMPONENTS
 ###################################
 catkin_package(
 #  INCLUDE_DIRS include
-  CATKIN_DEPENDS roscpp actionlib geometry_msgs goal_sender_msgs move_base_msgs tf
+  CATKIN_DEPENDS
+    roscpp
+    actionlib
+    geometry_msgs
+    goal_sender_msgs
+    move_base_msgs
+    tf
+    tf2
+    tf2_ros
+    tf2_geometry_msgs
 )
 
 # check c++11 / c++0x
