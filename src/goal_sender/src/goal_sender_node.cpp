@@ -22,6 +22,9 @@ class WaypointManager
 public:
   bool operator()(goal_sender_msgs::ApplyGoals::Request& req,
                   goal_sender_msgs::ApplyGoals::Response& res){
+    sequence_ = req.goal_sequence;
+    res.success = true;
+    res.message = "update waypoints";
     return true;
   }
 
