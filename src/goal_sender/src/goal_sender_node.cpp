@@ -25,6 +25,12 @@ inline double squaring_distance(const geometry_msgs::Point& a, const geometry_ms
 class WaypointManager
 {
 public:
+  WaypointManager()
+    : sequence_ {},
+      now_goal_ {sequence_.waypoints.end()}
+  {
+  }
+
   bool operator()(goal_sender_msgs::ApplyGoals::Request& req,
                   goal_sender_msgs::ApplyGoals::Response& res){
     sequence_ = req.goal_sequence;
