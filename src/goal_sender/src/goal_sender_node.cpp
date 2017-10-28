@@ -38,12 +38,10 @@ public:
     return now_goal->position;
   }
 
-  geometry_msgs::Quaternion quaternion() const
+  const geometry_msgs::Quaternion& quaternion() const
   {
     if (is_end()) throw std::logic_error {"range error: Please check is_end() before radius()"};
-    geometry_msgs::Quaternion q {};
-    tf2::convert(tf2::Quaternion::getIdentity(), q); // XXX: now waypoint havn't orientation
-    return q;
+    return now_goal->oriantation;
   }
 
   double radius() const
