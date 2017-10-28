@@ -197,5 +197,6 @@ int main(int argc, char** argv)
   while (ros::ok()) {
     ros::spinOnce();
     goal_sender.once();
+    rate.sleep();
   }
 }
