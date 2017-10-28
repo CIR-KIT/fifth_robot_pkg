@@ -15,9 +15,7 @@
   <depend>roscpp</depend>
   <depend>actionlib</depend>
   <depend>geometry_msgs</depend>
+  <depend>goal_sender_msgs</depend>
   <depend>move_base_msgs</depend>
   <depend>tf</depend>
-
-  <export>
-  </export>
 </package>

@@ -9,6 +9,8 @@
 #include <string>
 #include <utility>
 #include <vector>
+#include <fstream>
+#include <sstream>
 
 geometry_msgs::Pose getFramePose(const std::string&, const std::string&);
 double calcDistance(const geometry_msgs::Pose&, const geometry_msgs::Pose&);
