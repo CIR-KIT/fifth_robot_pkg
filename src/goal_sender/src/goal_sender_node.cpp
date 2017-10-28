@@ -179,9 +179,10 @@ int main(int argc, char** argv)
 
   WaypointManager point_manager {};
   ros::ServiceServer srv {
-      nh.advertiseService<goal_sender_msgs::ApplyGoals::Request,
-                          goal_sender_msgs::ApplyGoals::Response>(
-          "apply_goals", point_manager)};
+      nh.advertiseService<
+          goal_sender_msgs::ApplyGoals::Request,
+          goal_sender_msgs::ApplyGoals::Response>(
+              "apply_goals", point_manager)};
 
   tf2_ros::Buffer tfBuffer;
   tf2_ros::TransformListener tfListener {tfBuffer};
