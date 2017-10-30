@@ -287,6 +287,8 @@ goalについたら矢印の方に向いて止まります. その際, pointclou
  - gazeboが立ち上がらない
    - gazeboは非常に重たいので少し待ってください.
    - クラッシュしたgazebo-guiやgzclientがゾンビになってることがあります, `ps -A` でPIDを見つけて `ps kill -KILL {PID}`で終了.
+   - test.launch に入っているwillow Garage なんかはモデルといい, gazeboを素で立ち上げてからロード(左ベイン→Insert→heep://gazebosim.org/mod...ってかいてるとこから)することができます.
+     - 環境によっては初回ロードをlaunchファイルから行うと失敗することがありますが, まずempty_worldを パッケージ ros_gazebo から実行して, そこで一回対象のモデルをロードすると以降うまく行きます.
 
  - yp-spur制御基板(二軸モータドライバ TF-2MD3-R6) と通信できない
    - 電源ボードとの接触不良

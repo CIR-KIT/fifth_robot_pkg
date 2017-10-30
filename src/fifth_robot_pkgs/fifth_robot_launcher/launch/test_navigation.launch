@@ -1,0 +1,7 @@
+<launch>
+  <include file="$(find fifth_robot_launcher)/launch/setup_robot.launch" />
+  <arg name="map_file" default="$(find fifth_robot_map)/map/factory.yaml" />
+  <node pkg="map_server" type="map_server" name="map_server" args="$(arg map_file)" />
+  <include file="$(find fifth_robot_2dnav)/launch/move_base.launch" />
+  <node pkg="rviz" type="rviz" name="visualizer" args="-d $(find fifth_robot_launcher)/rviz/tanaco.rviz" />
+</launch>
