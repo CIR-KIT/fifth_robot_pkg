@@ -20,7 +20,7 @@
 #  
 #  holonomic_robot: false
   
-  TrajectoryPlannerROS:
+TrajectoryPlannerROS:
   max_vel_x: 0.45
   min_vel_x: 0.2
   max_rotational_vel: 1.0
