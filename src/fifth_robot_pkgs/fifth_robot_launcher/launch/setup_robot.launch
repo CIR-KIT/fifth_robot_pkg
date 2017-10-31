@@ -14,5 +14,5 @@
     <param name="publish_multiecho" value="true" />
   </node>
   <!-- You can adjust the pose of laser-rangefinder here. Order of values: x y z yaw pitch roll. -->
-  <node pkg="tf" type="static_transform_publisher" name="laser_transform" args="$(optenv laserpos 0.2 0 0 0 0 0) base_link laser 100" />
+  <node pkg="tf" type="static_transform_publisher" name="laser_transform" args="$(optenv laserpos 0 0 0.41 0 0 0) base_link laser 100" />
 </launch>
