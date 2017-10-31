@@ -8,5 +8,8 @@ else
   target=$1
 fi
 
-sudo ifconfig $target 192.168.0.15
+
+ip_address="192.168.0.15"
+
+sudo ifconfig $target $ip_address
 sudo route add default gw 192.168.0.1
