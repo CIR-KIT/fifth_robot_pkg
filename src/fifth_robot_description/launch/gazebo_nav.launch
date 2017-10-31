@@ -12,6 +12,6 @@
        <remap from="scan" to="$(arg laser_topic)"/>
    <!--GazeboシミュレーションのためDisable-->
    <!--<include file="$(find fifth_robot_launcher)/launch/waypointServe.launch" />-->
-   <node name="rviz" pkg="rviz" type="rviz" args="~/.rviz/default.rviz"/>
+   <node name="rviz" pkg="rviz" type="rviz" args="$(find fifth_robot_launcher)/rviz/gazebo.rviz"/>
 
 </launch>
