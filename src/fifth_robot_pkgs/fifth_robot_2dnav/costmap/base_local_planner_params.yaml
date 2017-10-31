@@ -1,12 +1,13 @@
 TrajectoryPlannerROS:
   max_vel_x: 0.45
-  min_vel_x: 0.2
-  max_rotational_vel: 1.0
+  min_vel_x: -0.45
+  max_vel_theta: 1.0
+  min_vel_theta: -1.0
+ 
   min_in_place_rotational_vel: 0.4
 
-  acc_lim_theta: 3.2
   acc_lim_x: 2.5
-  acc_lim_y: 2.5
+  acc_lim_theta: 3.2
 
   # fifth_robot is not a holonomic robot
   holonomic_robot: false
@@ -14,8 +15,8 @@ TrajectoryPlannerROS:
   yaw_goal_tolerance: 0.52
   xy_goal_tolerance: 0.50
 
-  sim_time: 2.0
-  controller_frequency: 10.0
+  sim_time: 4.0
+  controller_frequency: 5.0
   # Length of view when rotate
   heading_lookahead: 5.0
   # Use method of Dynamic Window Approach
