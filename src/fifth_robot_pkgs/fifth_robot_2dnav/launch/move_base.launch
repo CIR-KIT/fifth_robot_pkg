@@ -3,10 +3,14 @@
   <include file="$(find fifth_robot_2dnav)/launch/amcl_diff.launch" />
  
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-    <rosparam file="$(find fifth_robot_2dnav)/costmap/costmap_common_params.yaml" command="load" ns="global_costmap" />
-    <rosparam file="$(find fifth_robot_2dnav)/costmap/costmap_common_params.yaml" command="load" ns="local_costmap" />
-    <rosparam file="$(find fifth_robot_2dnav)/costmap/local_costmap_params.yaml" command="load" />
-    <rosparam file="$(find fifth_robot_2dnav)/costmap/global_costmap_params.yaml" command="load" />
-    <rosparam file="$(find fifth_robot_2dnav)/costmap/base_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find fifth_robot_2dnav)/config/move_base_params.yaml" command="load" />
+    
+    <rosparam file="$(find fifth_robot_2dnav)/config/costmap/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find fifth_robot_2dnav)/config/costmap/costmap_common_params.yaml" command="load" ns="local_costmap" />
+
+    <rosparam file="$(find fifth_robot_2dnav)/config/costmap/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find fifth_robot_2dnav)/config/costmap/global_costmap_params.yaml" command="load" />
+
+    <rosparam file="$(find fifth_robot_2dnav)/config/planner/base_local_planner_params.yaml" command="load" />
   </node>
 </launch>

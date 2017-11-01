@@ -1,5 +1,5 @@
 <launch>
-  <arg name="laser_topic" default="/most_intense" />
+  <arg name="laser_topic" default="most_intense" />
   <node pkg="amcl" type="amcl" name="amcl" output="screen">
     <remap from="scan" to="$(arg laser_topic)" />
     <!-- Publish scans from best pose at a max of 10 Hz -->
@@ -12,11 +12,11 @@
     <param name="max_particles" value="5000" />
     <param name="kld_err" value="0.05" />
     <param name="kld_z" value="0.99" />
-    <param name="odom_alpha1" value="0.02" />
-    <param name="odom_alpha2" value="0.02" />
+    <param name="odom_alpha1" value="0.3" />
+    <param name="odom_alpha2" value="0.3" />
     <!-- translation std dev, m -->
-    <param name="odom_alpha3" value="0.02" />
-    <param name="odom_alpha4" value="0.02" />
+    <param name="odom_alpha3" value="0.3" />
+    <param name="odom_alpha4" value="0.3" />
     <param name="laser_z_hit" value="0.5" />
     <param name="laser_z_short" value="0.05" />
     <param name="laser_z_max" value="0.05" />
