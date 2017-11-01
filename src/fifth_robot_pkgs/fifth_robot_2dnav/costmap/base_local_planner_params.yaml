@@ -26,7 +26,7 @@ TrajectoryPlannerROS:
 
   # Show cost map
   publish_cost_grid_pc: true
-  global_frame_id: odom
+  global_frame_id: /map
 
   pdist_scale: 0.6
   gdist_scale: 0.8
