@@ -1,8 +1,8 @@
 TrajectoryPlannerROS:
   max_vel_x: 0.45
   min_vel_x: 0.2
-  max_vel_theta: 1.0
-  min_vel_theta: -1.0
+  max_vel_theta: 3.0
+  min_vel_theta: -3.0
  
   min_in_place_rotational_vel: 0.4
 
@@ -18,16 +18,16 @@ TrajectoryPlannerROS:
   sim_time: 4.0
   controller_frequency: 5.0
   # Length of view when rotate
-  heading_lookahead: 5.0
+  heading_lookahead: 15.0
   # Use method of Dynamic Window Approach
-  heading_scoring: false
+  heading_scoring: true
   heading_scoring_timestamp: 0.5
   dwa: true
 
   # Show cost map
   publish_cost_grid_pc: true
-  global_frame_id: /map
+  global_frame_id: odom
 
   pdist_scale: 0.6
   gdist_scale: 0.8
-  occdist_scale: 0.05
+  occdist_scale: 0.01

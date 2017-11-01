@@ -6,7 +6,7 @@ planner_frequency: 4.0
 shutdown_costmaps: true
 
 recovery_behavior_enabled: true
-max_planning_retries: 5
+max_planning_retries: 8
 clearing_rotation_allowed: true
 conservative_reset_dist: 6.0
 
