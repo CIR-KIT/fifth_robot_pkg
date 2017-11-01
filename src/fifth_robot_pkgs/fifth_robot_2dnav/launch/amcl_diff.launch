@@ -1,5 +1,5 @@
 <launch>
-  <arg name="laser_topic" default="/most_intense" />
+  <arg name="laser_topic" default="most_intense" />
   <node pkg="amcl" type="amcl" name="amcl" output="screen">
     <remap from="scan" to="$(arg laser_topic)" />
     <!-- Publish scans from best pose at a max of 10 Hz -->
