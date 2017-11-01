@@ -5,8 +5,12 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   actionlib
   geometry_msgs
+  goal_sender_msgs
   move_base_msgs
   tf
+  tf2
+  tf2_ros
+  tf2_geometry_msgs
 )
 
 ###################################
@@ -14,9 +18,16 @@ find_package(catkin REQUIRED COMPONENTS
 ###################################
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES goal_sender
-  CATKIN_DEPENDS roscpp actionlib geometry_msgs move_base_msgs tf
-#  DEPENDS system_lib
+  CATKIN_DEPENDS
+    roscpp
+    actionlib
+    geometry_msgs
+    goal_sender_msgs
+    move_base_msgs
+    tf
+    tf2
+    tf2_ros
+    tf2_geometry_msgs
 )
 
 # check c++11 / c++0x
@@ -35,11 +46,15 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-## Declare a C++ executable
 add_executable(goal_sender_node src/goal_sender_node.cpp)
-
-## Specify libraries to link a library or executable target against
+add_dependencies(goal_sender_node ${catkin_EXPORTED_TARGETS})
 target_link_libraries(goal_sender_node
   ${catkin_LIBRARIES}
 )
 
+## Declare a C++ executable
+add_executable(csv_goal_sender_node src/csv_goal_sender_node.cpp)
+add_dependencies(csv_goal_sender_node ${catkin_EXPORTED_TARGETS})
+target_link_libraries(csv_goal_sender_node
+  ${catkin_LIBRARIES}
+)
