@@ -10,3 +10,6 @@
 [submodule "src/third_party/ros_waypoint_generator"]
 	path = src/third_party/ros_waypoint_generator
 	url = git@github.com:AriYu/ros_waypoint_generator.git
+[submodule "src/third_party/urg_node"]
+	path = src/third_party/urg_node
+	url = git@github.com:yasu80/urg_node.git
