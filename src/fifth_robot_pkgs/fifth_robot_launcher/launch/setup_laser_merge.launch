@@ -3,7 +3,7 @@
   <node pkg="ira_laser_tools" name="laserscan_double_merger" type="laserscan_multi_merger" output="screen" >
     <param name="destination_frame" value="merged_laser_link" />
 	<param name="scan_destination_topic" value="scan_multi" />
-    <param name="laserscan_topics" value="rear_laser/rear_scan front_laser/front_scan" />
+    <param name="laserscan_topics" value="/rear_scan /front_scan" />
     <param name="angle_max" type="double" value="3.14" />
     <param name="angle_min" type="double" value="-3.14" />
   </node>
