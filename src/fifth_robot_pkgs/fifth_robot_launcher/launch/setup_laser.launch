@@ -1,5 +1,5 @@
 <launch>
-  <node pkg="tf" type="static_transform_publisher" name="front_laser_tf_broatcaster"
+  <node pkg="tf" type="static_transform_publisher" name="front_laser_tf_broadcaster"
         args="$(optenv laserpos 0 0 0.41 0 0 0) base_link front_laser_link 100" />
   <node pkg="tf" type="static_transform_publisher" name="rear_laser_tf_broadcaster"
         args="$(optenv laserpos -0.28 0 0.41 3.14 0 0) base_link rear_laser_link  100" />
