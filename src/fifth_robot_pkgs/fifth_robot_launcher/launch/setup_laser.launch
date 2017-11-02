@@ -12,7 +12,7 @@
     <param name="angle_min" value="-2.35" />
     <param name="angle_max" value="2.35" />
     <param name="publish_multiecho" value="true" />
-    <remap from="most_intense" to="/front_scan" />
+    <remap from="most_intense" to="front_scan" />
   </node>
 
   <node pkg="urg_node" type="urg_node" name="rear_laser">
@@ -21,7 +21,7 @@
     <param name="angle_min" value="-2.35" />
     <param name="angle_max" value="2.35" />
     <param name="publish_multiecho" value="true" />
-    <remap from="most_intense" to="/rear_scan" />
+    <remap from="most_intense" to="rear_scan" />
   </node>
 
    <include file="$(find fifth_robot_launcher)/launch/setup_laser_merge.launch" />
