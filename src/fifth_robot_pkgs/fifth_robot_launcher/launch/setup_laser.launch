@@ -1,28 +1,24 @@
 <launch>
-  <!-- Bring up front URG -->
+  <node pkg="tf" type="static_transform_publisher" name="front_laser_tf_broatcaster" args="$(optenv laserpos     0 0 0.41    0 0 0) base_link front_lase_link 100" />
+  <node pkg="tf" type="static_transform_publisher" name="rear_laser_tf_broadcaster"  args="$(optenv laserpos -0.28 0 0.41 0 3.14 3.14 ) base_link rear_laser_link  100" />
   <node pkg="urg_node" type="urg_node" name="front_laser">
-    <!--橙のURGの時にUSBを有効化 USB権限を変更せよ-->
-    <!--<param name="serial_port" value="/dev/ttyACM0" />-->
-    <!--青のURGの時にEthを有効化 IP設定を行え-->
+    <param name="frame_id" value="front_laser_link" />
     <param name="ip_address" value="192.168.0.10" />
     <!--<param name="serial_port" value="/dev/serial/by-id/usb-Hokuyo_Data_Flex_for_USB_URG-Series_USB_Driver-if00" />-->
     <param name="angle_min" value="-2.35" />
     <param name="angle_max" value="2.35" />
     <param name="publish_multiecho" value="true" />
-    <!-- <remap from="most_intense" to="front_scan" /> -->
+    <remap from="most_intense" to="front_scan" />
   </node>
 
-  <!-- Bring up rear URG -->
-  <!-- <node pkg="urg_node" type="urg_node" name="rear_laser"> -->
-  <!--   <param name="ip_address" value="192.168.0.11" /> -->
-  <!--   <param name="angle_min" value="-2.35" /> -->
-  <!--   <param name="angle_max" value="2.35" /> -->
-  <!--   <param name="publish_multiecho" value="true" /> -->
-  <!--   <remap from="most_intense" to="rear_scan" /> -->
-  <!-- </node> -->
+  <node pkg="urg_node" type="urg_node" name="rear_laser">
+    <param name="frame_id" value="rear_laser_link" />
+    <param name="ip_address" value="192.168.0.11" />
+    <param name="angle_min" value="-2.35" />
+    <param name="angle_max" value="2.35" />
+    <param name="publish_multiecho" value="true" />
+    <remap from="most_intense" to="rear_scan" />
+  </node>
 
-  <!-- Set up TransForm -->
-  <node pkg="tf" type="static_transform_publisher" name="front_laser_tf_broatcaster" args="$(optenv laserpos     0 0 0.41    0 0 0) base_link laser 100" />
-  <!-- <node pkg="tf" type="static_transform_publisher" name="rear_laser_tf_broadcaster"  args="$(optenv laserpos -0.28 0 0.41 0 3.14 3.14 ) base_link rear_laser_link  100" /> -->
 
 </launch>
