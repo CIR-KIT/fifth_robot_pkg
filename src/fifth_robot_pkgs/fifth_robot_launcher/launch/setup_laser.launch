@@ -4,6 +4,7 @@
   <node pkg="tf" type="static_transform_publisher" name="rear_laser_tf_broadcaster"
         args="$(optenv laserpos -0.28 0 0.41 3.14 0 0) base_link rear_laser_link  100" />
 
+
   <node pkg="urg_node" type="urg_node" name="front_laser">
     <param name="frame_id" value="front_laser_link" />
     <param name="ip_address" value="192.168.0.10" />
@@ -23,5 +24,6 @@
     <remap from="most_intense" to="rear_scan" />
   </node>
 
+   <include file="$(find fifth_robot_launcher)/launch/setup_laser_merge.launch" />
 
 </launch>
