@@ -1,8 +1,8 @@
 obstacle_range: 12.0
 raytrace_range: 15.0
 # footprint for KIT-C5 new model
-# footprint: [[0.1, 0.4], [0.1, -0.4], [-0.4, -0.4], [-0.4, 0.4]]
-footprint: [[0.1, 0.1], [0.1, -0.1], [-0.1, -0.1], [-0.1, 0.1]]
+footprint: [[0.1, 0.4], [0.1, -0.4], [-0.4, -0.4], [-0.4, 0.4]]
+# footprint: [[0.1, 0.1], [0.1, -0.1], [-0.1, -0.1], [-0.1, 0.1]]
 inflation_radius: 0.55
 cost_scaling_factor: 5.0
 
@@ -14,6 +14,6 @@ max_obstacle_height: 0.4
 min_obstacle_height: 0.0
 
 observation_sources: laser_scan_sensor
-laser_scan_sensor: {sensor_frame: hokuyo_link, data_type: LaserScan, topic: scan, marking: true, clearing: true}
-# laser_scan_sensor: {sensor_frame: merged_laser_link, data_type: LaserScan, topic: scan_multi, marking: true, clearing: true}
+laser_scan_sensor: {sensor_frame: merged_laser_link, data_type: LaserScan, topic: scan_multi, marking: true, clearing: true}
+# laser_scan_sensor: {sensor_frame: hokuyo_link, data_type: LaserScan, topic: scan, marking: true, clearing: true}
 
