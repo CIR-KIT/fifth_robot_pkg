@@ -9,20 +9,20 @@
     <param name="angle_min" value="-2.35" />
     <param name="angle_max" value="2.35" />
     <param name="publish_multiecho" value="true" />
-    <remap from="most_intense" to="front_scan" />
+    <!-- <remap from="most_intense" to="front_scan" /> -->
   </node>
 
   <!-- Bring up rear URG -->
-  <node pkg="urg_node" type="urg_node" name="rear_laser">
-    <param name="ip_address" value="192.168.0.11" />
-    <param name="angle_min" value="-2.35" />
-    <param name="angle_max" value="2.35" />
-    <param name="publish_multiecho" value="true" />
-    <remap from="most_intense" to="rear_scan" />
-  </node>
+  <!-- <node pkg="urg_node" type="urg_node" name="rear_laser"> -->
+  <!--   <param name="ip_address" value="192.168.0.11" /> -->
+  <!--   <param name="angle_min" value="-2.35" /> -->
+  <!--   <param name="angle_max" value="2.35" /> -->
+  <!--   <param name="publish_multiecho" value="true" /> -->
+  <!--   <remap from="most_intense" to="rear_scan" /> -->
+  <!-- </node> -->
 
   <!-- Set up TransForm -->
-  <node pkg="tf" type="static_transform_publisher" name="front_laser_tf_broatcaster" args="$(optenv laserpos    0 0 0.41 0 0    0) base_link laser 100" />
-  <node pkg="tf" type="static_transform_publisher" name="rear_laser_tf_broadcaster"  args="$(optenv laserpos 0.28 0 0.41 0 0 3.14) base_link rear_laser_link  100" />
+  <node pkg="tf" type="static_transform_publisher" name="front_laser_tf_broatcaster" args="$(optenv laserpos     0 0 0.41    0 0 0) base_link laser 100" />
+  <!-- <node pkg="tf" type="static_transform_publisher" name="rear_laser_tf_broadcaster"  args="$(optenv laserpos -0.28 0 0.41 0 3.14 3.14 ) base_link rear_laser_link  100" /> -->
 
 </launch>
