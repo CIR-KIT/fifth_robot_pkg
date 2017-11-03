@@ -193,7 +193,7 @@
     </visual>
   </link>
   <joint name="rear_hokuyo_joint" type="fixed">
-    <origin xyz="-0.1 0 0.1" rpy="0 0 1.57" />
+    <origin xyz="-0.1 0 0.1" rpy="0 0 3.14" />
     <parent link="base_link"/>
     <child link="rear_hokuyo_link" />
   </joint>
