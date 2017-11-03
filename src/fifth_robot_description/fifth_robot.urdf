@@ -175,7 +175,7 @@
         </range>
       </ray>
       <plugin name="gazebo_ros_front_hokuyo_controller" filename="libgazebo_ros_laser.so">
-        <topicName>/scan_front</topicName>
+        <topicName>/front_scan</topicName>
         <frameName>front_hokuyo_link</frameName>
       </plugin>
     </sensor>
@@ -220,7 +220,7 @@
         </range>
       </ray>
       <plugin name="gazebo_ros_rear_hokuyo_controller" filename="libgazebo_ros_laser.so">
-        <topicName>/scan_rear</topicName>
+        <topicName>/rear_scan</topicName>
         <frameName>rear_hokuyo_link</frameName>
       </plugin>
     </sensor>
