@@ -21,19 +21,6 @@
    
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
     args="-urdf -model fifth_robot -param robot_description"/>
-    
-  <node pkg="tf" type="static_transform_publisher" name="merged_laser_tf_broadcaster" args="$(optenv laserpos -0.14 0 0.41 0 0 0) base_link merged_laser_link 100" />
 
-  
- <node pkg="ira_laser_tools" name="laserscan_double_merger" type="laserscan_multi_merger" output="screen" >
-    <param name="destination_frame" value="merged_laser_link" />
-   <param name="scan_destination_topic" value="scan_multi" />
-    <param name="laserscan_topics" value="/rear_scan /front_scan" />
-    <param name="angle_max" type="double" value="3.14" />
-    <param name="angle_min" type="double" value="-3.14" />
-  </node>
-
-
-   
- 
+  <include file="$(find fifth_robot_launcher)/launch/setup_laser_merge.launch" />
 </launch>
