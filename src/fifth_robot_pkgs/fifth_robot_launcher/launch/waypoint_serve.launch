@@ -1,5 +1,5 @@
 <launch>
   <node pkg="goal_sender" type="csv_goal_sender_node" name="goal_sender" output="screen">
-    <param name="path" value="$(find goal_sender)/waypoint/2016-11-06-00-45-38.csv" />
+    <param name="path" value="$(find goal_sender)/waypoint/waypoint_single.csv" />
   </node>
 </launch>
