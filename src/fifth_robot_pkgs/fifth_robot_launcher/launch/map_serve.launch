@@ -1,5 +1,5 @@
 <launch>
-  <arg name="map" default="$(find fifth_robot_map)/map/map_single.yaml"/>
+  <arg name="map" default="$(find fifth_robot_map)/map/map_front.yaml" />
   <node pkg="map_server" type="map_server" name="map_server" args="$(arg map)">
   </node>
 </launch>
