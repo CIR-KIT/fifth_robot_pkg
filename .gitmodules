@@ -13,3 +13,9 @@
 [submodule "src/third_party/urg_node"]
 	path = src/third_party/urg_node
 	url = git@github.com:yasu80/urg_node.git
+[submodule "src/third_party/urg_c"]
+	path = src/third_party/urg_c
+	url = https://github.com/ros-drivers/urg_c.git
+[submodule "src/third_party/laser_proc"]
+	path = src/third_party/laser_proc
+	url = https://github.com/ros-perception/laser_proc
