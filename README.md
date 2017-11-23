@@ -305,7 +305,20 @@ goalについたら矢印の方に向いて止まります. その際, pointclou
 
 ### 補遺
 
- - リモコンPS3コントローラ(JoyStick)の設定(片方でいいです)
+ - ROSパッケージによるリモコンの実装(推奨)
+ 
+  1. 側面のwireless スイッチをオンにします.
+    オフのままでもwi-fiは起動している場合がありますがおそらく内部配線に起因するもので, Intel 8625 Dual-band は Bluetoothデバイス を内包しますので必要です.
+
+  2. インストールします
+     `sudo apt-get install ros-kinetic-ps3joy `
+     `sudo apt-get install ros-kinetic-joystick-drivers `
+     で、足りると思う
+
+  3. 使い方は同じです
+ 
+
+ - ROSによらないリモコンPS3コントローラ(JoyStick)の設定(非推奨)
     - sixad sixpair コマンドを使う.
       - インストール(バイナリをおとして使う)
 
