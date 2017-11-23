@@ -13,6 +13,9 @@
 [submodule "src/third_party/urg_node"]
 	path = src/third_party/urg_node
 	url = https://github.com/yasu80/urg_node.git
+[submodule "src/third_party/ira_laser_tools"]
+	path = src/third_party/ira_laser_tools
+	url = https://github.com/CIR-KIT/ira_laser_tools.git
 [submodule "src/third_party/urg_c"]
 	path = src/third_party/urg_c
 	url = https://github.com/ros-drivers/urg_c.git

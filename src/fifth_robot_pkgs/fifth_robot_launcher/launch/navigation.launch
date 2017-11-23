@@ -1,8 +1,7 @@
 <launch>
    <include file="$(find fifth_robot_launcher)/launch/setup_robot.launch" />
-
    <include file="$(find fifth_robot_launcher)/launch/map_serve.launch" />
    <include file="$(find fifth_robot_2dnav)/launch/move_base.launch" />
-
+   <include file="$(find fifth_robot_launcher)/launch/waypoint_serve.launch" />
    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find fifth_robot_launcher)/rviz/tanaco.rviz" />
 </launch>

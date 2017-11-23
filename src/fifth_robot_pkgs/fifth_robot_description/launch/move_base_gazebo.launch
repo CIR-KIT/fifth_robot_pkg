@@ -12,5 +12,6 @@
     <rosparam file="$(find fifth_robot_2dnav)/config/costmap/global_costmap_params.yaml" command="load" />
 
     <rosparam file="$(find fifth_robot_2dnav)/config/planner/base_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find fifth_robot_2dnav)/config/planner/base_global_planner_params.yaml" command="load" />
   </node>
 </launch>
