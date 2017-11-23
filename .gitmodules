@@ -9,7 +9,13 @@
 	url = http://www.roboken.iit.tsukuba.ac.jp/platform/repos/ypspur_ros_bridge.git
 [submodule "src/third_party/ros_waypoint_generator"]
 	path = src/third_party/ros_waypoint_generator
-	url = git@github.com:AriYu/ros_waypoint_generator.git
+	url = https://github.com/AriYu/ros_waypoint_generator.git
 [submodule "src/third_party/urg_node"]
 	path = src/third_party/urg_node
-	url = git@github.com:yasu80/urg_node.git
+	url = https://github.com/yasu80/urg_node.git
+[submodule "src/third_party/urg_c"]
+	path = src/third_party/urg_c
+	url = https://github.com/ros-drivers/urg_c.git
+[submodule "src/third_party/laser_proc"]
+	path = src/third_party/laser_proc
+	url = https://github.com/ros-perception/laser_proc
