@@ -12,8 +12,8 @@ TrajectoryPlannerROS:
   # fifth_robot is not a holonomic robot
   holonomic_robot: false
 
-  yaw_goal_tolerance: 0.52
-  xy_goal_tolerance: 0.50
+  yaw_goal_tolerance: 0.1
+  xy_goal_tolerance: 0.1
 
   sim_time: 4.0
   controller_frequency: 5.0
