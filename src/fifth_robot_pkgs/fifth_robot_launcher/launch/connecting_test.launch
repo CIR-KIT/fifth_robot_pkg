@@ -1,4 +1,0 @@
-<launch>
-  <node pkg="fifth_robot_launcher" type="openEth.sh" name="openEth" output="screen" />
-  <node pkg="fifth_robot_launcher" type="openUSB.sh" name="openUSB" launch-prefix="sudo" />
-</launch>
