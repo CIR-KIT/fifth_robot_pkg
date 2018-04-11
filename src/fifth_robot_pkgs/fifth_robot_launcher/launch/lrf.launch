@@ -1,0 +1,14 @@
+<launch>
+    <node pkg="urg_node" type="urg_node" name="urg">
+    <!--橙のURGの時にUSBを有効化 USB権限を変更せよ-->
+    <!--<param name="serial_port" value="/dev/ttyACM0" />-->
+    <!--青のURGの時にEthを有効化 IP設定を行え-->
+    <param name="ip_address" value="192.168.0.10" />
+    <!--<param name="serial_port" value="/dev/serial/by-id/usb-Hokuyo_Data_Flex_for_USB_URG-Series_USB_Driver-if00" />-->
+    <param name="angle_min" value="-2.35" />
+    <param name="angle_max" value="2.35" />
+    <param name="publish_multiecho" value="true" />
+  </node>
+  <!-- You can adjust the pose of laser-rangefinder here. Order of values: x y z yaw pitch roll. -->
+  <node pkg="tf" type="static_transform_publisher" name="laser_transform" args="$(optenv laserpos 0 0 0.41 0 0 0) base_link laser 100" />
+</launch>
