@@ -8,7 +8,7 @@
   <node pkg="map_server" type="map_server" name="map_server" args="$(arg map)" />
   
   <!-- WAYPOINT -->
-  <node pkg="goal_sender" type="csv_goal_sender_node" name="scv_goal_sender">
+  <node pkg="goal_sender" type="csv_goal_sender_node" name="csv_goal_sender">
     <param name="path" value="$(arg waypoint)" />
   </node>
 
