@@ -1,4 +1,9 @@
 <launch>
-  <node pkg="fifth_robot_launcher" type="openEth.sh" name="openEth" launch-prefix="sudo" output="screen" />
-  <node pkg="fifth_robot_launcher" type="openUSB.sh" name="openUSB" launch-prefix="sudo" output="screen" />
+  <!-- Ethernet -->
+  <arg name="ethernet_device" default="" />
+  <node pkg="fifth_robot_launcher" type="openEth.sh" name="openEth"
+        launch-prefix="sudo" output="screen" args="$(arg ethernet_device)" />
+  <!-- USB -->
+  <node pkg="fifth_robot_launcher" type="openUSB.sh" name="openUSB"
+        launch-prefix="sudo" output="screen" />
 </launch>
