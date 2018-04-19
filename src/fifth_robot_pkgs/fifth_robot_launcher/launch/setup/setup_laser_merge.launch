@@ -1,7 +1,7 @@
 <launch>
-  <node pkg="tf" type="static_transform_publisher" name="merged_laser_tf_broadcaster" args="$(optenv laserpos -0.14 0 0.41 0 0 0) base_link merged_laser_link 100" />
+  <node pkg="tf" type="static_transform_publisher" name="merged_urg_tf_broadcaster" args="$(optenv merged_urg_pose -0.14 0 0.41 0 0 0) base_link merged_urg_link 100" />
   <node pkg="ira_laser_tools" name="laserscan_double_merger" type="laserscan_multi_merger" output="screen" >
-    <param name="destination_frame" value="merged_laser_link" />
+    <param name="destination_frame" value="merged_urg_link" />
 	<param name="scan_destination_topic" value="scan_multi" />
     <param name="laserscan_topics" value="/rear_scan /front_scan" />
     <param name="angle_max" type="double" value="3.14" />
