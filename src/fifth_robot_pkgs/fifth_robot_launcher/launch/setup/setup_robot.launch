@@ -3,5 +3,5 @@
   <include file="$(find fifth_robot_launcher)/launch/setup/ypspur.launch" />
 
   <!-- LRF -->
-    <include file="$(find fifth_robot_launcher)/launch/setup/lrf.launch" />
+    <include file="$(find fifth_robot_launcher)/launch/setup/front_urg.launch" />
 </launch>
