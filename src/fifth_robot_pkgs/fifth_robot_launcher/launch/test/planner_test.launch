@@ -1,0 +1,15 @@
+<launch>
+  <arg name="map" />
+
+  <!-- ROBOT -->
+  <include file="$(find fifth_robot_launcher)/launch/setup/setup_robot.launch" />
+
+  <!-- MAP -->
+  <node pkg="map_server" type="map_server" name="map_server" args="$(arg map)" />
+
+  <!-- MOVE_BASE -->
+  <include file="$(find fifth_robot_2dnav)/launch/move_base.launch" />
+
+  <!-- RVIZ -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find fifth_robot_launcher)/rviz/tanaco.rviz" />
+</launch>
