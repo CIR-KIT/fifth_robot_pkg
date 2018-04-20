@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 if [ $# -lt 1 ]; then
   target_device=` ifconfig | grep enp | cut -d' ' -f1 `
