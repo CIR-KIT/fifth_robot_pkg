@@ -2,7 +2,7 @@
   <arg name="map" />
 
   <!-- ROBOT -->
-  <include file="$(find fifth_robot_launcher)/launch/setup/setup_robot.launch" />
+  <include file="$(find fifth_robot_launcher)/launch/setup/setup_all.launch" />
 
   <!-- MAP -->
   <node pkg="map_server" type="map_server" name="map_server" args="$(arg map)" />
