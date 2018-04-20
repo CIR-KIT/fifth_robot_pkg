@@ -9,6 +9,6 @@ else
 fi
 
 ip_address="192.168.0.15"
-
+nmcli dev disconnect $target_device
 sudo ifconfig $target_device $ip_address
 sudo route add default gw 192.168.0.1
