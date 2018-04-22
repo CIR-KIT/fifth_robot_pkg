@@ -1,7 +1,6 @@
 <launch>
-  <arg name="laser_topic" default="last" />
   <node pkg="amcl" type="amcl" name="amcl" output="screen">
-    <remap from="scan" to="laser_topic" />
+    <remap from="scan" to="last" />
     <!-- Publish scans from best pose at a max of 10 Hz -->
     <param name="odom_model_type" value="diff-corrected" />
     <param name="odom_alpha5" value="0.1" />

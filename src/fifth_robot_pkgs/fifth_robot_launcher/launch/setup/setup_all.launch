@@ -1,0 +1,7 @@
+<launch>
+  <!-- YP-SPUR -->
+  <include file="$(find fifth_robot_launcher)/launch/setup/robot/ypspur.launch" />
+  
+  <!-- LRF -->
+  <include file="$(find fifth_robot_launcher)/launch/setup/sensor/front_urg.launch" />
+</launch>

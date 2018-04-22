@@ -1,16 +1,11 @@
 <launch>
   <arg name="map" />
-  <arg name="waypoint" />
+
   <!-- ROBOT -->
   <include file="$(find fifth_robot_launcher)/launch/setup/setup_all.launch" />
 
   <!-- MAP -->
   <node pkg="map_server" type="map_server" name="map_server" args="$(arg map)" />
-  
-  <!-- WAYPOINT -->
-  <node pkg="goal_sender" type="csv_goal_sender_node" name="csv_goal_sender">
-    <param name="path" value="$(arg waypoint)" />
-  </node>
 
   <!-- MOVE_BASE -->
   <include file="$(find fifth_robot_2dnav)/launch/move_base.launch" />
