@@ -317,8 +317,10 @@ roslaunch fifth_robot_launcher connec.launch ethernet_device:=<device>
 再接続の際はこれをキルしてもう一度実行するだけで良いです。
 ### ラジコン操作
 Joyスティックとの通信準備
-ロボットとの接続を確認後、  
-`roslaunch fifth_robot_launcher telop.launch`  
+ロボットとの接続を確認後、    
+```bash
+roslaunch fifth_robot_launcher telop.launch
+```
 上で `enable_lrf:=false`と指定するとLRFなしで起動します。
 
 ### 地図作成
