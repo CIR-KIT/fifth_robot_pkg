@@ -17,8 +17,9 @@ CIRKIT所有ロボット5号機のリポジトリ
  12. [ GazeboSimulatedMap ](https://github.com/CIR-KIT/fifth_robot_pkg#gazebosimulatedmap)
  13. [ GazeboSimulatedNavigation ](https://github.com/CIR-KIT/fifth_robot_pkg#gazebosimulatednavigation)
  14. [ よくある障害 ](https://github.com/CIR-KIT/fifth_robot_pkg#よくある障害)
- 15. [ 補遺 ](https://github.com/CIR-KIT/fifth_robot_pkg#補遺)
- 16. [ 参考 ](https://github.com/CIR-KIT/fifth_robot_pkg#参考)
+ 15. [新・起動方法 (2017/4/29 追記)](http://github.com/CIR-KIT/fifth_robot_pkg#新・起動方法(2017/4/29追記))
+ 17. [ 補遺 ](https://github.com/CIR-KIT/fifth_robot_pkg#補遺)
+ 18. [ 参考 ](https://github.com/CIR-KIT/fifth_robot_pkg#参考)
 
 
 起動(実機)
@@ -146,7 +147,9 @@ ROS フル版なら入っています. Third\_Party内のいらない奴がが�
 1. 接続を確認します.(PC <-> spur, PC <-> PS3コン, PC <-> Hokuyo)
 2. ロボットの電源を入れます.
 3. ネットの接続を全て切断します.右上のアイコンを開いて切断を押してください.
-4. `rosrun fifth_robot_launch openEth.sh enp0s25` を実行します.ただし `enp0s25` は環境によって変えます
+4. `roslaunch fifth_robot_launcher connect.launch ethernet_device:=enp025` を実行します.  
+   ただし `enp0s25` は環境によって変えます.
+   再接続する際はもう一度これを実行するだけでよいです。
 
 ここまで実機に共通の工程です。
 
@@ -302,6 +305,96 @@ goalについたら矢印の方に向いて止まります. その際, pointclou
       - ネットワーク設定を変更しないとつながりません！ イーサネットデバイスをifconfigで開いてゲートウェイ設定を変更してください(上記hokuyoのつかいかたにもあるが, `openEth.sh`にあり. 動作確認済み)
       - また, dialoutにユーザを登録してください
       - それでもダメならipが変更になっている恐れがありますので, arpで検出してください.
+
+## 新・起動方法(2017/4/29追記) 
+### 接続
+
+```bash
+sudo -s
+roslaunch fifth_robot_launcher connec.launch ethernet_device:=<device>
+```
+`<device>` の部分は `ifconfig`で取得してください.
+再接続の際はこれをキルしてもう一度実行するだけで良いです。
+### ラジコン操作
+Joyスティックとの通信準備
+ロボットとの接続を確認後、  
+`roslaunch fifth_robot_launcher telop.launch`  
+上で `enable_lrf:=false`と指定するとLRFなしで起動します。
+
+### 地図作成
+#### rosbagを利用する場合
+Joyスティックとの通信準備  
+ロボットとの接続を確認後、  
+```bash
+roslaunch fifth_robot_launcher telop.launch
+```
+別ターミナルで、  
+```bash
+rosbag record --all
+```
+＊面倒なので --all にしてます。  
+
+走り終わったら、rosbagをキルして、  
+```bash
+roslaunch fifth_robot_launcher generate_map scan_topic:=<topic_name>
+```
+`<topic_name>`はLaserScanのトピック名を指定してください。  
+別ターミナルで、  
+```bash
+rosbag play --clock [先ほど録った.bagファイル]
+```
+再生し終わったら、
+```bash
+rosrun map_server map_saver -f [地図ファイルの名前]
+```
+終
+
+
+#### リアルタイムで地図作成する場合
+接続を確認後
+```bash
+roslaunch fifth_robot_launcher telop.launch
+```
+別ターミナルで、
+```bash
+roslaunch fifth_robot_launcher generate_map.launch scan_topic:=<topic_name>
+```
+`<topic_name>`はLaserScanのトピック名を指定してください。
+
+走り終わったら、
+```bash
+rosrun map_server map_saver -f [地図ファイルの名前]
+```
+終
+
+### Waypoint 生成
+接続を確認後、
+```bash
+roslaunch fifth_robot_launcher generate_waipoint.launch map:=<map_file.yaml>
+```
+別ターミナルで、
+```bash
+rosbag play [bag_file.bag]
+```
+bagファイル再生後、
+```bash
+rosrun ros_waypoint_generator ros_waypoint_generator
+```
+終
+
+### Planner Test
+waypointなしで move_baseを走らせる。navigationの動作テストに使います。  
+接続を確認後、  
+```bash
+roslaunch fifth_robot_launcher planner_test.launch map:=<map_file.yaml>
+```
+終
+
+### Navigation 
+```bash
+roslaunch fifth_robot_launcher navigation.launch map:=<map_file.yaml> waypoint:=<waypoint.csv>
+```
+終
 
 ### 補遺
 
