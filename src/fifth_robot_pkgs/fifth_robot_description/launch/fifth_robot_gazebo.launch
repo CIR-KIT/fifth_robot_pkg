@@ -16,9 +16,8 @@
   </include>
   
   <param name="robot_description" command="$(find xacro)/xacro.py $(arg model)"/>
-  
-  <include file="$(find fifth_robot_description)/launch/fifth_robot_control.launch"/>
-  
+  <!-- <include file="$(find fifth_robot_description)/launch/fifth_robot_control.launch"/> -->
+   
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
         args="-urdf -model fifth_robot -param robot_description"/>
 
