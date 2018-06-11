@@ -322,6 +322,8 @@ Joyスティックとの通信準備
 roslaunch fifth_robot_launcher telop.launch
 ```
 上で `enable_lrf:=false`と指定するとLRFなしで起動します。
+## 新・操作方法(2018/5/21)
+![mapmaking](https://github.com/CIR-KIT/fifth_robot_pkg/blob/images/images/map_manual.jpg)
 
 ### 地図作成
 #### rosbagを利用する場合
@@ -351,7 +353,7 @@ rosrun map_server map_saver -f [地図ファイルの名前]
 ```
 終
 
-改訂版　ただしdevelopブランチ内の当該作業スペースに限る( 2018/5/21 )  
+## 改訂版　ただしdevelopブランチ内の当該作業スペースに限る( 2018/5/21 )  
 ターミナル1: 
 ```bash
 roslaunch fifth_robot_description teleop_keyboard.launch
