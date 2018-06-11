@@ -351,6 +351,28 @@ rosrun map_server map_saver -f [地図ファイルの名前]
 ```
 終
 
+改訂版　ただしdevelopブランチ内の当該作業スペースに限る( 2018/5/21 )  
+ターミナル1: 
+```bash
+roslaunch fifth_robot_description teleop_keyboard.launch
+```
+ターミナル2:
+```bash
+rosbag record –all
+```
+気が済んだらターミナル2で Ctr + C をして終了
+その後、ターミナル1も Ctr + C で終了
+ターミナル2: 
+```bash
+roslaunch fifth_robot_description generate_map_gazebo.launch  
+scan_topic:=front_scan
+```
+ターミナル3: 
+```bash
+rosbag play –clock <bag ファイル >
+rosrun map_server map_saver -f < マップ名 >
+```
+終
 
 #### リアルタイムで地図作成する場合
 接続を確認後
