@@ -362,8 +362,8 @@ roslaunch fifth_robot_description teleop_keyboard.launch
 ```bash
 rosbag record –all
 ```
-気が済んだらターミナル2で Ctr + C をして終了
-その後、ターミナル1も Ctr + C で終了
+気が済んだらターミナル2で Ctrl + C をして終了
+その後、ターミナル1も Ctrl + C で終了
 ターミナル2: 
 ```bash
 roslaunch fifth_robot_description generate_map_gazebo.launch  
