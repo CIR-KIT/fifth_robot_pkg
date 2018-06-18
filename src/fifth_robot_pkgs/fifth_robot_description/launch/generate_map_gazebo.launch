@@ -1,0 +1,8 @@
+<launch>
+  <arg name="scan_topic" />
+  <param name="use_sim_time" type="bool" value="true" />
+  <node pkg="gmapping" type="slam_gmapping" name="slam_gmapping">
+    <remap from="scan" to="$(arg scan_topic)" />
+  </node>
+  <node name="rviz" pkg="rviz" type="rviz" args="$(find fifth_robot_launcher)/rviz/gazebo.rviz" />
+</launch>

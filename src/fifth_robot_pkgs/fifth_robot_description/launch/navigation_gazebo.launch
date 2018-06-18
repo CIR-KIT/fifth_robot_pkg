@@ -1,0 +1,11 @@
+<launch>
+  <include file="$(find fifth_robot_description)/launch/map_serve_gazobo.launch" />
+
+  <include file="$(find fifth_robot_description)/launch/move_base_gazebo.launch" >
+    <remap from="/cmd_vel" to="/fifth_robot/diff_drive_controller/cmd_vel" />
+    <remap from="scan" to="$(arg laser_topic)" />
+  </include>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="$(find fifth_robot_launcher)/rviz/gazebo.rviz" />
+  
+</launch>
