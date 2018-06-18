@@ -19,3 +19,6 @@
 [submodule "src/third_party/laser_proc"]
 	path = src/third_party/laser_proc
 	url = https://github.com/ros-perception/laser_proc
+[submodule "ira_laser_tools"]
+	path = ira_laser_tools
+	url = https://github.com/CIR-KIT/ira_laser_tools.git
