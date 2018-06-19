@@ -395,7 +395,7 @@ rosrun map_server map_saver -f [地図ファイルの名前]
 ### Waypoint 生成
 接続を確認後、
 ```bash
-roslaunch fifth_robot_launcher generate_waipoint.launch map:=<map_file.yaml>
+roslaunch fifth_robot_launcher generate_waipoint.launch map:=[map_file.yaml]
 ```
 別ターミナルで、
 ```bash
@@ -414,11 +414,11 @@ roslaunch fifth_robot_description generate_waypoint_gazebo.launch
 ```
 ターミナル2:
 ```bash
-rosrun map_server map_server /home/ryuto/fifth_robot_pkg/test.yaml
+rosrun map_server map_server [map_file.yaml（絶対パスで）]
 ```
 ターミナル3:
 ```bash
-rosbag play --clock 2018-06-18-20-30-47.bag
+rosbag play --clock [bag_file.bag]
 ```
 ターミナル3: 
 ```bash
