@@ -22,4 +22,5 @@
   
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
         args="-urdf -z 1 -model fifth_robot -param robot_description"/>
+   <node name="rviz" pkg="rviz" type="rviz" args="-d $(find fifth_robot_description)/rviz/gazebo_3d.rviz"/>
 </launch>
