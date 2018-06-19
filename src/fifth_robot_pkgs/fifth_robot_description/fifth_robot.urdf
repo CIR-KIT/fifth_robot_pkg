@@ -138,7 +138,7 @@
   </transmission>
   <!-- =============== Sensor =============== -->
   <!--front -->
-  <link name="front_hokuyo_link">
+  <link name="velodyne_link">
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
@@ -147,16 +147,16 @@
       <material name="Blue" />
     </visual>
   </link>
-  <joint name="hokuyo_joint" type="fixed">
-    <origin xyz="0.1 0 0.1" rpy="0 0 0" />
+  <joint name="velodyne_joint" type="fixed">
+    <origin xyz="0 0 0.1" rpy="0 0 0" />
     <parent link="base_link"/>
-    <child link="front_hokuyo_link" />
+    <child link="velodyne_link" />
   </joint>
 
-  <gazebo reference="front_hokuyo_link">
+  <gazebo reference="velodyne_link">
     <material>Gazebo/Blue</material>
     <turnGravityOff>false</turnGravityOff>
-    <sensor type="ray" name="front_hokuyo_sensor">
+    <sensor type="ray" name="velodyne_sensor">
       <pose>0.2 0 0 0 0 0</pose>
       <update_rate>40</update_rate>
       <ray>
@@ -180,9 +180,9 @@
           <resolution>0.001</resolution>
         </range>
       </ray>
-      <plugin name="gazebo_ros_front_hokuyo_controller" filename="libgazebo_ros_velodyne_laser.so">
-        <topicName>/front_scan</topicName>
-        <frameName>front_hokuyo_link</frameName>
+      <plugin name="gazebo_ros_velodyne_controller" filename="libgazebo_ros_velodyne_laser.so">
+        <topicName>/scan</topicName>
+        <frameName>velodyne_link</frameName>
         <min_range>0.9</min_range>
         <max_range>130</max_range>
       </plugin>
