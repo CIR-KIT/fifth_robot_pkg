@@ -1,5 +1,11 @@
 <launch>
-  <include file="$(find fifth_robot_description)/launch/setup_gazebo.launch" />
+  <arg name="enable_rviz" default="true" />  
+  <arg name="enable_gui" default="true" />
+
+  <include file="$(find fifth_robot_description)/launch/setup_gazebo.launch">
+    <arg name="rviz" default="$(arg enable_rviz)" />  
+    <arg name="gui" default="$(arg enable_gui)" />
+  </include>
   <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard" output="screen">
     <remap from="cmd_vel" to="fifth_robot/diff_drive_controller/cmd_vel" />
   </node>
