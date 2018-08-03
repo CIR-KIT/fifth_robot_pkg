@@ -1,5 +1,7 @@
 <launch>
-  <node pkg="rosbag" type="play" name="playbag" args="$(arg bagfile)" output="screen" />
+  <node pkg="rosbag" type="play" name="playbag" args="$(arg bagfile)" output="screen">
+    <remap from="scan" to="points2" />
+  </node>
 
   <node pkg="cartographer_ros" type="cartographer_node" name="cartographer_node"
         args="-configuration_directory $(find fifth_robot_description)/config

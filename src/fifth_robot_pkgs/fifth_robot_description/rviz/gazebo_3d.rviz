@@ -63,6 +63,12 @@ Visualization Manager:
           Value: true
         caster_link:
           Value: true
+        left_wheel_link:
+          Value: true
+        odom:
+          Value: true
+        right_wheel_link:
+          Value: true
         velodyne_link:
           Value: true
       Marker Scale: 1
@@ -71,12 +77,17 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        base_footprint:
-          base_link:
-            caster_link:
-              {}
-            velodyne_link:
-              {}
+        odom:
+          base_footprint:
+            base_link:
+              caster_link:
+                {}
+              left_wheel_link:
+                {}
+              right_wheel_link:
+                {}
+              velodyne_link:
+                {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -104,7 +115,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.0500000007
       Style: Spheres
-      Topic: /scan
+      Topic: /points2
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -133,25 +144,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 10.0859194
+      Distance: 21.0347099
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: -1.29681516
-        Y: 0.659109056
+        X: -1.87644982
+        Y: 0.598062456
         Z: 7.41773329e-06
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.0500000007
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.329794735
+      Pitch: 1.50979638
       Target Frame: laser
       Value: XYOrbit (rviz)
-      Yaw: 5.23425722
+      Yaw: 3.16425443
     Saved: ~
 Window Geometry:
   Displays:
