@@ -17,5 +17,5 @@ MAP_BUILDER = {
    -- cartographer.mapping.proto.PoseGraphOptions pose_graph_options
    -- Learn more at
    -- https://google-cartographer.readthedocs.io/en/latest/configuration.html#cartographer-mapping-proto-posegraphoptions
-   pose_graph = SPARSE_POSE_GRAPH,
+   sparse_pose_graph = SPARSE_POSE_GRAPH,
 }

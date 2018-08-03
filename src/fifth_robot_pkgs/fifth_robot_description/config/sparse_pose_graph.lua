@@ -48,21 +48,21 @@ SPARSE_POSE_GRAPH = {
       log_matches = true,
 
       -- !!!!!!!!!!!!!!!!2d configures!!!!!!!!!!!!!!!!!!!!!!!!
-      -- fast_correlative_scan_matcher = {
-      --    linear_search_window = 7.,
-      --    angular_search_window = math.rad(30.),
-      --    branch_and_bound_depth = 7,
-      -- },
-      -- ceres_scan_matcher = {
-      --    occupied_space_weight = 20.,
-      --    translation_weight = 10.,
-      --    rotation_weight = 1.,
-      --    ceres_solver_options = {
-      --       use_nonmonotonic_steps = true,
-      --       max_num_iterations = 10,
-      --       num_threads = 1,
-      --    },
-      -- },
+      fast_correlative_scan_matcher = {
+         linear_search_window = 7.,
+         angular_search_window = math.rad(30.),
+         branch_and_bound_depth = 7,
+      },
+      ceres_scan_matcher = {
+         occupied_space_weight = 20.,
+         translation_weight = 10.,
+         rotation_weight = 1.,
+         ceres_solver_options = {
+            use_nonmonotonic_steps = true,
+            max_num_iterations = 10,
+            num_threads = 1,
+         },
+      },
       -- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       
       -- cartographer.mapping_3d.scan_matching.proto.FastCorrelativeScanMatcherOptions fast_correlative_scan_matcher_options_3d
