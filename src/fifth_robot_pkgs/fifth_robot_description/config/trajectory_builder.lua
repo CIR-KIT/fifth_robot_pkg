@@ -1,9 +1,9 @@
--- include "trajectory_builder_2d.lua"
+include "trajectory_builder_2d.lua"
 include "trajectory_builder_3d.lua"
 
 TRAJECTORY_BUILDER = {
    -- cartographer.mapping_2d.proto.LocalTrajectoryBuilderOptions trajectory_builder_2d_options
-   -- trajectory_builder_2d = TRAJECTORY_BUILDER_2D,
+   trajectory_builder_2d = TRAJECTORY_BUILDER_2D,
 
    -- cartographer.mapping_3d.proto.LocalTrajectoryBuilderOptions trajectory_builder_3d_options
    -- Learn more at
