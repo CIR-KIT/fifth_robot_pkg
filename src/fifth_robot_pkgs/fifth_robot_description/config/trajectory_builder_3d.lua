@@ -42,7 +42,7 @@ TRAJECTORY_BUILDER_3D = {
       min_num_points = 200,
 
       -- float max_range
-      max_range = MAX_3D_RANGE,
+      max_range = 60,
    },
 
    -- bool use_online_correlative_scan_matching

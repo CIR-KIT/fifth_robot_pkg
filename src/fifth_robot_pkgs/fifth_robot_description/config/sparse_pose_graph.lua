@@ -1,7 +1,7 @@
 -- cartographer.mapping.proto.PoseGraphOptions
 -- Learn more at
 -- https://google-cartographer.readthedocs.io/en/latest/configuration.html#cartographer-mapping-proto-posegraphoptions
-POSE_GRAPH = {
+SPARSE_POSE_GRAPH = {
 
    -- int32 optimize_every_n_nodes
    optimize_every_n_scans = 90,
