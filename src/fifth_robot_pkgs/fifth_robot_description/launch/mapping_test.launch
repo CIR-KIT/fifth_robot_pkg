@@ -18,7 +18,7 @@
 
   <!-- rviz -->
   <arg name="use_rviz" default="true" />
-  <group if="$(arg enable_rviz)">
+  <group if="$(arg use_rviz)">
     <node pkg="rviz" type="rviz" name="rviz" args="-d $(find fifth_robot_description)/rviz/gazebo_3d.rviz" required="true" />
   </group>
 </launch>
