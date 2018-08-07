@@ -9,7 +9,7 @@ options = {
    trajectory_builder = TRAJECTORY_BUILDER,
 
    map_frame = "map",
-   tracking_frame = "base_link",
+   tracking_frame = "imu_link",
    published_frame = "base_link",
    odom_frame = "odom",
    provide_odom_frame = true,
