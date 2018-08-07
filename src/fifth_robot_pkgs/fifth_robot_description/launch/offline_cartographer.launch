@@ -1,0 +1,21 @@
+<launch>
+  <!-- params -->
+  <param name="/use_sim_time" value="true" />
+
+  <!-- cartographer -->
+  <arg name="use_cartographer" default="true" />
+  <group if="$(arg use_cartographer)">
+    <node pkg="cartographer_ros" type="cartographer_offline_node" name="cartographer_offline_node"
+          args="-configuration_directory $(find fifth_robot_description)/config
+                -configuration_basename fifth_robot_gazebo_3d.lua
+                -urdf_filename $(find fifth_robot_description)/fifth_robot.urdf
+                -bag_filenames $(arg bagfile)"
+          output="screen" />
+  </group>
+
+  <!-- rviz -->
+  <arg name="use_rviz" default="true" />
+  <group if="$(arg use_rviz)">
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find fifth_robot_description)/rviz/gazebo_3d.rviz" required="true" />
+  </group>
+</launch>
