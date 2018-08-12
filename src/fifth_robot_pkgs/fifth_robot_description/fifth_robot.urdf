@@ -108,13 +108,6 @@
     <origin xyz="-0.200 0  0"/>
   </joint>
   
-  <link name="base_footprint"/>
-  <joint name="base_link_joint" type="fixed">
-    <parent link="base_footprint"/>
-    <child link="base_link"/>
-    <origin xyz="0 0 0.100"/>
-  </joint>
-  
   <!-- ===============  Transmission =============== -->
   <transmission name="right_wheel_trans">
     <type>transmission_interface/SimpleTransmission</type>
