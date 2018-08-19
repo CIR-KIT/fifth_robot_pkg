@@ -1,12 +1,12 @@
 # fifth_robot & cartographer
 
 進捗はコミットログを見るから良いとして、    
-使い方とか分かったことがあったらこのページ  
+使い方とか分かったことがあったら[このページ](https://github.com/CIR-KIT/fifth_robot_pkg/edit/develop/use-cartographer/src/fifth_robot_pkgs/fifth_robot_description/README.md)  
 困ったこと・わからないことがあったら 
 [Issue](https://github.com/CIR-KIT/fifth_robot_pkg/issues/new) もしくは [Projects](https://github.com/CIR-KIT/fifth_robot_pkg/projects/8)の方に書いてください。  
 
 ## 使用方法
-Edit Required  
+[Edit Required](https://github.com/CIR-KIT/fifth_robot_pkg/edit/develop/use-cartographer/src/fifth_robot_pkgs/fifth_robot_description/README.md)  
 
 ## 参考文献
 
