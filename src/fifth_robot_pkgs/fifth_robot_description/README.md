@@ -39,3 +39,17 @@ Qiita
 Tips  
 * [How to view Pb format file？ #216](https://github.com/googlecartographer/cartographer/issues/216)  
 * [Confusion about TF frames used #300](https://github.com/googlecartographer/cartographer_ros/issues/300)
+
+Other
+## [takuyani/SLAM-Robot_Code](https://github.com/takuyani/SLAM-Robot_Code)のビルド方法
+リポジトリそのものがsrc内にあるべきファイル群なので次のような手順を踏みます  
+1.   
+  `mkdir slambot_ws ;cd slambot_ws`  
+2.   
+  `git clone git@github.com:takuyani/SLAM-Robot_Code.git src ;cd src`  
+3.   
+  `catkin_init_workspace ;cd ../`  
+4.   
+  `catkin_make`  
+  
+  これでビルドは通ります。
