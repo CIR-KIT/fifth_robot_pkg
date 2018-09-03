@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="rosbag" type="play" name="playbag" args="--clock $(arg bagfile)">
+    <remap from="/fifth_robot/diff_drive_controller/odom" to="/odom" />
+  </node>
+</launch>
