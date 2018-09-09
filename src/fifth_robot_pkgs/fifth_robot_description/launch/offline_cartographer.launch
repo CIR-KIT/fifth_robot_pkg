@@ -7,8 +7,8 @@
   <group if="$(arg use_cartographer)">
     <node pkg="cartographer_ros" type="cartographer_offline_node" name="cartographer_offline_node"
           args="-configuration_directory $(find fifth_robot_description)/config
-                -configuration_basename fifth_robot_gazebo_3d.lua
-                -urdf_filename $(find fifth_robot_description)/fifth_robot.urdf
+                -configuration_basenames fifth_robot_gazebo_3d.lua
+                -urdf_filenames $(find fifth_robot_description)/fifth_robot.urdf
                 -bag_filenames $(arg bagfile)"
           output="screen" />
   </group>

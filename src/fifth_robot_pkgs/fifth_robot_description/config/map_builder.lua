@@ -1,21 +1,22 @@
-include "sparse_pose_graph.lua"
+-- Copyright 2016 The Cartographer Authors
+--
+-- Licensed under the Apache License, Version 2.0 (the "License");
+-- you may not use this file except in compliance with the License.
+-- You may obtain a copy of the License at
+--
+--      http://www.apache.org/licenses/LICENSE-2.0
+--
+-- Unless required by applicable law or agreed to in writing, software
+-- distributed under the License is distributed on an "AS IS" BASIS,
+-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+-- See the License for the specific language governing permissions and
+-- limitations under the License.
 
--- cartographer.mapping.proto.MapBuilderOptions
--- Learn more at
--- https://google-cartographer.readthedocs.io/en/latest/configuration.html#cartographer-mapping-proto-mapbuilderoptions
+include "pose_graph.lua"
+
 MAP_BUILDER = {
-
-   -- bool use_trajectory_builder_2d  
-   use_trajectory_builder_2d = false,
-
-   -- bool use_trajectory_builder_3d
-   use_trajectory_builder_3d = false,
-
-   -- int32 num_background_threads
-   num_background_threads = 4,
-
-   -- cartographer.mapping.proto.PoseGraphOptions pose_graph_options
-   -- Learn more at
-   -- https://google-cartographer.readthedocs.io/en/latest/configuration.html#cartographer-mapping-proto-posegraphoptions
-   sparse_pose_graph = SPARSE_POSE_GRAPH,
+  use_trajectory_builder_2d = false,
+  use_trajectory_builder_3d = false,
+  num_background_threads = 4,
+  pose_graph = POSE_GRAPH,
 }

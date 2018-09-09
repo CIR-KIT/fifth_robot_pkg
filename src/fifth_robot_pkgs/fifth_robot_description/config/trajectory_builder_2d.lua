@@ -19,15 +19,22 @@ TRAJECTORY_BUILDER_2D = {
   min_z = -0.8,
   max_z = 2.,
   missing_data_ray_length = 5.,
+  num_accumulated_range_data = 1,
   voxel_filter_size = 0.025,
 
-  use_online_correlative_scan_matching = false,
   adaptive_voxel_filter = {
     max_length = 0.5,
     min_num_points = 200,
     max_range = 50.,
   },
 
+  loop_closure_adaptive_voxel_filter = {
+    max_length = 0.9,
+    min_num_points = 100,
+    max_range = 50.,
+  },
+
+  use_online_correlative_scan_matching = false,
   real_time_correlative_scan_matcher = {
     linear_search_window = 0.1,
     angular_search_window = math.rad(20.),
@@ -36,9 +43,9 @@ TRAJECTORY_BUILDER_2D = {
   },
 
   ceres_scan_matcher = {
-    occupied_space_weight = 1e1,
-    translation_weight = 1e1,
-    rotation_weight = 1e2,
+    occupied_space_weight = 1.,
+    translation_weight = 10.,
+    rotation_weight = 40.,
     ceres_solver_options = {
       use_nonmonotonic_steps = false,
       max_num_iterations = 20,
@@ -53,17 +60,20 @@ TRAJECTORY_BUILDER_2D = {
   },
 
   imu_gravity_time_constant = 10.,
-  num_odometry_states = 1000,
 
   submaps = {
-    resolution = 0.05,
-    half_length = 200.,
     num_range_data = 90,
-    output_debug_images = false,
+    grid_options_2d = {
+      grid_type = "PROBABILITY_GRID",
+      resolution = 0.05,
+    },
     range_data_inserter = {
-      insert_free_space = true,
-      hit_probability = 0.55,
-      miss_probability = 0.49,
+      range_data_inserter_type = "PROBABILITY_GRID_INSERTER_2D",
+      probability_grid_range_data_inserter = {
+        insert_free_space = true,
+        hit_probability = 0.55,
+        miss_probability = 0.49,
+      },
     },
   },
 }
