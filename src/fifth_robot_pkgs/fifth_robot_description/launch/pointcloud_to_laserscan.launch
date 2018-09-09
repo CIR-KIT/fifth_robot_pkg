@@ -1,5 +1,5 @@
 <launch>
-  <node pkg="rosbag" type="play" name="playbag" args="--clock $(arg bagfile)">
+  <node pkg="rosbag" type="play" name="playbag" args="--pause --clock $(arg bagfile)" output="screen">
     <remap from="points2" to="cloud_in" />
   </node>
   
