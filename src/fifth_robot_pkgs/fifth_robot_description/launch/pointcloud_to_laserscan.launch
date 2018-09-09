@@ -1,0 +1,29 @@
+<launch>
+  <node pkg="rosbag" type="play" name="playbag" args="--clock $(arg bagfile)">
+    <remap from="points2" to="cloud_in" />
+  </node>
+  
+  <arg name="model" default="$(find fifth_robot_description)/fifth_robot.urdf" />    
+  <param name="robot_description" command="$(find xacro)/xacro.py $(arg model)" />
+  
+  <include file="$(find fifth_robot_description)/launch/fifth_robot_control.launch" />
+  
+  <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model"  output="screen"
+        respawn="false" args="-urdf -z 1 -model fifth_robot -param robot_description" />
+
+  <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="converter">
+    <param name="min_height" value="0.1" />
+    <param name="max_height" value="10.0" />
+    <param name="range_max"  value="400.0" />
+    <param name="range_min"  value="0.3" />
+    <param name="angle_max"  value="3.14" />
+    <param name="angle_min"  value="-3.14" />
+    <param name="use_inf"    value="false" />
+    <param name="concurrency_level" value="40" />
+    <param name="target_frame" value="velodyne_link" />
+  </node>
+
+  <node pkg="rviz" type="rviz" name="rviz" required="true"
+        args="-d $(find fifth_robot_description)/rviz/gazebo_3d.rviz" />
+  
+</launch>
