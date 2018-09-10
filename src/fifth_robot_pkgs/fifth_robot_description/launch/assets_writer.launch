@@ -1,7 +1,7 @@
 <launch>
   <node name="cartographer_assets_writer" pkg="cartographer_ros" required="true"
         type="cartographer_assets_writer"
-        args="-configuration_directory $(find fifth_robot_description)/config
+        args="-configuration_directory $(find fifth_robot_description)/config/cartographer
               -configuration_basename assets_writer.lua
               -urdf_filename $(find fifth_robot_description)/fifth_robot.urdf
               -bag_filenames $(arg bagfile)

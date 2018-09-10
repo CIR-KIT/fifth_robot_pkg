@@ -6,7 +6,7 @@
   <arg name="use_cartographer" default="true" />
   <group if="$(arg use_cartographer)">
     <node pkg="cartographer_ros" type="cartographer_node" name="cartographer_node"
-          args="-configuration_directory $(find fifth_robot_description)/config
+          args="-configuration_directory $(find fifth_robot_description)/config/cartographer
                 -configuration_basename fifth_robot_gazebo_3d.lua
                 -load_state_filename $(arg pbfile)"
           output="screen" />
