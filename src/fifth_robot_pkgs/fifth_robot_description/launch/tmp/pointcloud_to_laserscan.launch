@@ -30,6 +30,6 @@
   </node>
 
   <node pkg="rviz" type="rviz" name="rviz" required="true"
-        args="-d $(find fifth_robot_description)/rviz/gazebo_3d.rviz" />
+        args="-d $(find fifth_robot_description)/rviz/gazebo_3d_with_amcl.rviz" />
   
 </launch>
