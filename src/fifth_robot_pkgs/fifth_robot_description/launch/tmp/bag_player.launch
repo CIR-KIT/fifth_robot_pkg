@@ -1,0 +1,8 @@
+<launch>
+  <node pkg="rosbag" type="play" name="playbag" args="--clock $(arg bagfile)" output="screen">
+    <remap from="/fifth_robot/diff_drive_controller/odom" to="/odom" />
+    <remap from="/imu" to="/imu_raw" />
+  </node>
+
+  <node pkg="ros_imu_filter" type="imu_filter_node" name="imu_filter" />
+</launch>
