@@ -5,13 +5,13 @@
     <remap from="/cmd_vel" to="/fifth_robot/diff_drive_controller/cmd_vel" />
     <rosparam file="$(find fifth_robot_description)/config/navigation/move_base_params.yaml" command="load" />
     
-    <rosparam file="$(find fifth_robot_description)/config/navigation/costmap_common_params.yaml" command="load" ns="global_costmap" />
-    <rosparam file="$(find fifth_robot_description)/config/navigation/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find fifth_robot_description)/config/navigation/costmap/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find fifth_robot_description)/config/navigation/costmap/costmap_common_params.yaml" command="load" ns="local_costmap" />
 
-    <rosparam file="$(find fifth_robot_description)/config/navigation/local_costmap_params.yaml" command="load" />
-    <rosparam file="$(find fifth_robot_description)/config/navigation/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find fifth_robot_description)/config/navigation/costmap/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find fifth_robot_description)/config/navigation/costmap/global_costmap_params.yaml" command="load" />
 
-    <rosparam file="$(find fifth_robot_description)/config/navigation/base_local_planner_params.yaml" command="load" />
-    <rosparam file="$(find fifth_robot_description)/config/navigation/base_global_planner_params.yaml" command="load" />
+    <rosparam file="$(find fifth_robot_description)/config/navigation/planner/base_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find fifth_robot_description)/config/navigation/planner/base_global_planner_params.yaml" command="load" />
   </node>
 </launch>
