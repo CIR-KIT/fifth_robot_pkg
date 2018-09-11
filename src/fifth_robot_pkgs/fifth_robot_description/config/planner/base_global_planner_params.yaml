@@ -1,0 +1,28 @@
+# NavfnROS:
+#   allow_unknown: false
+#   default_tolerance: 1.5
+#   visualize_potential: false
+#   use_dijkstra: false
+#   use_quadratic: true
+#   use_grid_path: true
+#   old_navfn_behavior: false
+
+TrajectoryPlannerROS:
+    acc_lim_x: 2.5
+    acc_lim_theta: 3.2
+    max_vel_x: 0.25
+    min_vel_x: 0.0
+    max_vel_theta: 1.7
+    min_vel_theta: -1.7
+    min_in_place_vel_theta: 0.3
+ 
+    holonomic_robot: false
+ 
+    yaw_goal_tolerance: 0.05
+    xy_goal_tolerance: 0.06
+ 
+    pdist_scale: 2.0 
+    gdist_scale: 0.3
+    occdist_scale: 0.01
+ 
+    meter_scoring: true
