@@ -22,3 +22,6 @@
 [submodule "src/third_party/laser_proc"]
 	path = src/third_party/laser_proc
 	url = https://github.com/ros-perception/laser_proc
+[submodule "src/ros_imu_filter"]
+	path = src/ros_imu_filter
+	url = https://github.com/tanacchi/ros_imu_filter.git
