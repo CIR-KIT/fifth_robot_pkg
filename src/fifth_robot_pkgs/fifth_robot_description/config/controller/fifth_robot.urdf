@@ -152,11 +152,11 @@
     <turnGravityOff>false</turnGravityOff>
     <sensor type="ray" name="velodyne_sensor">
       <pose>0.2 0 0 0 0 0</pose>
-      <update_rate>40</update_rate>
+      <update_rate>5</update_rate>
       <ray>
         <scan>
           <horizontal>
-            <samples>100</samples>
+            <samples>360</samples>
             <resolution>1</resolution>
             <min_angle>-3.14</min_angle>
             <max_angle> 3.14</max_angle>
