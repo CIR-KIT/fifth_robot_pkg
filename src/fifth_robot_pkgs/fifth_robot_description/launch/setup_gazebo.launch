@@ -22,6 +22,4 @@
   <param name="robot_description" command="$(find xacro)/xacro.py $(arg model)" />
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
         args="-urdf -z 1 -model fifth_robot -param robot_description" />
-
-  <!-- <include file="$(find fifth_robot_launcher)/launch/setup_laser_merge.launch" /> -->
 </launch>
