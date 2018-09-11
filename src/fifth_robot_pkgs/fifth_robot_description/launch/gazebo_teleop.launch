@@ -1,8 +1,0 @@
-<launch>
-  <include file="$(find fifth_robot_description)/launch/fifth_robot_gazebo.launch" />
-  <node name="joy_node" pkg="joy" type="joy_node" />
-  <node name="teleop_twist_joy_node" pkg="teleop_twist_joy" type="teleop_node">
-    <remap from="cmd_vel" to="fifth_robot/diff_drive_controller/cmd_vel" />
-    <param name="enable_button" value="8" />
-  </node>
-</launch>

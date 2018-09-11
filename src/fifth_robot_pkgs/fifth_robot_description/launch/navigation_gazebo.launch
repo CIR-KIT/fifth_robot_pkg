@@ -1,0 +1,14 @@
+<launch>
+  <arg name="mapfile" />
+  <arg name="waypoint" />
+  <arg name="laser_topic" />
+  
+  <node pkg="map_server" type="map_server" name="map_server" args="$(arg mapfile)" />
+  <node pkg="ros_waypoint_generator" type="ros_waypoint_server" name="waypoint_server" args="$(arg waypoint)" />
+  <include file="$(find fifth_robot_description)/launch/move_base_gazebo.launch" >
+    <arg name="amcl_laser_topic" value="$(arg laser_topic)" />
+    <remap from="/cmd_vel" to="/fifth_robot/diff_drive_controller/cmd_vel" />
+  </include>
+  <include file="$(find fifth_robot_description)/launch/setup_gazebo.launch" />
+  <node name="rviz" pkg="rviz" type="rviz" args="$(find fifth_robot_launcher)/rviz/gazebo.rviz" />
+</launch>

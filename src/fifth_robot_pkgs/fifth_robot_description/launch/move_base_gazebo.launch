@@ -1,17 +1,17 @@
 <launch>
+  <arg name="amcl_laser_topic" />
   <!--- Run AMCL -->
-  <include file="$(find fifth_robot_description)/launch/amcl_diff_gazebo.launch" />
+  <include file="$(find fifth_robot_description)/launch/amcl_diff_gazebo.launch">
+    <arg name="laser_topic" value="$(arg amcl_laser_topic)"/>
+  </include>
   <remap from="/cmd_vel" to="/fifth_robot/diff_drive_controller/cmd_vel" />
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-    <rosparam file="$(find fifth_robot_2dnav)/config/move_base_params.yaml" command="load" />
-    
-    <rosparam file="$(find fifth_robot_2dnav)/config/costmap/costmap_common_params.yaml" command="load" ns="global_costmap" />
-    <rosparam file="$(find fifth_robot_2dnav)/config/costmap/costmap_common_params.yaml" command="load" ns="local_costmap" />
-
-    <rosparam file="$(find fifth_robot_2dnav)/config/costmap/local_costmap_params.yaml" command="load" />
-    <rosparam file="$(find fifth_robot_2dnav)/config/costmap/global_costmap_params.yaml" command="load" />
-
-    <rosparam file="$(find fifth_robot_2dnav)/config/planner/base_local_planner_params.yaml" command="load" />
-    <rosparam file="$(find fifth_robot_2dnav)/config/planner/base_global_planner_params.yaml" command="load" />
+    <rosparam file="$(find fifth_robot_description)/config/move_base_params.yaml" command="load" />
+    <rosparam file="$(find fifth_robot_description)/config/costmap/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find fifth_robot_description)/config/costmap/costmap_common_params.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find fifth_robot_description)/config/costmap/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find fifth_robot_description)/config/costmap/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find fifth_robot_description)/config/planner/base_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find fifth_robot_description)/config/planner/base_global_planner_params.yaml" command="load" />
   </node>
 </launch>

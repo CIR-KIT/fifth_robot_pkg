@@ -1,14 +1,8 @@
 <launch>
-  <rosparam file="$(find fifth_robot_description)/config/controller.yaml" command="load"/>
+  <rosparam file="$(find fifth_robot_description)/config/controller.yaml" command="load" />
   <node name="controller_spawner" pkg="controller_manager"
         type="spawner" ns="fifth_robot" output="screen"
-        args="joint_state_controller
-              diff_drive_controller"/>
-  <node name="robot_state_publisher" pkg="robot_state_publisher"
-        type="robot_state_publisher"
+        args="joint_state_controller diff_drive_controller" />
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
         respawn="false" output="screen" ns="/fifth_robot" />
-  <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
-    <param name="/fifth_robot/diff_drive_controller/cmd_vel"
-           value="diff_drive_controller/cmd_vel" />
-  </node>
 </launch>

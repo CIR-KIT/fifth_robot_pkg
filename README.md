@@ -351,6 +351,29 @@ rosrun map_server map_saver -f [地図ファイルの名前]
 ```
 終
 
+### 改訂版　ただしdevelopブランチ内の当該作業スペースに限る( 2018/6/19 )  
+ターミナル1: 
+```bash
+roslaunch fifth_robot_description teleop_keyboard.launch
+```
+ターミナル2:
+```bash
+rosbag record –all
+```
+気が済んだらターミナル2で Ctrl + C をして終了
+その後、ターミナル1も Ctrl + C で終了
+ターミナル2: 
+```bash
+roslaunch fifth_robot_description generate_map_gazebo.launch  
+scan_topic:=front_scan
+```
+ターミナル3: 
+```bash
+rosbag play –clock <bag ファイル >
+rosrun map_server map_saver -f < マップ名 >
+```
+終
+
 
 #### リアルタイムで地図作成する場合
 接続を確認後
@@ -372,7 +395,7 @@ rosrun map_server map_saver -f [地図ファイルの名前]
 ### Waypoint 生成
 接続を確認後、
 ```bash
-roslaunch fifth_robot_launcher generate_waipoint.launch map:=<map_file.yaml>
+roslaunch fifth_robot_launcher generate_waipoint.launch map:=[map_file.yaml]
 ```
 別ターミナルで、
 ```bash
@@ -383,6 +406,26 @@ bagファイル再生後、
 rosrun ros_waypoint_generator ros_waypoint_generator
 ```
 終
+
+### 改訂版　ただしdevelopブランチ内の当該作業スペースに限る( 2018/6/19 )  
+ターミナル1: 
+```bash
+roslaunch fifth_robot_description generate_waypoint_gazebo.launch
+```
+ターミナル2:
+```bash
+rosrun map_server map_server [map_file.yaml（絶対パスで）]
+```
+ターミナル3:
+```bash
+rosbag play --clock [bag_file.bag]
+```
+ターミナル3: 
+```bash
+rosrun ros_waypoint_generator ros_waypoint_saver
+```
+終
+
 
 ### Planner Test
 waypointなしで move_baseを走らせる。navigationの動作テストに使います。  
