@@ -1,8 +1,0 @@
-NavfnROS:
-  allow_unknown: false
-  default_tolerance: 1.5
-  visualize_potential: false
-  use_dijkstra: false
-  use_quadratic: true
-  use_grid_path: true
-  old_navfn_behavior: false
