@@ -2,7 +2,8 @@
   <include file="$(find fifth_robot_description)/launch/gazebo/setup_gazebo.launch">
     <arg name="rviz" value="false" />
   </include>
-
+  
+  <arg name="mapfile" default="$(find fifth_robot_description)/map/sample_map.yaml" />
   <node pkg="map_server" type="map_server" name="map_server" args="$(arg mapfile)" />
 
   <include file="$(find fifth_robot_description)/launch/navigation/move_base_gazebo.launch" />  
