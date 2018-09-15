@@ -1,9 +1,8 @@
-obstacle_range: 12.0
-raytrace_range: 15.0
-# footprint for KIT-C5 new model
-footprint: [[0.1, 0.4], [0.1, -0.4], [-0.4, -0.4], [-0.4, 0.4]]
-# footprint: [[0.1, 0.1], [0.1, -0.1], [-0.1, -0.1], [-0.1, 0.1]]
-inflation_radius: 0.55
+obstacle_range: 5.0
+raytrace_range: 7.0
+
+footprint: [[0.1, 0.1], [0.1, -0.1], [-0.1, -0.1], [-0.1, 0.1]]
+inflation_radius: 0.3
 cost_scaling_factor: 5.0
 
 rigin_z: 0.0
@@ -11,8 +10,7 @@ z_resolution: 0.2
 z_voxels: 0.2
 publish_voxel_map: false
 max_obstacle_height: 0.4
-min_obstacle_height: 0.0
+min_obstacle_height: 0.01
 
 observation_sources: velodyne_sensor
 velodyne_sensor: {sensor_frame: velodyne_link, data_type: PointCloud2, topic: points2, marking: true, clearing: true}
-
