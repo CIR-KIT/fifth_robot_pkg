@@ -14,6 +14,7 @@ Panels:
         - /Pose1
         - /PoseArray1
         - /Path1
+        - /Map2
       Splitter Ratio: 0.5
     Tree Height: 848
   - Class: rviz/Selection
@@ -83,21 +84,19 @@ Visualization Manager:
       Show Axes: true
       Show Names: true
       Tree:
-        base_link:
-          caster_link:
-            {}
-          imu_link:
-            {}
-          left_wheel_link:
-            {}
-          right_wheel_link:
-            {}
-          velodyne_link:
-            {}
         map:
-          {}
-        odom:
-          {}
+          odom:
+            base_link:
+              caster_link:
+                {}
+              imu_link:
+                {}
+              left_wheel_link:
+                {}
+              right_wheel_link:
+                {}
+              velodyne_link:
+                {}
       Update Interval: 0
       Value: true
     - Alpha: 1
@@ -224,6 +223,16 @@ Visualization Manager:
       Topic: /move_base/NavfnROS/plan
       Unreliable: false
       Value: true
+    - Alpha: 0.699999988
+      Class: rviz/Map
+      Color Scheme: costmap
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic: /move_base/local_costmap/costmap
+      Unreliable: false
+      Use Timestamp: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -248,7 +257,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/XYOrbit
-      Distance: 25.7558956
+      Distance: 35.3078957
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
@@ -263,10 +272,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 0.974796295
+      Pitch: 1.56979632
       Target Frame: laser
       Value: XYOrbit (rviz)
-      Yaw: 2.97425556
+      Yaw: 3.13425303
     Saved: ~
 Window Geometry:
   Displays:
