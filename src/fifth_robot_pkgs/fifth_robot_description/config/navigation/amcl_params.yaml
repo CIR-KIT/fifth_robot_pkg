@@ -4,8 +4,8 @@ max_particles: 5000
 kld_err: 0.01
 kld_z:   0.99
 
-update_min_d: 0.02
-update_min_a: 0.1
+update_min_d: 0.01
+update_min_a: 0.01
 
 resample_interval: 2
 
