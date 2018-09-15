@@ -1,14 +1,15 @@
 controller_frequency: 10.0
 controller_patience: 10.0
+
 planner_patience: 5.0
 planner_frequency: 4.0
 
-shutdown_costmaps: true
-
 recovery_behavior_enabled: true
-max_planning_retries: 8
 clearing_rotation_allowed: true
-conservative_reset_dist: 6.0
+shutdown_costmaps: false
 
 oscillation_timeout: 10.0
 oscillation_distance: 0.2
+
+max_planning_retries: -1
+conservative_reset_dist: 6.0
