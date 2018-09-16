@@ -1,9 +1,9 @@
-obstacle_range: 5.0
-raytrace_range: 7.0
+obstacle_range: 8.0
+raytrace_range: 10.0
 
 footprint: [[0.15, 0.13], [0.15, -0.13], [-0.15, -0.13], [-0.15, 0.13]]
 inflation_radius: 0.5
-cost_scaling_factor: 5.0
+cost_scaling_factor: 7.0
 
 rigin_z: 0.0
 z_resolution: 0.2
