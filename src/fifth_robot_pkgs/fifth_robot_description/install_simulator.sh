@@ -8,4 +8,6 @@ sudo apt-get install\
      ros-kinetic-ros-control\
      ros-kinetic-ros-controllers\
      ros-kinetic-teleop-twist-keyboard\
-     ros-kinetic-velodyne-gazebo-plugins
+     ros-kinetic-velodyne-gazebo-plugins\
+     ros-kinetic-mcl-3dl\
+     ros-kinetic-mcl-3dl-msgs
