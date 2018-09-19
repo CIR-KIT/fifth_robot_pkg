@@ -28,8 +28,4 @@
     <param name="concurrency_level" value="40" />
     <param name="target_frame" value="velodyne_link" />
   </node>
-
-  <node pkg="rviz" type="rviz" name="rviz" required="true"
-        args="-d $(find fifth_robot_description)/rviz/gazebo_3d_with_amcl.rviz" />
-  
 </launch>
