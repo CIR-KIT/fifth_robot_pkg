@@ -28,8 +28,6 @@
     /odom     (Wheel odometry)
   -->
 
-  <node pkg="rviz" type="rviz" name="rviz2" args="-d $(find mcl_3dl)/config/mcl_3dl_demo.rviz" />
-
   <node pkg="mcl_3dl" type="mcl_3dl" name="mcl_3dl" output="screen" >
     <remap from="/cloud" to="/points2" />
     <remap from="/imu/data" to="/imu" />
