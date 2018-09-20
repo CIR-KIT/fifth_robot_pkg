@@ -1,5 +1,5 @@
 <launch>
-  <include file="$(find fifth_robot_description)/launch/navigation/amcl_diff_gazebo.launch" />
+  <include file="$(find fifth_robot_description)/launch/navigation/mcl_3dl_gazebo.launch" />
  
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
     <remap from="/cmd_vel" to="/fifth_robot/diff_drive_controller/cmd_vel" />
@@ -15,4 +15,8 @@
     <rosparam file="$(find fifth_robot_description)/config/navigation/planner/base_local_planner_params.yaml" command="load" />
     <rosparam file="$(find fifth_robot_description)/config/navigation/planner/base_global_planner_params.yaml" command="load" />
   </node>
+
+  <node pkg="rviz" type="rviz" name="rviz" required="true"
+          args="-d $(find fifth_robot_description)/rviz/gazebo_3d_with_mcl_3dl.rviz" />
+
 </launch>

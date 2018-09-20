@@ -1,0 +1,21 @@
+<launch>
+  <include file="$(find fifth_robot_description)/launch/navigation/amcl_diff_gazebo.launch" />
+ 
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+    <remap from="/cmd_vel" to="/fifth_robot/diff_drive_controller/cmd_vel" />
+    <remap from="/odom" to="/fifth_robot/diff_drive_controller/odom" />
+    <rosparam file="$(find fifth_robot_description)/config/navigation/move_base_params.yaml" command="load" />
+    
+    <rosparam file="$(find fifth_robot_description)/config/navigation/costmap/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find fifth_robot_description)/config/navigation/costmap/costmap_common_params.yaml" command="load" ns="local_costmap" />
+
+    <rosparam file="$(find fifth_robot_description)/config/navigation/costmap/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find fifth_robot_description)/config/navigation/costmap/global_costmap_params.yaml" command="load" />
+
+    <rosparam file="$(find fifth_robot_description)/config/navigation/planner/base_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find fifth_robot_description)/config/navigation/planner/base_global_planner_params.yaml" command="load" />
+  </node>
+
+  <node pkg="rviz" type="rviz" name="rviz" required="true"
+        args="-d $(find fifth_robot_description)/rviz/gazebo_3d_with_amcl.rviz" />
+</launch>
