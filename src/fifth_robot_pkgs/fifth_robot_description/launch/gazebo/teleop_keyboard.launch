@@ -1,8 +1,10 @@
 <launch>
   <arg name="enable_rviz" default="true" />  
   <arg name="enable_gui" default="true" />
+  <arg name="world_name" default="clearpath_playpen" />
 
   <include file="$(find fifth_robot_description)/launch/gazebo/setup_gazebo.launch">
+    <arg name="world_name" value="$(arg world_name)" />
     <arg name="rviz" default="$(arg enable_rviz)" />  
     <arg name="gui" default="$(arg enable_gui)" />
   </include>
