@@ -9,7 +9,9 @@
   <include file="$(find fifth_robot_description)/launch/navigation/amcl_diff_gazebo.launch" />
 
   <!-- GENERATOR -->
-  <node pkg="ros_waypoint_generator" type="ros_waypoint_generator" name="ros_waypoint_generator" />
+  <node pkg="ros_waypoint_generator" type="ros_waypoint_generator" name="ros_waypoint_generator">
+    <param name="dist_th" value="5.0" />
+  </node>
 
   <!-- rviz -->
   <node pkg="rviz" type="rviz" name="rviz" args="-d $(find fifth_robot_launcher)/rviz/tanaco.rviz" />
