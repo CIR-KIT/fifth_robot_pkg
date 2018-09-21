@@ -1,13 +1,25 @@
 <launch>
+  <arg name="map" default="$(find fifth_robot_description)/map/sample_map.yaml" />
+  <arg name="waypoint" default="$(find fifth_robot_description)/map/sample_waypoint.csv" />
+  <!-- ROBOT -->
   <include file="$(find fifth_robot_description)/launch/gazebo/setup_gazebo.launch">
     <arg name="rviz" value="false" />
   </include>
+
+  <!-- MAP -->
+  <node pkg="map_server" type="map_server" name="map_server" args="$(arg map)" />
   
-  <arg name="mapfile" default="$(find fifth_robot_description)/map/sample_map.yaml" />
-  <node pkg="map_server" type="map_server" name="map_server" args="$(arg mapfile)" />
+  <!-- WAYPOINT -->
+  <node pkg="goal_sender" type="csv_goal_sender_node" name="csv_goal_sender">
+    <param name="path" value="$(arg waypoint)" />
+  </node>
 
   <arg name="localization" default="amcl" />
   <include file="$(find fifth_robot_description)/launch/navigation/move_base_gazebo_with_$(arg localization).launch" />  
 
+
   <include file="$(find fifth_robot_description)/launch/tmp/pointcloud_to_laserscan.launch" />
+  
+  <!-- MOVE_BASE -->
+  <include file="$(find fifth_robot_description)/launch/navigation/move_base_gazebo.launch" />
 </launch>
