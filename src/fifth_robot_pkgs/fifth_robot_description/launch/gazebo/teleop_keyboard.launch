@@ -8,6 +8,9 @@
     <arg name="rviz" default="$(arg enable_rviz)" />  
     <arg name="gui" default="$(arg enable_gui)" />
   </include>
+
+  <include file="$(find fifth_robot_description)/launch/tmp/pointcloud_to_laserscan.launch" />
+  
   <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard" output="screen">
     <remap from="cmd_vel" to="fifth_robot/diff_drive_controller/cmd_vel" />
   </node>
