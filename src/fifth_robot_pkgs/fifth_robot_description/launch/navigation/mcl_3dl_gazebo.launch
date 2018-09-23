@@ -1,32 +1,5 @@
 <launch>
-  <arg name="without_odom" default="false" />
-  <arg name="config_file" default="$(find mcl_3dl)/config/test_localization.yaml"
-      unless="$(arg without_odom)" />
-  <arg name="config_file" default="$(find mcl_3dl)/config/test_localization_noodom.yaml"
-      if="$(arg without_odom)" />
-  <arg name="use_neonavigation" default="false" />
-  <arg name="use_pointcloud_map" default="true" />
-  <arg name="use_cad_map" default="false" if="$(arg use_pointcloud_map)" />
-  <arg name="use_cad_map" default="true" unless="$(arg use_pointcloud_map)" />
-  <arg name="map_objs" unless="$(arg use_pointcloud_map)" />
-  <!-- <arg name="map_pcd" if="$(arg use_pointcloud_map)" /> -->
-  <arg name="map_pcd" default="$(find fifth_robot_description)/map/3d_map.pcd" />
-  <arg name="map_scale" default="1.0" />
-  <arg name="map_offset_x" default="0.0" />
-  <arg name="map_offset_y" default="0.0" />
-  <arg name="generate_test_bag" default="false" />
-  <arg name="use_bag_file" default="false" />
-  <arg name="bag_file" if="$(arg use_bag_file)" />
-
-
-  <rosparam command="load" file="$(arg config_file)"/>
-
-  <!--
-  Required topics with use_neonavigation:=false
-    /imu/data (IMU data with estimated pose)
-    /cloud    (Measured pointcloud)
-    /odom     (Wheel odometry)
-  -->
+  <rosparam command="load" file="$(find fifth_robot_description)/config/navigation/mcl_3dl_params.yaml" />
 
   <node pkg="mcl_3dl" type="mcl_3dl" name="mcl_3dl" output="screen" >
     <remap from="/cloud" to="/points2" />
@@ -36,24 +9,7 @@
   </node>
   
   <node pkg="pcl_ros" type="pcd_to_pointcloud" name="pcd_to_pointcloud"
-      args="$(arg map_pcd)" if="$(arg use_pointcloud_map)">
+      args="$(arg mapfile)" >
     <remap from="cloud_pcd" to="mapcloud" />
   </node>
-  
-  <!-- <node pkg="track_odometry" type="track_odometry" name="track_odometry" -->
-  <!--     if="$(arg use_neonavigation)"> -->
-  <!--   <remap from="imu" to="imu/data" /> -->
-  <!--   <param name="base_link_id" value="base_link" /> -->
-  <!-- </node> -->
-
-  <!-- <node pkg="trajectory_tracker" type="trajectory_recorder" name="path_recorder" -->
-  <!--     if="$(arg use_neonavigation)"> -->
-  <!--   <param name="dist_interval" value="0.1" /> -->
-  <!--   <param name="ang_interval" value="0.2" /> -->
-  <!-- </node> -->
-  <!-- <node pkg="trajectory_tracker" type="trajectory_recorder" name="poses_ref" -->
-  <!--     if="$(arg use_neonavigation)"> -->
-  <!--   <param name="dist_interval" value="0.5" /> -->
-  <!--   <param name="ang_interval" value="100.0" /> -->
-  <!-- </node> -->
 </launch>
