@@ -19,7 +19,4 @@
 
   <arg name="localization" default="amcl" />
   <include file="$(find fifth_robot_description)/launch/navigation/move_base_gazebo_with_$(arg localization).launch" />  
-
-
-  <include file="$(find fifth_robot_description)/launch/tmp/pointcloud_to_laserscan.launch" />
 </launch>

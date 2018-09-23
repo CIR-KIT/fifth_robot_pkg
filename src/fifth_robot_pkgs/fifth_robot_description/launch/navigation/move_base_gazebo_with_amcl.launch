@@ -1,4 +1,6 @@
-<launch>
+<launch>  
+  <include file="$(find fifth_robot_description)/launch/rosbag/pointcloud_to_laserscan.launch" />
+
   <include file="$(find fifth_robot_description)/launch/navigation/amcl_diff_gazebo.launch" />
  
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
