@@ -1,4 +1,4 @@
-<!-- Bag file filter for 2d -->
+<!-- Bag file filter for 3d -->
 <launch>
   <node pkg="rosbag" type="play" name="playbag"
         args="--clock $(arg bagfile)" output="screen">

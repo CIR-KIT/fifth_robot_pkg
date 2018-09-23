@@ -1,4 +1,4 @@
-<!-- Bag file filter for 3d -->
+<!-- Bag file filter for 2d -->
 <launch>
   <node pkg="rosbag" type="play" name="playbag"
         args="--clock $(arg bagfile)" output="screen">
@@ -6,11 +6,11 @@
     <remap from="/imu" to="/imu_raw" />
   </node>
 
-  <node pkg="ros_imu_filter" type="imu_filter_node" name="imu_filter" />
+  <include file="$(find fifth_robot_description)/launch/rosbag/pointcloud_to_laserscan.launch" />
 
   <arg name="output_name" default="filtered" />
   <node pkg="rosbag" type="record" name="bag_recorder"
-        args="/imu /odom /points2 -O $(arg output_name)_2d"
+        args="/odom /scan /tf /tf_static -O $(arg output_name)_2d"
         output="screen"/>
 </launch>
   
