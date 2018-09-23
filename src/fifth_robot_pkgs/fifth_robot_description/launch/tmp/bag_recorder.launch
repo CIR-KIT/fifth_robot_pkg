@@ -1,5 +1,0 @@
-<launch>
-  <node pkg="rosbag" type="record" name="bag_recorder"
-        args="/imu /fifth_robot/diff_drive_controller/odom /points2 /clock"
-        output="screen"/>
-</launch>
