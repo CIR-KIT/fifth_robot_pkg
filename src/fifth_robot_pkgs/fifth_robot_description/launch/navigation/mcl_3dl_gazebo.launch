@@ -7,7 +7,8 @@
     <remap from="/odom" to="/fifth_robot/diff_drive_controller/odom" />
     <param name="compatible" value="1" />
   </node>
-  
+
+  <arg name="mapfile" default="$(find fifth_robot_description)/map/3d_map.pcd" />
   <node pkg="pcl_ros" type="pcd_to_pointcloud" name="pcd_to_pointcloud"
       args="$(arg mapfile)" >
     <remap from="cloud_pcd" to="mapcloud" />
