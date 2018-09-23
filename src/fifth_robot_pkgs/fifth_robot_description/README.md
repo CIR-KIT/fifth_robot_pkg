@@ -30,9 +30,13 @@
    `rosrun map_server map_saver -f 2d_map`  
    とすると 2D のマップが出来る。`2d_map`の部分はマップファイルの名前になる。  
 ***
-## 地図作成 (3D)（調整中）
+## 地図作成 (3D)
 1. cartographer_offline_node を走らせる。  
    `roslaunch fifth_robot_description offline_cartographer.launch bagfile:="fiftered_3d.bag"への絶対パス`
+   filtered_3d.bag.ply ファイル(３次元点群)が`fiftered_3d.bag` と同じディレクトリか `~/.ros` 内に作成される。
+
+2. pcl_tools ([#123](https://github.com/CIR-KIT/fifth_robot_pkg/issues/123#issuecomment-421943759) 参照)で 3d マップを作成
+   `pcl_ply2pcd filtered_3d.bag.ply 3d_map.pcd`
 ***
 ## waypoint 作成 (2D)
 1. `roslaunch fifth_robot_description generate_waypoint.launch  
@@ -45,14 +49,17 @@
 ***
  ## Navigation (2D)
  * テスト  
-   `roslaunch fifth_robot_description planning_test.launch mapfile:="2d_map.yamlへの絶対パス"`  
+   `roslaunch fifth_robot_description planning_test.launch 2d_mapfile:="2d_map.yamlへの絶対パス"`  
    
  * waypoint 使用  
-   `roslaunch fifth_robot_description navigation.launch mapfile:="2d_map.yamlへの絶対パス" waypoint=`  
+   `roslaunch fifth_robot_description navigation.launch 2d_mapfile:="2d_map.yamlへの絶対パス" waypoint="waypoint ファイルへの絶対パス"`  
   
  末尾に`world_name:=willowgarage`を付加すると gazeboの`world` を変更できる。  
  デフォルトで `clearpath_playpen`が読み込まれる。  
  また `mapfile`、`waypoint`を省略するとサンプルが読み込まれる。  
 
 ## Navigation (3D)
-edit required
+ Navigation (2D) でのコマンドの末尾に
+ `localization:=mcl_3dl 3d_map:="3d_map.pcdへの絶対パス"`
+ を付加する。
+ `3d_map` を省略するとサンプルマップが読み込まれる
