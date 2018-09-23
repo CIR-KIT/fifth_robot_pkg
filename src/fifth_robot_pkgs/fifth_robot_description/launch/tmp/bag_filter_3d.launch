@@ -1,4 +1,4 @@
-<!-- Bag file filter for Cartographer -->
+<!-- Bag file filter for 2d -->
 <launch>
   <node pkg="rosbag" type="play" name="playbag"
         args="--clock $(arg bagfile)" output="screen">
@@ -10,7 +10,7 @@
 
   <arg name="output_name" default="filtered" />
   <node pkg="rosbag" type="record" name="bag_recorder"
-        args="/imu /odom /points2 -O $(arg output_name)"
+        args="/imu /odom /points2 -O $(arg output_name)_3d"
         output="screen"/>
 </launch>
   
