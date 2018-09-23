@@ -1,5 +1,5 @@
 <launch>
-  <arg name="mapfile" default="$(find fifth_robot_description)/map/sample_map.yaml" />
+  <arg name="2d_mapfile" default="$(find fifth_robot_description)/map/sample_map.yaml" />
   <arg name="waypoint" default="$(find fifth_robot_description)/map/sample_waypoint.csv" />
   <arg name="world_name" default="clearpath_playpen" />
 
@@ -10,7 +10,7 @@
   </include>
 
   <!-- MAP -->
-  <node pkg="map_server" type="map_server" name="map_server" args="$(arg mapfile)" />
+  <node pkg="map_server" type="map_server" name="map_server" args="$(arg 2d_mapfile)" />
   
   <!-- WAYPOINT -->
   <node pkg="goal_sender" type="csv_goal_sender_node" name="csv_goal_sender">
@@ -18,5 +18,14 @@
   </node>
 
   <arg name="localization" default="amcl" />
-  <include file="$(find fifth_robot_description)/launch/navigation/move_base_gazebo_with_$(arg localization).launch" />  
+  <group if="$(eval localization == 'amcl')">
+    <include file="$(find fifth_robot_description)/launch/navigation/move_base_gazebo_with_amcl.launch" />
+  </group>
+  
+  <group if="$(eval localization == 'mcl_3dl')">
+    <arg name="3d_mapfile" default="$(find fifth_robot_description)/map/3d_map.pcd" />
+    <include file="$(find fifth_robot_description)/launch/navigation/move_base_gazebo_with_mcl_3dl.launch">
+      <arg name="3d_mapfile" value="$(arg 3d_mapfile)" />
+    </include>
+  </group>
 </launch>
