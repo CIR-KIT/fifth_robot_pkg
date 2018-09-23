@@ -1,5 +1,5 @@
 <launch>
-  <arg name="map" default="$(find fifth_robot_description)/map/sample_map.yaml" />
+  <arg name="mapfile" default="$(find fifth_robot_description)/map/sample_map.yaml" />
   <arg name="waypoint" default="$(find fifth_robot_description)/map/sample_waypoint.csv" />
   <arg name="world_name" default="clearpath_playpen" />
 
@@ -10,7 +10,7 @@
   </include>
 
   <!-- MAP -->
-  <node pkg="map_server" type="map_server" name="map_server" args="$(arg map)" />
+  <node pkg="map_server" type="map_server" name="map_server" args="$(arg mapfile)" />
   
   <!-- WAYPOINT -->
   <node pkg="goal_sender" type="csv_goal_sender_node" name="csv_goal_sender">
