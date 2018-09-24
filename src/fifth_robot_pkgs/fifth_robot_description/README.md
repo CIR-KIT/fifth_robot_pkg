@@ -46,6 +46,7 @@
 2. 上の bag play が終了したら別のターミナルで  
    `rosrun ros_waypoint_generator ros_waypoint_saver`
    とすると waypoint (csv) ファイルが出来る。
+   **waypoint ファイルの表の２から２番目の要素を 2 に変更すること**
 ***
  ## Navigation (2D)
  * テスト  
