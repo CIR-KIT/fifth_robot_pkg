@@ -1,5 +1,8 @@
 <launch>
-  <include file="$(find fifth_robot_description)/launch/navigation/mcl_3dl_gazebo.launch" />
+  <arg name="3d_mapfile" default="$(find fifth_robot_description)/map/3d_map.pcd" />
+  <include file="$(find fifth_robot_description)/launch/navigation/mcl_3dl_gazebo.launch">
+    <arg name="mapfile" value="$(arg 3d_mapfile)" />
+  </include>
  
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
     <remap from="/cmd_vel" to="/fifth_robot/diff_drive_controller/cmd_vel" />
