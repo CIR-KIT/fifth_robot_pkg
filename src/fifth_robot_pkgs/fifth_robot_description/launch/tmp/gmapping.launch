@@ -1,8 +1,0 @@
-<launch>
-  <param name="/use_sim_time" value="true" />
-
-  <node pkg="gmapping" type="slam_gmapping" name="gmapping" />
-
-  <node pkg="rosbag" type="play" name="playbag"
-        args="--clock $(arg bagfile)" output="screen" />
-</launch>

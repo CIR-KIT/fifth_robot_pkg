@@ -1,0 +1,22 @@
+<launch>
+  <arg name="world_name" default="clearpath_playpen" />
+  <include file="$(find fifth_robot_description)/launch/gazebo/setup_gazebo.launch">
+    <arg name="rviz" value="false" />
+    <arg name="world_name" value="$(arg world_name)" />
+  </include>
+  
+  <arg name="2d_mapfile" default="$(find fifth_robot_description)/map/sample_map.yaml" />
+  <node pkg="map_server" type="map_server" name="map_server" args="$(arg 2d_mapfile)" />
+
+  <arg name="localization" default="amcl" />
+  <group if="$(eval localization == 'amcl')">
+    <include file="$(find fifth_robot_description)/launch/navigation/move_base_gazebo_with_amcl.launch" />
+  </group>
+  
+  <group if="$(eval localization == 'mcl_3dl')">
+    <arg name="3d_mapfile" default="$(find fifth_robot_description)/map/3d_map.pcd" />
+    <include file="$(find fifth_robot_description)/launch/navigation/move_base_gazebo_with_mcl_3dl.launch">
+      <arg name="3d_mapfile" value="$(arg 3d_mapfile)" />
+    </include>
+  </group>
+</launch>
