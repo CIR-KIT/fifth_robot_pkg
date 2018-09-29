@@ -12,6 +12,9 @@
     <param name="path" value="$(arg waypoint)" />
   </node>
 
+  <!--- Run AMCL -->
+  <include file="$(find fifth_robot_2dnav)/launch/amcl_diff.launch" />
+ 
   <!-- MOVE_BASE -->
   <include file="$(find fifth_robot_2dnav)/launch/move_base.launch" />
 
