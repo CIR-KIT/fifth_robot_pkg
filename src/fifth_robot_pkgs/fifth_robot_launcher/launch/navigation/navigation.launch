@@ -1,0 +1,29 @@
+<launch>
+  <!-- ROBOT -->
+  <include file="$(find fifth_robot_launcher)/launch/setup/setup_all.launch" />
+
+  <!-- MAP -->
+  <arg name="2d_mapfile" />
+  <node pkg="map_server" type="map_server" name="map_server" args="$(arg 2d_mapfile)" />
+  
+  <!-- WAYPOINT -->
+  <arg name="waypoint" />
+  <node pkg="goal_sender" type="csv_goal_sender_node" name="csv_goal_sender">
+    <param name="path" value="$(arg waypoint)" />
+  </node>
+
+
+  <arg name="localization" default="amcl" />
+  <group if="$(eval localization == 'amcl')">
+    <!--- Run AMCL -->
+    <include file="$(find fifth_robot_2dnav)/launch/amcl_diff.launch" />
+  </group>
+  
+  <group if="$(eval localization == 'mcl_3dl')">
+    <!-- MOVE_BASE -->
+    <include file="$(find fifth_robot_2dnav)/launch/move_base.launch" />
+  </group>
+
+  <!-- RVIZ -->
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find fifth_robot_launcher)/rviz/tanaco.rviz" />
+</launch>
