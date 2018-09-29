@@ -1,8 +1,8 @@
 TrajectoryPlannerROS:
   max_vel_x: 0.45
-  min_vel_x: 0.2
-  max_vel_theta: 1.0
-  min_vel_theta: -1.0
+  min_vel_x: -0.35
+  max_vel_theta: 2.0
+  min_vel_theta: -2.0
  
   min_in_place_rotational_vel: 0.4
 
@@ -28,6 +28,8 @@ TrajectoryPlannerROS:
   publish_cost_grid_pc: true
   global_frame_id: odom
 
-  pdist_scale: 0.6
+  pdist_scale: 1.2
   gdist_scale: 0.8
   occdist_scale: 0.01
+
+  meter_scoring: true
