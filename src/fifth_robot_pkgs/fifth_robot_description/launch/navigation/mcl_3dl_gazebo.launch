@@ -1,5 +1,5 @@
 <launch>
-  <rosparam command="load" file="$(find fifth_robot_description)/config/navigation/mcl_3dl_params.yaml" />
+  <rosparam command="load" file="$(find fifth_robot_2dnav)/config/mcl_3dl_params.yaml" />
 
   <node pkg="mcl_3dl" type="mcl_3dl" name="mcl_3dl" output="screen" >
     <remap from="/cloud" to="/points2" />
