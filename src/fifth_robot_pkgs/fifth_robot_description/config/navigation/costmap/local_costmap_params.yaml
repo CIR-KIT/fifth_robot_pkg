@@ -7,6 +7,5 @@ local_costmap:
   height: 10.0
   resolution: 0.2
   meter_scoring: true
-  # must not be changed
   static_map: false
   rolling_window: true
