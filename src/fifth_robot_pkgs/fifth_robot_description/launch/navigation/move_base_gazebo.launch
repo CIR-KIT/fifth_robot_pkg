@@ -1,7 +1,5 @@
 <launch>  
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
-    <remap from="/cmd_vel" to="/fifth_robot/diff_drive_controller/cmd_vel" />
-    <remap from="/odom" to="/fifth_robot/diff_drive_controller/odom" />
     <rosparam file="$(find fifth_robot_2dnav)/config/move_base_params.yaml" command="load" />
     
     <rosparam file="$(find fifth_robot_description)/config/navigation/costmap_common_params.yaml" command="load" ns="global_costmap" />

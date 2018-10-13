@@ -4,7 +4,6 @@
   <node pkg="mcl_3dl" type="mcl_3dl" name="mcl_3dl" output="screen" >
     <remap from="/cloud" to="/points2" />
     <remap from="/imu/data" to="/imu" />
-    <remap from="/odom" to="/fifth_robot/diff_drive_controller/odom" />
     <param name="compatible" value="1" />
   </node>
 
