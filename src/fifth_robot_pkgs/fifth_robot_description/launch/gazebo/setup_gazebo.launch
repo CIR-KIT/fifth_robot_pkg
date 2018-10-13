@@ -10,7 +10,7 @@
   <arg name="world_name" default="clearpath_playpen" />
   
   <group if="$(eval world_name == 'clearpath_playpen')">
-  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+  <include file="$(find fifth_robot_description)/launch/gazebo/empty_world.launch">
     <arg name="world_name" value="$(find fifth_robot_description)/world/clearpath_playpen.world" />
     <arg name="debug" value="$(arg debug)" />
     <arg name="gui" value="$(arg gui)" />
@@ -21,7 +21,7 @@
   </group>
   
   <group if="$(eval world_name == 'willowgarage')">
-    <include file="$(find gazebo_ros)/launch/willowgarage_world.launch" />
+    <include file="$(find fifth_robot_description)/launch/gazebo/willowgarage_world.launch" />
   </group>
   
   <param name="robot_description" command="$(find xacro)/xacro.py $(arg model)" />
