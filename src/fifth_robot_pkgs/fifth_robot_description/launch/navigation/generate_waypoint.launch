@@ -6,7 +6,7 @@
   <node pkg="map_server" type="map_server" name="map_server" args="$(arg mapfile)" />
 
   <!-- AMCL -->
-  <include file="$(find fifth_robot_description)/launch/navigation/amcl_diff_gazebo.launch" />
+  <include file="$(find fifth_robot_2dnav)/launch/amcl_diff.launch" />
 
   <!-- GENERATOR -->
   <node pkg="ros_waypoint_generator" type="ros_waypoint_generator" name="ros_waypoint_generator">
