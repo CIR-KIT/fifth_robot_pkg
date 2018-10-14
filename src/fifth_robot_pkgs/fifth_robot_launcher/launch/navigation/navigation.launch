@@ -2,7 +2,7 @@
   <!-- ROBOT -->
   <include file="$(find fifth_robot_launcher)/launch/setup/setup_all.launch" />
 
-  <!-- MAP -->
+  <!-- 2D MAP -->
   <arg name="2d_mapfile" />
   <node pkg="map_server" type="map_server" name="map_server" args="$(arg 2d_mapfile)" />
   
@@ -12,19 +12,27 @@
     <param name="path" value="$(arg waypoint)" />
   </node>
 
-
   <arg name="localization" default="amcl" />
   <group if="$(eval localization == 'amcl')">
-    <!--- Run AMCL -->
+    <!--- AMCL -->
     <include file="$(find fifth_robot_2dnav)/launch/amcl_diff.launch" />
     <!-- RVIZ -->
     <node pkg="rviz" type="rviz" name="rviz" args="-d $(find fifth_robot_launcher)/rviz/with_amcl.rviz" />
   </group>
   
   <group if="$(eval localization == 'mcl_3dl')">
-    <!-- MOVE_BASE -->
-    <include file="$(find fifth_robot_2dnav)/launch/move_base.launch" />
+    <!-- 3D MAP -->
+    <arg name="mapfile" default="$(find fifth_robot_description)/map/3d_map.pcd" />
+    <node pkg="pcl_ros" type="pcd_to_pointcloud" name="pcd_to_pointcloud"
+          args="$(arg mapfile)" >
+      <remap from="cloud_pcd" to="mapcloud" />
+    </node>    
+    <!-- MCL_3DL -->
+    <include file="$(find fifth_robot_2dnav)/launch/mcl_3dl.launch" />
     <!-- RVIZ -->
     <node pkg="rviz" type="rviz" name="rviz" args="-d $(find fifth_robot_launcher)/rviz/with_mcl_3dl.rviz" />
   </group>
+
+  <!-- MOVE_BASE -->
+  <include file="$(find fifth_robot_2dnav)/launch/move_base.launch" />
 </launch>
