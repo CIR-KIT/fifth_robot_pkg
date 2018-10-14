@@ -8,6 +8,7 @@
 
   <arg name="localization" default="amcl" />
   <group if="$(eval localization == 'amcl')">
+    <include file="$(find fifth_robot_launcher)/launch/topics/pointcloud_to_laserscan.launch" />
     <!--- AMCL -->
     <include file="$(find fifth_robot_2dnav)/launch/amcl_diff.launch" />
     <!-- RVIZ -->
