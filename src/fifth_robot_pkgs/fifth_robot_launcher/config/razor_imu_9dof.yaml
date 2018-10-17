@@ -1,6 +1,10 @@
 ## USB port
 port: /dev/serial/by-id/usb-SparkFun_SFE_9DOF-D21-if00
 
+## Sensor Flame
+## !!!!!!!!!!!!!!!!!!!! CHECK REQUIRED !!!!!!!!!!!!!!!!!!!!
+flame_id: imu_link
+
 ##### Calibration ####
 ### accelerometer
 accel_x_min: -250.0
