@@ -3,6 +3,7 @@
   <node pkg="rosbag" type="play" name="playbag"
         args="--clock $(arg bagfile)" required="true" output="screen">
     <remap from="/fifth_robot/diff_drive_controller/odom" to="/odom" />
+    <remap from="/velodyne_points" to="points2" />
     <remap from="/imu" to="/imu_raw" />
   </node>
 
