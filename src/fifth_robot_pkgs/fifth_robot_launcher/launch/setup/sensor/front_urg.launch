@@ -8,9 +8,4 @@
     <param name="angle_max" value="2.35" />
     <param name="publish_multiecho" value="true" />
   </node>
-
-  <!-- TF for URG -->
-  <!-- You can adjust the pose of laser-rangefinder here. Order of values: x y z yaw pitch roll. -->
-  <node pkg="tf" type="static_transform_publisher" name="front_urg_tf_broadcaster"
-        args="$(optenv front_urg_pose 0 0 0.41 0 0 0) base_link front_urg_link 100" />
 </launch>
