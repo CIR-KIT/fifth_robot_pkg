@@ -2,7 +2,7 @@
   <!-- IMU -->
   <!-- !!!!!!!!!!!!!!!!!!!!!! EDIT REQIRED !!!!!!!!!!!!!!!!!!!!!! -->
   <node pkg="tf" type="static_transform_publisher" name="imu_tf_broadcaster"
-        args="0 0 0 0 0 0 base_link imu_link 100" />
+        args="-0.13 0 0.60 0 0 0 base_link imu_link 100" />
 
   <!-- 3DLiDAR -->
   <node pkg="tf" type="static_transform_publisher" name="velodyne_tf_broadcaster"
