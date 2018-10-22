@@ -1,12 +1,13 @@
 TrajectoryPlannerROS:
-  max_vel_x: 0.45
-  min_vel_x: -0.35
+  max_vel_x: 1.0
+  min_vel_x: -0.5
   max_vel_theta: 2.0
   min_vel_theta: -2.0
  
-  min_in_place_rotational_vel: 0.4
+  min_in_place_rotational_vel: 1.4
 
   acc_lim_x: 2.5
+  acc_lim_y: 0.0
   acc_lim_theta: 3.2
 
   # fifth_robot is not a holonomic robot
