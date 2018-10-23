@@ -1,11 +1,13 @@
 <launch>
-  <arg name="enable_lrf" default="true" />
-  <!-- YP-SPUR -->
-  <include file="$(find fifth_robot_launcher)/launch/setup/robot/ypspur.launch" />
+  <arg name="use_sensor" default="true" />
+  <group if="$(arg use_sensor)">
+    <!-- with sensor -->
+    <include file="$(find fifth_robot_launcher)/launch/setup/setup_all.launch" />
+  </group>
 
-  <!-- LRF -->
-  <group if="$(arg enable_lrf)">
-    <include file="$(find fifth_robot_launcher)/launch/setup/sensor/front_urg.launch" />
+  <group unless="$(arg use_sensor)">
+    <!-- without sensor -->
+    <include file="$(find fifth_robot_launcher)/launch/setup/robot/ypspur.launch" />
   </group>
 
   <!-- JOY CONTROL -->

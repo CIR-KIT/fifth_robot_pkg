@@ -4,7 +4,7 @@
     
     <visual>
       <geometry>
-        <box size="0.300 0.250 0.10"/>
+        <box size="0.300 0.250 0.20"/>
       </geometry>
     </visual>
     
@@ -142,7 +142,7 @@
     </visual>
   </link>
   <joint name="velodyne_joint" type="fixed">
-    <origin xyz="0 0 0.1" rpy="0 0 0" />
+    <origin xyz="0.1 0 0.2" rpy="0 0 0" />
     <parent link="base_link"/>
     <child link="velodyne_link" />
   </joint>

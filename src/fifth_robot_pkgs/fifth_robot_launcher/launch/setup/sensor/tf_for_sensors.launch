@@ -1,15 +1,10 @@
 <launch>
-  <!-- front URG -->
-  <node pkg="tf" type="static_transform_publisher" name="front_urg_tf_broadcaster"
-        args=" 0 0 0.41 0 0 0 base_link front_urg_link 100" />
-
   <!-- IMU -->
   <!-- !!!!!!!!!!!!!!!!!!!!!! EDIT REQIRED !!!!!!!!!!!!!!!!!!!!!! -->
   <node pkg="tf" type="static_transform_publisher" name="imu_tf_broadcaster"
-        args="0 0 0 0 0 0 base_link imu_link 100" />
+        args="-0.13 0 0.60 0 0 0 base_link imu_link 100" />
 
   <!-- 3DLiDAR -->
-  <!-- !!!!!!!!!!!!!!!!!!!!!! EDIT REQIRED !!!!!!!!!!!!!!!!!!!!!! -->
   <node pkg="tf" type="static_transform_publisher" name="velodyne_tf_broadcaster"
-        args="0 0 0 0 0 0 base_link velodyne_link 100" />
+        args="-0.20 0 0.60 0 0 0 base_link velodyne_link 100" />
 </launch>

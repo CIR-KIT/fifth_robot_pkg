@@ -2,6 +2,12 @@
   <!-- YP-SPUR -->
   <include file="$(find fifth_robot_launcher)/launch/setup/robot/ypspur.launch" />
   
-  <!-- LRF -->
-  <include file="$(find fifth_robot_launcher)/launch/setup/sensor/front_urg.launch" />
+  <!-- IMU -->
+  <include file="$(find fifth_robot_launcher)/launch/setup/sensor/rt_usb_9axisimu_driver.launch" />
+
+  <!-- Velodyne -->
+  <include file="$(find fifth_robot_launcher)/launch/setup/sensor/velodyne.launch" />
+
+  <!-- Tf -->
+  <include file="$(find fifth_robot_launcher)/launch/setup/sensor/tf_for_sensors.launch" />
 </launch>
