@@ -1,7 +1,7 @@
 <launch>
   <node pkg="pcl_ros" type="pointcloud_to_pcd" name="map_maker_3d" output="screen">
     <remap from="input" to="/blam/blam_slam/octree_map" />
-    <param name="fixed_frame" value="odom" />
+    <param name="fixed_frame" value="base" />
     <param name="prefix" value="3dmap" />
   </node>
 </launch>
