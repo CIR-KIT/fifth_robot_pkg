@@ -23,9 +23,8 @@
   
   <group if="$(eval localization == 'mcl_3dl')">
     <!-- 3D MAP -->
-    <arg name="mapfile" default="$(find fifth_robot_description)/map/3d_map.pcd" />
     <node pkg="pcl_ros" type="pcd_to_pointcloud" name="pcd_to_pointcloud"
-          args="$(arg mapfile)" >
+          args="$(arg 3d_mapfile)" >
       <remap from="cloud_pcd" to="mapcloud" />
     </node>    
     <!-- MCL_3DL -->
