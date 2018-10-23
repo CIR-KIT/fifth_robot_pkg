@@ -1,0 +1,6 @@
+<launch>
+  <node pkg="pcl_ros" type="pointcloud_to_pcd" name="map_maker_3d">
+    <remap from="input" to="/blam/blam_slam/octree_map" />
+    <param name="fixed_frame" value="velodyne_link" />
+  </node>
+</launch>
