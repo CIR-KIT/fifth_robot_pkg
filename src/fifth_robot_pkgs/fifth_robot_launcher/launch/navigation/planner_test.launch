@@ -18,7 +18,7 @@
   <group if="$(eval localization == 'mcl_3dl')">
     <!-- 3D MAP -->
     <node pkg="pcl_ros" type="pcd_to_pointcloud" name="pcd_to_pointcloud"
-          args="$(arg 3d_mapfile)" >
+          args="$(arg 3d_mapfile) 3" > <!-- The number is publishing interval -->
       <remap from="cloud_pcd" to="mapcloud" />
       <param name="frame_id" value="map" />
     </node>    
