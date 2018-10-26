@@ -6,12 +6,12 @@ TrajectoryPlannerROS:
  
   min_in_place_rotational_vel: 1.4
 
-  acc_lim_x: 2.5
+  acc_lim_x: 1.0
   acc_lim_y: 0.0
   acc_lim_theta: 3.2
 
   # fifth_robot is not a holonomic robot
-  holonomic_robot: false
+  holonomic_robot: true
 
   yaw_goal_tolerance: 0.1
   xy_goal_tolerance: 0.1

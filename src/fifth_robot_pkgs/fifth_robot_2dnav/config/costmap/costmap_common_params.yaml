@@ -2,9 +2,9 @@ obstacle_range: 5.0
 raytrace_range: 10.0
 
 # footprint for KIT-C5 new model
-footprint: [[0.07, -0.30], [0.07, 0.30], [-0.43, 0.30], [-0.43, -0.30]]
+footprint: [[0.20, -0.30], [0.20, 0.30], [-0.50, 0.30], [-0.50, -0.30]]
 # inflation_radius: 0.5
-cost_scaling_factor: 4.0
+cost_scaling_factor: 5.0
 
 rigin_z: 0.0
 z_resolution: 0.02
