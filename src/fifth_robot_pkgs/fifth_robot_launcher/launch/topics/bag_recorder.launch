@@ -1,0 +1,8 @@
+<launch>
+  <node pkg="rosbag" type="record" name="bag_recorder"
+        args="/imu
+              /odom
+              /tf
+              /velodyne_points"
+        output="screen"/>
+</launch>

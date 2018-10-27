@@ -11,5 +11,5 @@ shutdown_costmaps: false
 oscillation_timeout: 10.0
 oscillation_distance: 0.2
 
-max_planning_retries: -1
+max_planning_retries: 10
 conservative_reset_dist: 6.0
