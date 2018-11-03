@@ -12,5 +12,5 @@ pcd_to_pointcloud:
 track_odometry:
   z_filter: 1.0
   tf_tolerance: 0.1
-  without_odom: true
+  without_odom: false
 
