@@ -1,17 +1,17 @@
 TrajectoryPlannerROS:
-  max_vel_x: 1.0
+  max_vel_x: 4.0
   min_vel_x: -0.5
   max_vel_theta: 2.0
   min_vel_theta: -2.0
  
-  min_in_place_rotational_vel: 1.4
+  min_in_place_rotational_vel: 0.4
 
   acc_lim_x: 1.0
   acc_lim_y: 0.0
   acc_lim_theta: 3.2
 
   # fifth_robot is not a holonomic robot
-  holonomic_robot: true
+  holonomic_robot: false
 
   yaw_goal_tolerance: 0.1
   xy_goal_tolerance: 0.1
@@ -29,7 +29,7 @@ TrajectoryPlannerROS:
   publish_cost_grid_pc: true
   global_frame_id: floor
 
-  pdist_scale: 1.2
+  pdist_scale: 0.6
   gdist_scale: 0.8
   occdist_scale: 0.01
 
