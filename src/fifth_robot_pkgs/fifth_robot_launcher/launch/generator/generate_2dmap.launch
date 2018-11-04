@@ -2,6 +2,8 @@
   <!-- param -->
   <param name="/use_sim_time" value="true" />
 
+  <include file="$(find fifth_robot_launcher)/launch/topics/pointcloud_to_laserscan.launch" />
+  
   <!-- gmapping -->
   <node pkg="gmapping" type="slam_gmapping" name="gmapping" />
 
