@@ -28,6 +28,8 @@
       <remap from="cloud_pcd" to="mapcloud" />
       <param name="frame_id" value="map" />
     </node>    
+    <node pkg="tf" type="static_transform_publisher" name="map3d_tf_broadcaster"
+          args="0 0 0 -0.22 0 0 map map3d 100" />
     <!-- MCL_3DL -->
     <include file="$(find fifth_robot_2dnav)/launch/mcl_3dl.launch" />
     <!-- RVIZ -->
