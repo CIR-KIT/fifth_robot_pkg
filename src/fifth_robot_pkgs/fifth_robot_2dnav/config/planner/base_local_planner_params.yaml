@@ -16,8 +16,8 @@ TrajectoryPlannerROS:
   yaw_goal_tolerance: 0.1
   xy_goal_tolerance: 0.1
 
-  sim_time: 2.0
-  controller_frequency: 10.0
+  sim_time: 4.0
+  controller_frequency: 5.0
   # Length of view when rotate
   heading_lookahead: 15.0
   # Use method of Dynamic Window Approach
@@ -27,7 +27,7 @@ TrajectoryPlannerROS:
 
   # Show cost map
   publish_cost_grid_pc: true
-  global_frame_id: floor
+  global_frame_id: map
 
   pdist_scale: 0.6
   gdist_scale: 0.8
