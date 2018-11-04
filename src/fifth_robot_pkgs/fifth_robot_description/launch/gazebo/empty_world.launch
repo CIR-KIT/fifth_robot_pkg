@@ -35,7 +35,7 @@
   <group if="$(arg use_clock_frequency)">
     <param name="gazebo/pub_clock_frequency" value="$(arg pub_clock_frequency)" />
   </group>
-  <node name="gazebo" pkg="gazebo_ros" type="$(arg script_type)" respawn="$(arg respawn_gazebo)" output="screen"
+  <node name="gazebo" pkg="gazebo_ros" type="$(arg script_type)" required="true" respawn="$(arg respawn_gazebo)" output="screen"
 	    args="$(arg command_arg1) $(arg command_arg2) $(arg command_arg3) -e $(arg physics) $(arg extra_gazebo_args) $(arg world_name)">
     <remap from="/fifth_robot/diff_drive_controller/cmd_vel" to="/cmd_vel" />
     <remap from="/fifth_robot/diff_drive_controller/odom" to="/odom" />
@@ -43,7 +43,7 @@
 
   <!-- start gazebo client -->
   <group if="$(arg gui)">
-    <node name="gazebo_gui" pkg="gazebo_ros" type="gzclient" respawn="false" output="screen" args="$(arg command_arg3)"/>
+    <node name="gazebo_gui" pkg="gazebo_ros" type="gzclient" required="true" respawn="false" output="screen" args="$(arg command_arg3)"/>
   </group>
 
 </launch>
