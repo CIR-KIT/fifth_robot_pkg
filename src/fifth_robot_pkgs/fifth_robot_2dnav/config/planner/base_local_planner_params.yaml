@@ -21,7 +21,7 @@ TrajectoryPlannerROS:
   # Length of view when rotate
   heading_lookahead: 15.0
   # Use method of Dynamic Window Approach
-  heading_scoring: false
+  heading_scoring: true
   heading_scoring_timestamp: 0.5
   dwa: true
 
