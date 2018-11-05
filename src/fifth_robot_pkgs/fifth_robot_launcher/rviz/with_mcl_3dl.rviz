@@ -7,17 +7,11 @@ Panels:
         - /Global Options1
         - /Status1
         - /Grid1/Offset1
-        - /PointCloud21
         - /PointCloud21/Autocompute Value Bounds1
-        - /PointCloud22
         - /PointCloud22/Autocompute Value Bounds1
-        - /PointCloud23
-        - /PointCloud24
-        - /PoseArray2
-        - /Map2
-        - /Path2
+        - /TF2/Frames1
       Splitter Ratio: 0.490420997
-    Tree Height: 890
+    Tree Height: 825
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -43,7 +37,7 @@ Panels:
     Property Tree Widget:
       Expanded: ~
       Splitter Ratio: 0.5
-    Tree Height: 354
+    Tree Height: 358
   - Class: rviz/Displays
     Help Height: 75
     Name: Displays
@@ -52,7 +46,7 @@ Panels:
         - /PointCloud21
         - /PointCloud22
       Splitter Ratio: 0.5
-    Tree Height: 354
+    Tree Height: 358
 Visualization Manager:
   Class: ""
   Displays:
@@ -215,17 +209,9 @@ Visualization Manager:
       Frame Timeout: 15
       Frames:
         All Enabled: true
-        base_link:
-          Value: true
-        floor:
-          Value: true
-        imu_link:
-          Value: true
         map:
           Value: true
-        odom:
-          Value: true
-        velodyne_link:
+        map3d:
           Value: true
       Marker Scale: 0.5
       Name: TF
@@ -234,14 +220,8 @@ Visualization Manager:
       Show Names: false
       Tree:
         map:
-          floor:
+          map3d:
             {}
-          odom:
-            base_link:
-              imu_link:
-                {}
-              velodyne_link:
-                {}
       Update Interval: 0
       Value: true
     - Class: rviz/MarkerArray
@@ -249,9 +229,7 @@ Visualization Manager:
       Marker Topic: /mcl_3dl/debug_marker
       Name: MarkerArray
       Namespaces:
-        Ray collisions: true
-        Rays: true
-        Sample points: true
+        {}
       Queue Size: 100
       Value: true
     - Alpha: 1
@@ -343,6 +321,56 @@ Visualization Manager:
       Topic: /move_base/GlobalPlanner/plan
       Unreliable: false
       Value: true
+    - Class: rviz/TF
+      Enabled: true
+      Frame Timeout: 15
+      Frames:
+        All Enabled: false
+        map:
+          Value: false
+        map3d:
+          Value: false
+      Marker Scale: 10
+      Name: TF
+      Show Arrows: true
+      Show Axes: true
+      Show Names: true
+      Tree:
+        map:
+          map3d:
+            {}
+      Update Interval: 0
+      Value: true
+    - Alpha: 0.699999988
+      Autocompute Intensity Bounds: true
+      Autocompute Value Bounds:
+        Max Value: 10
+        Min Value: -10
+        Value: true
+      Axis: Z
+      Channel Name: intensity
+      Class: rviz/PointCloud2
+      Color: 85; 170; 255
+      Color Transformer: FlatColor
+      Decay Time: 0
+      Enabled: false
+      Invert Rainbow: false
+      Max Color: 255; 255; 255
+      Max Intensity: 4096
+      Min Color: 0; 0; 0
+      Min Intensity: 0
+      Name: PointCloud2
+      Position Transformer: XYZ
+      Queue Size: 10
+      Selectable: true
+      Size (Pixels): 3
+      Size (m): 0.300000012
+      Style: Spheres
+      Topic: /mapcloud
+      Unreliable: false
+      Use Fixed Frame: true
+      Use rainbow: true
+      Value: false
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -368,7 +396,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 57.5173492
+      Distance: 95.2184067
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.0599999987
         Stereo Focal Distance: 1
@@ -383,18 +411,18 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.00999999978
-      Pitch: 1.54979634
+      Pitch: 1.45979691
       Target Frame: base_link
       Value: Orbit (rviz)
-      Yaw: 0.331815809
+      Yaw: 3.14181447
     Saved: ~
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 1128
+  Height: 1050
   Hide Left Dock: false
   Hide Right Dock: true
-  QMainWindow State: 000000ff00000000fd00000004000000000000019300000413fc020000000dfb0000000a0049006d0061006700650000000040000002df0000000000000000fb000000100044006900730070006c006100790073010000003100000413000000e400fffffffb0000000a0049006d0061006700650000000241000001920000000000000000fb0000001200530065006c0065006300740069006f006e0000000040000001c70000006600fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000002ac00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000a0049006d0061006700650000000303000000d00000000000000000fb000000100044006900730070006c006100790073000000032d0000013e000000e400fffffffb000000100044006900730070006c00610079007300000000310000043a000000e400ffffff0000000100000114000003aefc0200000003fb0000000a005600690065007700730000000040000003ae000000c200fffffffb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000780000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000003c000000046fc0100000002fb0000000800540069006d00650000000000000003c0000003dd00fffffffb0000000800540069006d00650100000000000004500000000000000000000005a70000041300000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd000000040000000000000193000003cbfc020000000dfb0000000a0049006d0061006700650000000040000002df0000000000000000fb000000100044006900730070006c006100790073010000002e000003cb000000dd00fffffffb0000000a0049006d0061006700650000000241000001920000000000000000fb0000001200530065006c0065006300740069006f006e0000000040000001c70000006300fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000002ac00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261fb0000000a0049006d0061006700650000000303000000d00000000000000000fb000000100044006900730070006c006100790073000000032d0000013e000000dd00fffffffb000000100044006900730070006c00610079007300000000310000043a000000dd00ffffff0000000100000114000003aefc0200000003fb0000000a005600690065007700730000000040000003ae000000b700fffffffb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000780000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000003c000000046fc0100000002fb0000000800540069006d00650000000000000003c00000039300fffffffb0000000800540069006d0065010000000000000450000000000000000000000581000003cb00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -403,6 +431,6 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: true
-  Width: 1858
-  X: 62
-  Y: 33
+  Width: 1819
+  X: 101
+  Y: 30
