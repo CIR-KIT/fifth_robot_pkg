@@ -29,7 +29,6 @@ msg/_*.py
 CMakeLists.txt.user
 
 srv/_*.py
-*.pcd
 *.pyc
 qtcreator-*
 *.user

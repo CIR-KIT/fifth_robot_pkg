@@ -2,7 +2,7 @@
   <!-- ROBOT -->
   <include file="$(find fifth_robot_launcher)/launch/setup/setup_all.launch" />
 
-  <!-- MAP -->
+  <!-- 2D MAP -->
   <arg name="2d_mapfile" />
   <node pkg="map_server" type="map_server" name="map_server" args="$(arg 2d_mapfile)" />
   
@@ -12,18 +12,30 @@
     <param name="path" value="$(arg waypoint)" />
   </node>
 
-
   <arg name="localization" default="amcl" />
-  <group if="$(eval localization == 'amcl')">
-    <!--- Run AMCL -->
+  <group unless="$(eval localization == 'mcl_3dl')">
+    <include file="$(find fifth_robot_launcher)/launch/topics/pointcloud_to_laserscan.launch" />
+    <!--- AMCL -->
     <include file="$(find fifth_robot_2dnav)/launch/amcl_diff.launch" />
+    <!-- RVIZ -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find fifth_robot_launcher)/rviz/with_amcl.rviz" />
   </group>
   
   <group if="$(eval localization == 'mcl_3dl')">
-    <!-- MOVE_BASE -->
-    <include file="$(find fifth_robot_2dnav)/launch/move_base.launch" />
+    <!-- 3D MAP -->
+    <node pkg="pcl_ros" type="pcd_to_pointcloud" name="pcd_to_pointcloud"
+          args="$(arg 3d_mapfile)" >
+      <remap from="cloud_pcd" to="mapcloud" />
+      <param name="frame_id" value="map" />
+    </node>    
+    <node pkg="tf" type="static_transform_publisher" name="map3d_tf_broadcaster"
+          args="0 0 0 -0.22 0 0 map map3d 100" />
+    <!-- MCL_3DL -->
+    <include file="$(find fifth_robot_2dnav)/launch/mcl_3dl.launch" />
+    <!-- RVIZ -->
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find fifth_robot_launcher)/rviz/with_mcl_3dl.rviz" />
   </group>
 
-  <!-- RVIZ -->
-  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find fifth_robot_launcher)/rviz/tanaco.rviz" />
+  <!-- MOVE_BASE -->
+  <include file="$(find fifth_robot_2dnav)/launch/move_base.launch" />
 </launch>

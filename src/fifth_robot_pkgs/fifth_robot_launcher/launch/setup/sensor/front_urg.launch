@@ -1,15 +1,11 @@
 <launch>
   <!-- URG_NODE -->
   <node pkg="urg_node" type="urg_node" name="front_urg">
+    <remap from="most_intense" to="scan" />
     <param name="frame_id" value="front_urg_link" />
     <param name="ip_address" value="192.168.0.10" />
     <param name="angle_min" value="-2.35" />
     <param name="angle_max" value="2.35" />
     <param name="publish_multiecho" value="true" />
   </node>
-
-  <!-- TF for URG -->
-  <!-- You can adjust the pose of laser-rangefinder here. Order of values: x y z yaw pitch roll. -->
-  <node pkg="tf" type="static_transform_publisher" name="front_urg_tf_broadcaster"
-        args="$(optenv front_urg_pose 0 0 0.41 0 0 0) base_link front_urg_link 100" />
 </launch>

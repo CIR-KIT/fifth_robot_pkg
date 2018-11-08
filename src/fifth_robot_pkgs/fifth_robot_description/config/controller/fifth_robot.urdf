@@ -4,7 +4,7 @@
     
     <visual>
       <geometry>
-        <box size="0.300 0.250 0.10"/>
+        <box size="0.300 0.250 0.20"/>
       </geometry>
     </visual>
     
@@ -142,7 +142,7 @@
     </visual>
   </link>
   <joint name="velodyne_joint" type="fixed">
-    <origin xyz="0 0 0.1" rpy="0 0 0" />
+    <origin xyz="0.1 0 0.2" rpy="0 0 0" />
     <parent link="base_link"/>
     <child link="velodyne_link" />
   </joint>
@@ -156,7 +156,7 @@
       <ray>
         <scan>
           <horizontal>
-            <samples>360</samples>
+            <samples>200</samples>
             <resolution>1</resolution>
             <min_angle>-3.14</min_angle>
             <max_angle> 3.14</max_angle>
@@ -175,7 +175,7 @@
         </range>
       </ray>
       <plugin name="gazebo_ros_velodyne_controller" filename="libgazebo_ros_velodyne_laser.so">
-        <topicName>/points2</topicName>
+        <topicName>/velodyne_points</topicName>
         <frameName>velodyne_link</frameName>
         <min_range>0.9</min_range>
         <max_range>130</max_range>

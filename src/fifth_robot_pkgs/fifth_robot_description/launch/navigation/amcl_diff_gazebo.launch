@@ -1,5 +1,0 @@
-<launch>
-  <node pkg="amcl" type="amcl" name="amcl" output="screen">
-    <rosparam file="$(find fifth_robot_2dnav)/config/amcl_params.yaml" command="load" />
-  </node>
-</launch>

@@ -1,0 +1,11 @@
+<launch>
+  <node pkg="razor_imu_9dof" type="imu_node.py" name="imu_node" output="screen">
+    <rosparam file="$(find fifth_robot_launcher)/config/razor_imu_9dof.yaml" />
+  </node>
+
+  <arg name="visualize" default="false" />
+  <group if="$(arg visualize)">
+    <node pkg="razor_imu_9dof" type="display_3D_visualization.py"
+          name="imu_viewer" output="screen" />
+  </group>
+</launch>

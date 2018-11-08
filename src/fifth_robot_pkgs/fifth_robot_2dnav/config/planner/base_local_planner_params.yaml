@@ -1,12 +1,13 @@
 TrajectoryPlannerROS:
-  max_vel_x: 0.45
-  min_vel_x: -0.35
+  max_vel_x: 2.0
+  min_vel_x: -0.5
   max_vel_theta: 2.0
   min_vel_theta: -2.0
  
   min_in_place_rotational_vel: 0.4
 
-  acc_lim_x: 2.5
+  acc_lim_x: 1.0
+  acc_lim_y: 0.0
   acc_lim_theta: 3.2
 
   # fifth_robot is not a holonomic robot
@@ -26,9 +27,9 @@ TrajectoryPlannerROS:
 
   # Show cost map
   publish_cost_grid_pc: true
-  global_frame_id: odom
+  global_frame_id: map
 
-  pdist_scale: 1.2
+  pdist_scale: 0.6
   gdist_scale: 0.8
   occdist_scale: 0.01
 

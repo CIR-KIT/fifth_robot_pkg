@@ -10,7 +10,7 @@
 
   <arg name="output_name" default="filtered" />
   <node pkg="rosbag" type="record" name="bag_recorder"
-        args="/odom /scan /tf /tf_static -O $(arg output_name)_2d"
+        args="/imu /odom /scan /tf /tf_static -O $(arg output_name)_2d"
         output="screen"/>
 </launch>
   
