@@ -2,6 +2,8 @@
   <!-- map_server -->
   <node pkg="map_server" type="map_server" name="map_server" args="$(arg mapfile)" />
 
+  <include file="$(find fifth_robot_launcher)/launch/topics/pointcloud_to_laserscan.launch" />
+
   <!-- amcl -->
   <include file="$(find fifth_robot_2dnav)/launch/amcl_diff.launch" />
 
