@@ -13,14 +13,21 @@
   </node>
 
   <arg name="localization" default="amcl" />
-  <group unless="$(eval localization == 'mcl_3dl')">
+  <group if="$(eval localization == 'amcl')">
     <include file="$(find fifth_robot_launcher)/launch/topics/pointcloud_to_laserscan.launch" />
     <!--- AMCL -->
     <include file="$(find fifth_robot_2dnav)/launch/amcl_diff.launch" />
     <!-- RVIZ -->
     <node pkg="rviz" type="rviz" name="rviz" args="-d $(find fifth_robot_launcher)/rviz/with_amcl.rviz" />
   </group>
-  
+
+  <group if="$(eval localization == 'hector')">
+    <include file="$(find fifth_robot_launcher)/launch/topics/pointcloud_to_laserscan.launch" />
+    <!--- hector -->
+    <include file="$(find fifth_robot_2dnav)/launch/hector_localization.launch" />
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find fifth_robot_launcher)/rviz/with_amcl.rviz" />
+  </group>
+
   <group if="$(eval localization == 'mcl_3dl')">
     <!-- 3D MAP -->
     <node pkg="pcl_ros" type="pcd_to_pointcloud" name="pcd_to_pointcloud"
