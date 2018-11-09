@@ -5,10 +5,10 @@
   <arg name="pub_map_odom_transform" default="true"/>
   <arg name="scan_subscriber_queue_size" default="5"/>
   <arg name="scan_topic" default="scan"/>
-  <arg name="map_size" default="5120"/>
-  <arg name="map_resolution" default="0.2" />
-  <arg name="map_start_x" value="0.1" /> <!-- [ 0.0, 1.0 ] -->
-  <arg name="map_start_y" value="0.9" /> <!-- [ 0.0, 1.0 ] -->
+  <arg name="map_size" default="2048"/>
+  <arg name="map_resolution" default="0.1" />
+  <arg name="map_start_x" value="0.4" /> <!-- [ 0.0, 1.0 ] -->
+  <arg name="map_start_y" value="0.7" /> <!-- [ 0.0, 1.0 ] -->
   
   <node pkg="hector_mapping" type="hector_mapping" name="hector_mapping" output="screen">
     
