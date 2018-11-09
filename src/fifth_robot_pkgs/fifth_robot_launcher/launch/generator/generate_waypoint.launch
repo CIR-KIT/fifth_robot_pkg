@@ -4,8 +4,9 @@
 
   <include file="$(find fifth_robot_launcher)/launch/topics/pointcloud_to_laserscan.launch" />
 
-  <!-- amcl -->
-  <include file="$(find fifth_robot_2dnav)/launch/amcl_diff.launch" />
+  <!-- localization -->
+  <!-- <include file="$(find fifth_robot_2dnav)/launch/amcl_diff.launch" /> -->
+  <include file="$(find fifth_robot_2dnav)/launch/hector_localization.launch" />
 
   <!-- ros_waypoint_generator -->
   <node pkg="ros_waypoint_generator" type="ros_waypoint_generator" name="ros_waypoint_generator" >
