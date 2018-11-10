@@ -4,7 +4,7 @@ TrajectoryPlannerROS:
   max_vel_theta: 2.0
   min_vel_theta: -2.0
  
-  min_in_place_rotational_vel: 0.4
+  min_in_place_rotational_vel: 1.0
 
   acc_lim_x: 1.0
   acc_lim_y: 0.0
@@ -16,7 +16,7 @@ TrajectoryPlannerROS:
   yaw_goal_tolerance: 0.1
   xy_goal_tolerance: 0.1
 
-  sim_time: 4.0
+  sim_time: 2.0
   controller_frequency: 5.0
   # Length of view when rotate
   heading_lookahead: 15.0
