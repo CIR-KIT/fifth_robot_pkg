@@ -2,10 +2,10 @@ recovery_behavior_enabled: true
 recovery_behaviors:
   - name: 'conservative_reset'
     type: 'clear_costmap_recovery/ClearCostmapRecovery'
-  - name: 'aggressive_reset'
-    type: 'clear_costmap_recovery/ClearCostmapRecovery'
   - name: 'rotate_recovery_1'
     type: 'rotate_recovery/RotateRecovery'
+  - name: 'aggressive_reset'
+    type: 'clear_costmap_recovery/ClearCostmapRecovery'
   - name: 'rotate_recovery_2'
     type: 'rotate_recovery/RotateRecovery'
   - name: 'rotate_recovery_3'
@@ -14,19 +14,25 @@ recovery_behaviors:
   #   type: 'step_back_and_max_steer_recovery/StepBackAndMaxSteerRecovery'
 
 conservative_reset:
-  reset_distance: 2.0
-
-aggressive_reset:
-  reset_distance: 1.0
-
+  reset_distance: 10.0
+  
 rotate_recovery_1:
   sim_granularity: 0.017
+  max_rotational_vel: -1.0
+  min_in_place_rotational_vel: -1.0
 
+aggressive_reset:
+  reset_distance: 0.0
+    
 rotate_recovery_2:
   sim_granularity: 0.017
+  max_rotational_vel: -1.0
+  min_in_place_rotational_vel: -1.0
 
 rotate_recovery_3:
   sim_granularity: 0.017
+  max_rotational_vel: -1.0
+  min_in_place_rotational_vel: -1.0
 
 # step_back_and_max_steer_recovery:
 #     # 最初の一回だけ旋回したい場合にtrue
