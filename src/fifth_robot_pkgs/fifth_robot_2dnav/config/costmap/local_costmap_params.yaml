@@ -1,8 +1,8 @@
 local_costmap:
   global_frame: map
   robot_base_frame: base_link
-  update_frequency: 3.0
-  publish_frequency: 3.0
+  update_frequency: 8.0
+  publish_frequency: 7.0
   width: 10.0
   height: 10.0
   resolution: 0.02
