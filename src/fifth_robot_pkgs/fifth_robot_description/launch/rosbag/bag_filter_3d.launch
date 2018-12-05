@@ -6,8 +6,6 @@
     <remap from="/imu" to="/imu_raw" />
   </node>
 
-  <node pkg="ros_imu_filter" type="imu_filter_node" name="imu_filter" />
-
   <arg name="output_name" default="filtered" />
   <node pkg="rosbag" type="record" name="bag_recorder"
         args="/imu /odom /points2 -O $(arg output_name)_3d"
